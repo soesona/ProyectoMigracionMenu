@@ -16,3 +16,5 @@ C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\D
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.genruntimeconfig.cache
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ref\ProyectoMigracionMenu.dll
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.FormReportes.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.Login.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.sourcelink.json
