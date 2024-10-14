@@ -12,4 +12,22 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\Sthefany\.nuget\packages\" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)af.dataaccessor\2.0.2\contentFiles\any\net6.0\AFDataAccessor.json" Condition="Exists('$(NuGetPackageRoot)af.dataaccessor\2.0.2\contentFiles\any\net6.0\AFDataAccessor.json')">
+      <NuGetPackageId>AF.DataAccessor</NuGetPackageId>
+      <NuGetPackageVersion>2.0.2</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>AFDataAccessor.json</Link>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)af.dataaccessor\2.0.2\contentFiles\any\net6.0\Icons\Icon.ico" Condition="Exists('$(NuGetPackageRoot)af.dataaccessor\2.0.2\contentFiles\any\net6.0\Icons\Icon.ico')">
+      <NuGetPackageId>AF.DataAccessor</NuGetPackageId>
+      <NuGetPackageVersion>2.0.2</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>Icons\Icon.ico</Link>
+    </Content>
+  </ItemGroup>
 </Project>

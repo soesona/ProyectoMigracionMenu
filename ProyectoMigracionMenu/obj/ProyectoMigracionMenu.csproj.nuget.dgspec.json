@@ -40,6 +40,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "AF.DataAccessor": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
             "WinForms.DataVisualization": {
               "target": "Package",
               "version": "[1.9.2, )"
