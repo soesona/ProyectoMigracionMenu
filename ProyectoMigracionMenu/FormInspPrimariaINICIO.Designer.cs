@@ -1,6 +1,6 @@
 ﻿namespace ProyectoMigracionMenu
 {
-    partial class FormInspPrimariaINICIOcs
+    partial class FormInspPrimariaINICIO
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInspPrimariaINICIOcs));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInspPrimariaINICIO));
             label1 = new Label();
             BtnEntradas = new Button();
             SuspendLayout();
@@ -57,6 +57,7 @@
             BtnEntradas.Text = "Entradas";
             BtnEntradas.TextImageRelation = TextImageRelation.ImageAboveText;
             BtnEntradas.UseVisualStyleBackColor = false;
+            BtnEntradas.Click += BtnEntradas_Click;
             // 
             // FormInspPrimariaINICIOcs
             // 

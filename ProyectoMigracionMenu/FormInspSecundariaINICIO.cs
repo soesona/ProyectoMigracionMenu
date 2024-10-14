@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inspeccionsecundaria;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,21 @@ namespace ProyectoMigracionMenu
 
 
             ApplyShadowEffectToButton(BtnEntradas, shadowSize, shadowColor, cornerRadius);
+        }
+
+        private void BtnEntradas_Click(object sender, EventArgs e)
+        {
+            Menu formMenu = this.Owner as Menu;
+
+            if (formMenu != null)
+            {
+                
+                formMenu.OpenChildForm(new FormInspSecundaria(), null);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo obtener la referencia al formulario principal.");
+            }
         }
     }
 }

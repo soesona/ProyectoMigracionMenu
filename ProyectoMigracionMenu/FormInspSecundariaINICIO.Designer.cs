@@ -47,6 +47,7 @@
             BtnEntradas.Text = "Entradas";
             BtnEntradas.TextImageRelation = TextImageRelation.ImageAboveText;
             BtnEntradas.UseVisualStyleBackColor = false;
+            BtnEntradas.Click += BtnEntradas_Click;
             // 
             // label1
             // 

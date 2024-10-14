@@ -8,11 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using ProyectoMigracionMenu.Clases;
+using System.Data.SqlClient;
+
 
 namespace ProyectoMigracionMenu
 {
     public partial class Login : Form
+
     {
+
+        SqlServerConnection conexion = new SqlServerConnection();
+        public static ClaseDeLogin UsuarioActual { get; private set; }
         public Login()
         {
             InitializeComponent();
@@ -83,5 +90,24 @@ namespace ProyectoMigracionMenu
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void btnlogin_Click(object sender, EventArgs e)
+        {
+
+            UsuarioActual = new ClaseDeLogin();
+
+           
+            if (UsuarioActual.IniciarSesion(txtuser.Text, txtpass.Text))
+            {
+                this.Hide();
+                Menu menuForm = new Menu();
+                menuForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos.");
+            }
+        }
     }
-}
+    }
+ 

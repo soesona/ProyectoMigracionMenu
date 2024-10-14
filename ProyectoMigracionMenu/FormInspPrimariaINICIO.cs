@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Inspeccionsecundaria;
+using interfaz_grafica_de_inspeccion_primaria;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +13,9 @@ using System.Windows.Forms;
 
 namespace ProyectoMigracionMenu
 {
-    public partial class FormInspPrimariaINICIOcs : Form
+    public partial class FormInspPrimariaINICIO : Form
     {
-        public FormInspPrimariaINICIOcs()
+        public FormInspPrimariaINICIO()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
@@ -21,20 +23,20 @@ namespace ProyectoMigracionMenu
 
         private void ApplyShadowEffectToButton(Button button, int shadowSize, Color shadowColor, int cornerRadius)
         {
-           
+
             Panel shadowPanel = new Panel();
             shadowPanel.Size = button.Size;
             shadowPanel.Location = new Point(button.Location.X + shadowSize, button.Location.Y + shadowSize);
             shadowPanel.BackColor = shadowColor;
 
-            
+
             ApplyRoundedCorners(shadowPanel, cornerRadius);
 
-        
+
             button.Parent.Controls.Add(shadowPanel);
             shadowPanel.SendToBack();
 
-        
+
             ApplyRoundedCorners(button, cornerRadius);
         }
 
@@ -57,8 +59,23 @@ namespace ProyectoMigracionMenu
             int cornerRadius = 20;
             Color shadowColor = Color.Gray;
 
-           
+
             ApplyShadowEffectToButton(BtnEntradas, shadowSize, shadowColor, cornerRadius);
+        }
+
+        private void BtnEntradas_Click(object sender, EventArgs e)
+        {
+            Menu formMenu = this.Owner as Menu;
+
+            if (formMenu != null)
+            {
+
+                formMenu.OpenChildForm(new FormInspPrimaria(), null);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo obtener la referencia al formulario principal.");
+            }
         }
     }
 }

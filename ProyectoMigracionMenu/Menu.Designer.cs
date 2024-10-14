@@ -32,17 +32,17 @@
             BtnInspeccionPrimaria = new Button();
             MenuVertical = new Panel();
             panel1 = new Panel();
-            label2 = new Label();
+            lblDelegacion = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             BtnReportes = new Button();
             BtnDashboard = new Button();
-            button2 = new Button();
+            BtnCerrarSesion = new Button();
             BtnInspeccionSecundaria = new Button();
             pictureBox2 = new PictureBox();
             BarraMain = new Panel();
-            llblrolbarra = new Label();
-            lblusuariobarra = new Label();
+            lblRol = new Label();
+            lblUsuario = new Label();
             label4 = new Label();
             label3 = new Label();
             lblTitulo = new Label();
@@ -91,7 +91,7 @@
             MenuVertical.Controls.Add(panel1);
             MenuVertical.Controls.Add(BtnReportes);
             MenuVertical.Controls.Add(BtnDashboard);
-            MenuVertical.Controls.Add(button2);
+            MenuVertical.Controls.Add(BtnCerrarSesion);
             MenuVertical.Controls.Add(BtnInspeccionSecundaria);
             MenuVertical.Controls.Add(pictureBox2);
             MenuVertical.Controls.Add(BtnInspeccionPrimaria);
@@ -105,7 +105,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(lblDelegacion);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Bottom;
@@ -114,15 +114,15 @@
             panel1.Size = new Size(293, 50);
             panel1.TabIndex = 20;
             // 
-            // label2
+            // lblDelegacion
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(140, 16);
-            label2.Name = "label2";
-            label2.Size = new Size(25, 21);
-            label2.TabIndex = 21;
-            label2.Text = "...";
+            lblDelegacion.AutoSize = true;
+            lblDelegacion.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDelegacion.Location = new Point(140, 16);
+            lblDelegacion.Name = "lblDelegacion";
+            lblDelegacion.Size = new Size(25, 21);
+            lblDelegacion.TabIndex = 21;
+            lblDelegacion.Text = "...";
             // 
             // label1
             // 
@@ -188,26 +188,27 @@
             BtnDashboard.UseVisualStyleBackColor = false;
             BtnDashboard.Click += BtnDashboard_Click;
             // 
-            // button2
+            // BtnCerrarSesion
             // 
-            button2.BackColor = Color.FromArgb(169, 209, 212);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Black;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(0, 674);
-            button2.Margin = new Padding(4, 5, 4, 5);
-            button2.Name = "button2";
-            button2.Padding = new Padding(5);
-            button2.Size = new Size(293, 64);
-            button2.TabIndex = 17;
-            button2.Text = "Cerrar sesión ";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = false;
+            BtnCerrarSesion.BackColor = Color.FromArgb(169, 209, 212);
+            BtnCerrarSesion.FlatAppearance.BorderSize = 0;
+            BtnCerrarSesion.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
+            BtnCerrarSesion.FlatStyle = FlatStyle.Flat;
+            BtnCerrarSesion.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnCerrarSesion.ForeColor = Color.Black;
+            BtnCerrarSesion.Image = (Image)resources.GetObject("BtnCerrarSesion.Image");
+            BtnCerrarSesion.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnCerrarSesion.Location = new Point(0, 674);
+            BtnCerrarSesion.Margin = new Padding(4, 5, 4, 5);
+            BtnCerrarSesion.Name = "BtnCerrarSesion";
+            BtnCerrarSesion.Padding = new Padding(5);
+            BtnCerrarSesion.Size = new Size(293, 64);
+            BtnCerrarSesion.TabIndex = 17;
+            BtnCerrarSesion.Text = "Cerrar sesión ";
+            BtnCerrarSesion.TextAlign = ContentAlignment.MiddleLeft;
+            BtnCerrarSesion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnCerrarSesion.UseVisualStyleBackColor = false;
+            BtnCerrarSesion.Click += BtnCerrarSesion_Click;
             // 
             // BtnInspeccionSecundaria
             // 
@@ -245,8 +246,8 @@
             // BarraMain
             // 
             BarraMain.BackColor = Color.FromArgb(169, 209, 212);
-            BarraMain.Controls.Add(llblrolbarra);
-            BarraMain.Controls.Add(lblusuariobarra);
+            BarraMain.Controls.Add(lblRol);
+            BarraMain.Controls.Add(lblUsuario);
             BarraMain.Controls.Add(label4);
             BarraMain.Controls.Add(label3);
             BarraMain.Controls.Add(lblTitulo);
@@ -261,25 +262,25 @@
             BarraMain.TabIndex = 3;
             BarraMain.MouseDown += BarraMain_MouseDown;
             // 
-            // llblrolbarra
+            // lblRol
             // 
-            llblrolbarra.AutoSize = true;
-            llblrolbarra.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            llblrolbarra.Location = new Point(310, 70);
-            llblrolbarra.Name = "llblrolbarra";
-            llblrolbarra.Size = new Size(25, 21);
-            llblrolbarra.TabIndex = 24;
-            llblrolbarra.Text = "...";
+            lblRol.AutoSize = true;
+            lblRol.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblRol.Location = new Point(310, 70);
+            lblRol.Name = "lblRol";
+            lblRol.Size = new Size(25, 21);
+            lblRol.TabIndex = 24;
+            lblRol.Text = "...";
             // 
-            // lblusuariobarra
+            // lblUsuario
             // 
-            lblusuariobarra.AutoSize = true;
-            lblusuariobarra.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblusuariobarra.Location = new Point(100, 72);
-            lblusuariobarra.Name = "lblusuariobarra";
-            lblusuariobarra.Size = new Size(25, 21);
-            lblusuariobarra.TabIndex = 23;
-            lblusuariobarra.Text = "...";
+            lblUsuario.AutoSize = true;
+            lblUsuario.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsuario.Location = new Point(100, 72);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(25, 21);
+            lblUsuario.TabIndex = 23;
+            lblUsuario.Text = "...";
             // 
             // label4
             // 
@@ -409,7 +410,7 @@
         private Panel MenuVertical;
         private Button BtnReportes;
         private Button BtnDashboard;
-        private Button button2;
+        private Button BtnCerrarSesion;
         private Button BtnInspeccionSecundaria;
         private PictureBox pictureBox2;
         private Panel BarraMain;
@@ -422,9 +423,9 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Label label1;
-        private Label label2;
-        private Label llblrolbarra;
-        private Label lblusuariobarra;
+        private Label lblDelegacion;
+        private Label lblRol;
+        private Label lblUsuario;
         private Label label4;
         private Label label3;
     }

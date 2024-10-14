@@ -15,11 +15,13 @@ namespace ProyectoMigracionMenu.Clases
         private string connectionString;
         public SqlServerConnection()
         {
-            string server = "LAPTOP-B1RBKQHQ\\SQLEXPRESS";
-            string database = "MigracionQA";
-            string user = "sa";
-            string password = "12345678";
-            connectionString = $"Server={server};Database={database};User Id={user};Password={password};";
+            string server = "ENAMORADO\\SQLEXPRESS";
+            string database = "MigracionPrueba";
+            // string user = "sa";
+            // string password = "12345678";
+            //  connectionString = $"Server={server};Database={database};User Id={user};Password={password};"; ESTO SI TIENEN POR USUARIO
+
+            connectionString = $"Server={server};Database={database};Integrated Security=True;";
         }
 
         public SqlConnection EstablecerConexion()

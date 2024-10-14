@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoMigracionMenu.Clases;
 
 namespace ProyectoMigracionMenu
 {
@@ -18,6 +19,7 @@ namespace ProyectoMigracionMenu
         public Menu()
         {
             InitializeComponent();
+            CargarDatosUsuario();
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
@@ -32,7 +34,16 @@ namespace ProyectoMigracionMenu
                 null, control, new object[] { true });
         }
 
-        private void OpenChildForm(Form childForm, object btnSender)
+        private void CargarDatosUsuario()
+        {
+            if (Login.UsuarioActual != null)
+            {
+                lblUsuario.Text = Login.UsuarioActual.Nombre;
+                lblDelegacion.Text = Login.UsuarioActual.Delegacion;
+                lblRol.Text = Login.UsuarioActual.Rol;
+            }
+        }
+        public void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -92,7 +103,18 @@ namespace ProyectoMigracionMenu
 
         private void BtnReportes_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormReportes(), sender);
+            if (Login.UsuarioActual.Rol == "Delegado")
+            {
+            
+                FormReportes reportesForm = new FormReportes();
+                OpenChildForm(reportesForm, sender);  
+            }
+            else
+            {
+
+                MessageBox.Show("No tienes permisos para acceder a este módulo.");
+            }
+
         }
 
         private void BtnDashboard_Click(object sender, EventArgs e)
@@ -102,12 +124,23 @@ namespace ProyectoMigracionMenu
 
         private void BtnInspeccionPrimaria_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormInspPrimariaINICIOcs(), sender);
+            FormInspPrimariaINICIO formInspPrimariaInicio = new FormInspPrimariaINICIO();
+            formInspPrimariaInicio.Owner = this;
+            OpenChildForm(formInspPrimariaInicio, sender);
         }
 
         private void BtnInspeccionSecundaria_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormInspSecundariaINICIO(), sender);
+            FormInspSecundariaINICIO formInspSecundariaInicio = new FormInspSecundariaINICIO();
+            formInspSecundariaInicio.Owner = this;
+            OpenChildForm(formInspSecundariaInicio, sender);
+        }
+
+        private void BtnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Hide(); 
+            Login loginForm = new Login(); 
+            loginForm.Show(); 
         }
     }
 }
