@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NqrgWsQP5QwRj/N7XaT3BN3ihlKSTpmihmOAVM4GNZtZe8xHQELQlPWeY2hXOe8bY8b5/Fal12SPCIXiyiZ2qw==",
+  "dgSpecHash": "bC59i6cAvaDZF04x/RidAWYjY+g+OSkziozm6QzNVtpCjIfeF4/QWXAa1LEZtcDhiRqpkAjvK/UQK5AqcmNDdw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sthefany\\source\\repos\\ProyectoMigracionMenu\\ProyectoMigracionMenu\\ProyectoMigracionMenu.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Sthefany\\.nuget\\packages\\winforms.datavisualization\\1.9.2\\winforms.datavisualization.1.9.2.nupkg.sha512"
+  ],
   "logs": []
 }

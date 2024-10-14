@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
+            BtnLimpiar = new Button();
+            BtnGenerar = new Button();
             label1 = new Label();
-            panel1 = new Panel();
+            panelReporte = new Panel();
             comboBox1 = new ComboBox();
             label4 = new Label();
             dateTimePicker2 = new DateTimePicker();
             label3 = new Label();
             dateTimePicker1 = new DateTimePicker();
             label2 = new Label();
-            panel1.SuspendLayout();
+            panelReporte.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // BtnLimpiar
             // 
-            button1.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(817, 539);
-            button1.Name = "button1";
-            button1.Size = new Size(207, 39);
-            button1.TabIndex = 0;
-            button1.Text = "Limpiar";
-            button1.UseVisualStyleBackColor = true;
+            BtnLimpiar.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnLimpiar.Location = new Point(817, 539);
+            BtnLimpiar.Name = "BtnLimpiar";
+            BtnLimpiar.Size = new Size(207, 39);
+            BtnLimpiar.TabIndex = 0;
+            BtnLimpiar.Text = "Limpiar";
+            BtnLimpiar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // BtnGenerar
             // 
-            button2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(573, 539);
-            button2.Name = "button2";
-            button2.Size = new Size(207, 39);
-            button2.TabIndex = 1;
-            button2.Text = "Generar reporte";
-            button2.UseVisualStyleBackColor = true;
+            BtnGenerar.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnGenerar.Location = new Point(573, 539);
+            BtnGenerar.Name = "BtnGenerar";
+            BtnGenerar.Size = new Size(207, 39);
+            BtnGenerar.TabIndex = 1;
+            BtnGenerar.Text = "Generar reporte";
+            BtnGenerar.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -71,20 +71,19 @@
             label1.TabIndex = 2;
             label1.Text = "Seleccione los criterios:";
             // 
-            // panel1
+            // panelReporte
             // 
-            panel1.BackColor = SystemColors.ButtonFace;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(comboBox1);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(dateTimePicker2);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(dateTimePicker1);
-            panel1.Controls.Add(label2);
-            panel1.Location = new Point(493, 296);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(590, 206);
-            panel1.TabIndex = 3;
+            panelReporte.BackColor = Color.FromArgb(52, 161, 166);
+            panelReporte.Controls.Add(comboBox1);
+            panelReporte.Controls.Add(label4);
+            panelReporte.Controls.Add(dateTimePicker2);
+            panelReporte.Controls.Add(label3);
+            panelReporte.Controls.Add(dateTimePicker1);
+            panelReporte.Controls.Add(label2);
+            panelReporte.Location = new Point(493, 296);
+            panelReporte.Name = "panelReporte";
+            panelReporte.Size = new Size(590, 206);
+            panelReporte.TabIndex = 3;
             // 
             // comboBox1
             // 
@@ -97,10 +96,10 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(57, 140);
             label4.Name = "label4";
-            label4.Size = new Size(134, 31);
+            label4.Size = new Size(140, 31);
             label4.TabIndex = 4;
             label4.Text = "Delegación:";
             // 
@@ -114,10 +113,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(57, 85);
             label3.Name = "label3";
-            label3.Size = new Size(128, 31);
+            label3.Size = new Size(136, 31);
             label3.TabIndex = 2;
             label3.Text = "Fecha final:";
             // 
@@ -131,10 +130,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(57, 25);
             label2.Name = "label2";
-            label2.Size = new Size(144, 31);
+            label2.Size = new Size(152, 31);
             label2.TabIndex = 0;
             label2.Text = "Fecha inicial:";
             // 
@@ -144,25 +143,25 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(1697, 853);
-            Controls.Add(button2);
-            Controls.Add(panel1);
+            Controls.Add(BtnGenerar);
+            Controls.Add(panelReporte);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(BtnLimpiar);
             Name = "FormReportes";
             Text = "Reportes";
             Load += FormReportes_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelReporte.ResumeLayout(false);
+            panelReporte.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
+        private Button BtnLimpiar;
+        private Button BtnGenerar;
         private Label label1;
-        private Panel panel1;
+        private Panel panelReporte;
         private Label label2;
         private ComboBox comboBox1;
         private Label label4;

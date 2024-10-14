@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
-            button6 = new Button();
+            BtnInspeccionPrimaria = new Button();
             MenuVertical = new Panel();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             BtnReportes = new Button();
-            button1 = new Button();
+            BtnDashboard = new Button();
             button2 = new Button();
-            button5 = new Button();
+            BtnInspeccionSecundaria = new Button();
             pictureBox2 = new PictureBox();
             BarraMain = new Panel();
             llblrolbarra = new Label();
@@ -48,8 +48,8 @@
             lblTitulo = new Label();
             BtnClose = new PictureBox();
             BtnMinimizar = new PictureBox();
-            BtnMaximizar = new PictureBox();
             BtnRestaurar = new PictureBox();
+            BtnMaximizar = new PictureBox();
             panelContenedor = new Panel();
             MenuVertical.SuspendLayout();
             panel1.SuspendLayout();
@@ -58,42 +58,43 @@
             BarraMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BtnClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BtnMinimizar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BtnMaximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BtnRestaurar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BtnMaximizar).BeginInit();
             panelContenedor.SuspendLayout();
             SuspendLayout();
             // 
-            // button6
+            // BtnInspeccionPrimaria
             // 
-            button6.BackColor = Color.FromArgb(224, 247, 249);
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.ForeColor = Color.Black;
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(0, 316);
-            button6.Margin = new Padding(4, 5, 4, 5);
-            button6.Name = "button6";
-            button6.Padding = new Padding(5);
-            button6.Size = new Size(293, 64);
-            button6.TabIndex = 3;
-            button6.Text = "Inspección primaria";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button6.UseVisualStyleBackColor = false;
+            BtnInspeccionPrimaria.BackColor = Color.FromArgb(169, 209, 212);
+            BtnInspeccionPrimaria.FlatAppearance.BorderSize = 0;
+            BtnInspeccionPrimaria.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
+            BtnInspeccionPrimaria.FlatStyle = FlatStyle.Flat;
+            BtnInspeccionPrimaria.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnInspeccionPrimaria.ForeColor = Color.Black;
+            BtnInspeccionPrimaria.Image = (Image)resources.GetObject("BtnInspeccionPrimaria.Image");
+            BtnInspeccionPrimaria.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnInspeccionPrimaria.Location = new Point(0, 316);
+            BtnInspeccionPrimaria.Margin = new Padding(4, 5, 4, 5);
+            BtnInspeccionPrimaria.Name = "BtnInspeccionPrimaria";
+            BtnInspeccionPrimaria.Padding = new Padding(5);
+            BtnInspeccionPrimaria.Size = new Size(293, 64);
+            BtnInspeccionPrimaria.TabIndex = 3;
+            BtnInspeccionPrimaria.Text = "Inspección primaria";
+            BtnInspeccionPrimaria.TextAlign = ContentAlignment.MiddleLeft;
+            BtnInspeccionPrimaria.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnInspeccionPrimaria.UseVisualStyleBackColor = false;
+            BtnInspeccionPrimaria.Click += BtnInspeccionPrimaria_Click;
             // 
             // MenuVertical
             // 
-            MenuVertical.BackColor = Color.FromArgb(224, 247, 249);
+            MenuVertical.BackColor = Color.FromArgb(169, 209, 212);
             MenuVertical.Controls.Add(panel1);
             MenuVertical.Controls.Add(BtnReportes);
-            MenuVertical.Controls.Add(button1);
+            MenuVertical.Controls.Add(BtnDashboard);
             MenuVertical.Controls.Add(button2);
-            MenuVertical.Controls.Add(button5);
+            MenuVertical.Controls.Add(BtnInspeccionSecundaria);
             MenuVertical.Controls.Add(pictureBox2);
-            MenuVertical.Controls.Add(button6);
+            MenuVertical.Controls.Add(BtnInspeccionPrimaria);
             MenuVertical.Dock = DockStyle.Left;
             MenuVertical.Location = new Point(0, 0);
             MenuVertical.Margin = new Padding(4, 5, 4, 5);
@@ -145,7 +146,7 @@
             // 
             // BtnReportes
             // 
-            BtnReportes.BackColor = Color.FromArgb(224, 247, 249);
+            BtnReportes.BackColor = Color.FromArgb(169, 209, 212);
             BtnReportes.FlatAppearance.BorderSize = 0;
             BtnReportes.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
             BtnReportes.FlatStyle = FlatStyle.Flat;
@@ -165,30 +166,31 @@
             BtnReportes.UseVisualStyleBackColor = false;
             BtnReportes.Click += BtnReportes_Click;
             // 
-            // button1
+            // BtnDashboard
             // 
-            button1.BackColor = Color.FromArgb(224, 247, 249);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Black;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(0, 248);
-            button1.Margin = new Padding(4, 5, 4, 5);
-            button1.Name = "button1";
-            button1.Padding = new Padding(5);
-            button1.Size = new Size(293, 64);
-            button1.TabIndex = 18;
-            button1.Text = "Dashboard";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = false;
+            BtnDashboard.BackColor = Color.FromArgb(169, 209, 212);
+            BtnDashboard.FlatAppearance.BorderSize = 0;
+            BtnDashboard.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
+            BtnDashboard.FlatStyle = FlatStyle.Flat;
+            BtnDashboard.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDashboard.ForeColor = Color.Black;
+            BtnDashboard.Image = (Image)resources.GetObject("BtnDashboard.Image");
+            BtnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnDashboard.Location = new Point(0, 248);
+            BtnDashboard.Margin = new Padding(4, 5, 4, 5);
+            BtnDashboard.Name = "BtnDashboard";
+            BtnDashboard.Padding = new Padding(5);
+            BtnDashboard.Size = new Size(293, 64);
+            BtnDashboard.TabIndex = 18;
+            BtnDashboard.Text = "Dashboard";
+            BtnDashboard.TextAlign = ContentAlignment.MiddleLeft;
+            BtnDashboard.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnDashboard.UseVisualStyleBackColor = false;
+            BtnDashboard.Click += BtnDashboard_Click;
             // 
             // button2
             // 
-            button2.BackColor = Color.FromArgb(224, 247, 249);
+            button2.BackColor = Color.FromArgb(169, 209, 212);
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
             button2.FlatStyle = FlatStyle.Flat;
@@ -207,26 +209,27 @@
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // BtnInspeccionSecundaria
             // 
-            button5.BackColor = Color.FromArgb(224, 247, 249);
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.Black;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(0, 384);
-            button5.Margin = new Padding(4, 5, 4, 5);
-            button5.Name = "button5";
-            button5.Padding = new Padding(5);
-            button5.Size = new Size(293, 64);
-            button5.TabIndex = 5;
-            button5.Text = "Inspección secundaria";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button5.UseVisualStyleBackColor = false;
+            BtnInspeccionSecundaria.BackColor = Color.FromArgb(169, 209, 212);
+            BtnInspeccionSecundaria.FlatAppearance.BorderSize = 0;
+            BtnInspeccionSecundaria.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 161, 166);
+            BtnInspeccionSecundaria.FlatStyle = FlatStyle.Flat;
+            BtnInspeccionSecundaria.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnInspeccionSecundaria.ForeColor = Color.Black;
+            BtnInspeccionSecundaria.Image = (Image)resources.GetObject("BtnInspeccionSecundaria.Image");
+            BtnInspeccionSecundaria.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnInspeccionSecundaria.Location = new Point(0, 384);
+            BtnInspeccionSecundaria.Margin = new Padding(4, 5, 4, 5);
+            BtnInspeccionSecundaria.Name = "BtnInspeccionSecundaria";
+            BtnInspeccionSecundaria.Padding = new Padding(5);
+            BtnInspeccionSecundaria.Size = new Size(293, 64);
+            BtnInspeccionSecundaria.TabIndex = 5;
+            BtnInspeccionSecundaria.Text = "Inspección secundaria";
+            BtnInspeccionSecundaria.TextAlign = ContentAlignment.MiddleLeft;
+            BtnInspeccionSecundaria.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnInspeccionSecundaria.UseVisualStyleBackColor = false;
+            BtnInspeccionSecundaria.Click += BtnInspeccionSecundaria_Click;
             // 
             // pictureBox2
             // 
@@ -241,7 +244,7 @@
             // 
             // BarraMain
             // 
-            BarraMain.BackColor = Color.FromArgb(224, 247, 249);
+            BarraMain.BackColor = Color.FromArgb(169, 209, 212);
             BarraMain.Controls.Add(llblrolbarra);
             BarraMain.Controls.Add(lblusuariobarra);
             BarraMain.Controls.Add(label4);
@@ -249,8 +252,8 @@
             BarraMain.Controls.Add(lblTitulo);
             BarraMain.Controls.Add(BtnClose);
             BarraMain.Controls.Add(BtnMinimizar);
-            BarraMain.Controls.Add(BtnMaximizar);
             BarraMain.Controls.Add(BtnRestaurar);
+            BarraMain.Controls.Add(BtnMaximizar);
             BarraMain.Dock = DockStyle.Top;
             BarraMain.Location = new Point(293, 0);
             BarraMain.Name = "BarraMain";
@@ -304,9 +307,9 @@
             lblTitulo.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.Location = new Point(0, 6);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(133, 46);
+            lblTitulo.Size = new Size(193, 46);
             lblTitulo.TabIndex = 7;
-            lblTitulo.Text = "Prueba";
+            lblTitulo.Text = "Dashboard";
             // 
             // BtnClose
             // 
@@ -334,19 +337,6 @@
             BtnMinimizar.TabStop = false;
             BtnMinimizar.Click += BtnMinimizar_Click;
             // 
-            // BtnMaximizar
-            // 
-            BtnMaximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnMaximizar.Cursor = Cursors.Hand;
-            BtnMaximizar.Image = (Image)resources.GetObject("BtnMaximizar.Image");
-            BtnMaximizar.Location = new Point(1284, 12);
-            BtnMaximizar.Name = "BtnMaximizar";
-            BtnMaximizar.Size = new Size(42, 44);
-            BtnMaximizar.SizeMode = PictureBoxSizeMode.Zoom;
-            BtnMaximizar.TabIndex = 6;
-            BtnMaximizar.TabStop = false;
-            BtnMaximizar.Click += BtnMaximizar_Click;
-            // 
             // BtnRestaurar
             // 
             BtnRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -359,6 +349,19 @@
             BtnRestaurar.TabIndex = 4;
             BtnRestaurar.TabStop = false;
             BtnRestaurar.Click += BtnRestaurar_Click;
+            // 
+            // BtnMaximizar
+            // 
+            BtnMaximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnMaximizar.Cursor = Cursors.Hand;
+            BtnMaximizar.Image = (Image)resources.GetObject("BtnMaximizar.Image");
+            BtnMaximizar.Location = new Point(1284, 12);
+            BtnMaximizar.Name = "BtnMaximizar";
+            BtnMaximizar.Size = new Size(42, 44);
+            BtnMaximizar.SizeMode = PictureBoxSizeMode.Zoom;
+            BtnMaximizar.TabIndex = 6;
+            BtnMaximizar.TabStop = false;
+            BtnMaximizar.Click += BtnMaximizar_Click;
             // 
             // panelContenedor
             // 
@@ -394,20 +397,20 @@
             BarraMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)BtnClose).EndInit();
             ((System.ComponentModel.ISupportInitialize)BtnMinimizar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BtnMaximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)BtnRestaurar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BtnMaximizar).EndInit();
             panelContenedor.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button6;
+        private Button BtnInspeccionPrimaria;
         private Panel MenuVertical;
         private Button BtnReportes;
-        private Button button1;
+        private Button BtnDashboard;
         private Button button2;
-        private Button button5;
+        private Button BtnInspeccionSecundaria;
         private PictureBox pictureBox2;
         private Panel BarraMain;
         private Label lblTitulo;

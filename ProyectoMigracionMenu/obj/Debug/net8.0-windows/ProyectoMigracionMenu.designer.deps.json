@@ -5,7 +5,28 @@
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v8.0": {}
+    ".NETCoreApp,Version=v8.0": {
+      "WinForms.DataVisualization/1.9.2": {
+        "runtime": {
+          "lib/net8.0-windows7.0/WinForms.DataVisualization.Utilities.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.9.2.0"
+          },
+          "lib/net8.0-windows7.0/WinForms.DataVisualization.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.9.2.0"
+          }
+        }
+      }
+    }
   },
-  "libraries": {}
+  "libraries": {
+    "WinForms.DataVisualization/1.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e1aPoWqPS1GThTK2ZpI4GkIhteorW7smNQ5SP3y5EaODL7W2u21nX0hlHtmkerBWi9gpy6Rw8I53jvo5CF+4rA==",
+      "path": "winforms.datavisualization/1.9.2",
+      "hashPath": "winforms.datavisualization.1.9.2.nupkg.sha512"
+    }
+  }
 }

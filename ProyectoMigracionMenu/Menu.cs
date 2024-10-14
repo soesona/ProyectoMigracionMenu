@@ -21,8 +21,16 @@ namespace ProyectoMigracionMenu
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            this.WindowState = FormWindowState.Maximized;
+            DoubleBufferedPanel(panelContenedor);
+            OpenChildForm(new FormDashboard(), null);
         }
-
+        private void DoubleBufferedPanel(Control control)
+        {
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, control, new object[] { true });
+        }
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
@@ -87,6 +95,19 @@ namespace ProyectoMigracionMenu
             OpenChildForm(new FormReportes(), sender);
         }
 
-      
+        private void BtnDashboard_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormDashboard(), sender);
+        }
+
+        private void BtnInspeccionPrimaria_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormInspPrimariaINICIOcs(), sender);
+        }
+
+        private void BtnInspeccionSecundaria_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormInspSecundariaINICIO(), sender);
+        }
     }
 }

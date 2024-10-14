@@ -8,28 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ProyectoMigracionMenu
 {
-    public partial class FormReportes : Form
+    public partial class FormDashboard : Form
     {
-        public FormReportes()
+        public FormDashboard()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
         }
         private void ApplyShadowEffect(Panel panel, int shadowSize, Color shadowColor, int cornerRadius)
         {
-          
+           
             Panel shadowPanel = new Panel();
             shadowPanel.Size = panel.Size;
             shadowPanel.Location = new Point(panel.Location.X + shadowSize, panel.Location.Y + shadowSize);
             shadowPanel.BackColor = shadowColor;
 
-          
             ApplyRoundedCorners(shadowPanel, cornerRadius);
 
-          
+            
             panel.Parent.Controls.Add(shadowPanel);
             shadowPanel.SendToBack();
         }
@@ -45,17 +45,28 @@ namespace ProyectoMigracionMenu
             panel.Region = new Region(path);
         }
 
-        private void FormReportes_Load(object sender, EventArgs e)
+        private void FormDashboard_Load(object sender, EventArgs e)
         {
             int shadowSize = 5; 
             int cornerRadius = 20; 
-            Color shadowColor = Color.Gray;
+            Color shadowColor = Color.Gray; 
 
             
-            ApplyShadowEffect(panelReporte, shadowSize, shadowColor, cornerRadius);
-            ApplyRoundedCorners(panelReporte, cornerRadius);
-           
+            ApplyShadowEffect(panelHoy, shadowSize, shadowColor, cornerRadius);
+            ApplyRoundedCorners(panelHoy, cornerRadius);
+
+            ApplyShadowEffect(panelMes, shadowSize, shadowColor, cornerRadius);
+            ApplyRoundedCorners(panelMes, cornerRadius);
+
+            ApplyShadowEffect(panelAno, shadowSize, shadowColor, cornerRadius);
+            ApplyRoundedCorners(panelAno, cornerRadius);
+
+
+            chart1.Series["Movimientos"].Points.AddXY("Enero", 5);
+
 
         }
     }
-}
+    }
+    
+

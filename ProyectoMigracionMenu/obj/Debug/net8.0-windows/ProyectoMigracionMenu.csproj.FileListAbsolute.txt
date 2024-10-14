@@ -18,3 +18,10 @@ C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\D
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.FormReportes.resources
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.Login.resources
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.sourcelink.json
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.FormDashboard.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.FormInspPrimariaINICIOcs.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.FormInspSecundariaINICIO.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.csproj.AssemblyReference.cache
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.csproj.CopyComplete
