@@ -42,3 +42,11 @@ C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\D
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\Inspeccionsecundaria.FormInspSecundaria.resources
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\interfaz_grafica_de_inspeccion_primaria.FormInspPrimaria.resources
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.FormInspPrimariaINICIO.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.FormRecuperarContrasena.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\MailKit.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\MimeKit.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\System.Formats.Asn1.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.TemasDeLogin.FormVerificarToken.resources

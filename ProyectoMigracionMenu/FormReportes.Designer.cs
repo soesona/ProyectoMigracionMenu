@@ -32,7 +32,7 @@
             BtnGenerar = new Button();
             label1 = new Label();
             panelReporte = new Panel();
-            comboBox1 = new ComboBox();
+            CboDelegaciones = new ComboBox();
             label4 = new Label();
             dateTimePicker2 = new DateTimePicker();
             label3 = new Label();
@@ -74,7 +74,7 @@
             // panelReporte
             // 
             panelReporte.BackColor = Color.FromArgb(52, 161, 166);
-            panelReporte.Controls.Add(comboBox1);
+            panelReporte.Controls.Add(CboDelegaciones);
             panelReporte.Controls.Add(label4);
             panelReporte.Controls.Add(dateTimePicker2);
             panelReporte.Controls.Add(label3);
@@ -85,13 +85,13 @@
             panelReporte.Size = new Size(590, 206);
             panelReporte.TabIndex = 3;
             // 
-            // comboBox1
+            // CboDelegaciones
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(301, 140);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 5;
+            CboDelegaciones.FormattingEnabled = true;
+            CboDelegaciones.Location = new Point(301, 140);
+            CboDelegaciones.Name = "CboDelegaciones";
+            CboDelegaciones.Size = new Size(151, 28);
+            CboDelegaciones.TabIndex = 5;
             // 
             // label4
             // 
@@ -163,7 +163,7 @@
         private Label label1;
         private Panel panelReporte;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox CboDelegaciones;
         private Label label4;
         private DateTimePicker dateTimePicker2;
         private Label label3;

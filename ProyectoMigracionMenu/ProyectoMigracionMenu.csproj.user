@@ -16,10 +16,16 @@
     <Compile Update="FormInspSecundariaINICIO.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TemasDeLogin\FormRecuperarContrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Login.cs">
+    <Compile Update="TemasDeLogin\FormVerificarToken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TemasDeLogin\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Menu.cs">

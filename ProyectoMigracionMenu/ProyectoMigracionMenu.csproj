@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="AF.DataAccessor" Version="2.0.2" />
+    <PackageReference Include="MailKit" Version="4.8.0" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
 

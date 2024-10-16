@@ -54,8 +54,14 @@ namespace ProyectoMigracionMenu
             
             ApplyShadowEffect(panelReporte, shadowSize, shadowColor, cornerRadius);
             ApplyRoundedCorners(panelReporte, cornerRadius);
-           
 
+            Clases.Delegaciones delegaciones = new Clases.Delegaciones();
+            DataTable dtDelegaciones = delegaciones.CargarDelegaciones();
+
+            CboDelegaciones.DataSource = dtDelegaciones;
+            CboDelegaciones.DisplayMember = "NombreDelegacion";
+           CboDelegaciones.ValueMember = "NombreDelegacion";
         }
+
     }
 }
