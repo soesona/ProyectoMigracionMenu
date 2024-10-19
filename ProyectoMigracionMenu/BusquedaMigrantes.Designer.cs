@@ -60,9 +60,7 @@
             label8 = new Label();
             comboBox2 = new ComboBox();
             BtnClose = new PictureBox();
-            BtnMinimizar = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)BtnClose).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BtnMinimizar).BeginInit();
             SuspendLayout();
             // 
             // listView1
@@ -311,19 +309,6 @@
             BtnClose.TabStop = false;
             BtnClose.Click += BtnClose_Click;
             // 
-            // BtnMinimizar
-            // 
-            BtnMinimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnMinimizar.Cursor = Cursors.Hand;
-            BtnMinimizar.Image = (Image)resources.GetObject("BtnMinimizar.Image");
-            BtnMinimizar.Location = new Point(1284, 22);
-            BtnMinimizar.Name = "BtnMinimizar";
-            BtnMinimizar.Size = new Size(33, 29);
-            BtnMinimizar.SizeMode = PictureBoxSizeMode.Zoom;
-            BtnMinimizar.TabIndex = 48;
-            BtnMinimizar.TabStop = false;
-            BtnMinimizar.Click += BtnMinimizar_Click;
-            // 
             // BusquedaMigrantes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -331,7 +316,6 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(1410, 673);
             Controls.Add(BtnClose);
-            Controls.Add(BtnMinimizar);
             Controls.Add(comboBox2);
             Controls.Add(label8);
             Controls.Add(comboBox1);
@@ -356,8 +340,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "BusquedaMigrantes";
             Text = "BusquedaMigrantes";
+            MouseDown += BusquedaMigrantes_MouseDown;
             ((System.ComponentModel.ISupportInitialize)BtnClose).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BtnMinimizar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -395,6 +379,5 @@
         private Label label8;
         private ComboBox comboBox2;
         private PictureBox BtnClose;
-        private PictureBox BtnMinimizar;
     }
 }

@@ -50,3 +50,4 @@ C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\D
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.TemasDeLogin.FormVerificarToken.resources
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.BusquedaMigrantes.resources

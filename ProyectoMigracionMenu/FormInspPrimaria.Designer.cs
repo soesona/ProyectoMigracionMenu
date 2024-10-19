@@ -171,6 +171,7 @@
             btnbuscar.TabIndex = 15;
             btnbuscar.Text = "Buscar";
             btnbuscar.UseVisualStyleBackColor = true;
+            btnbuscar.Click += btnbuscar_Click;
             // 
             // textBox1
             // 
