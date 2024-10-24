@@ -19,6 +19,9 @@
     <Compile Update="FormInspSecundariaINICIO.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TemasDeLogin\FormRecuperarContrasena.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -34,5 +37,13 @@
     <Compile Update="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="FormInspPrimaria.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
