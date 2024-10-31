@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="DSReporteEntradas.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DSReporteEntradas.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -25,8 +30,43 @@
 
   <ItemGroup>
     <PackageReference Include="AF.DataAccessor" Version="2.0.2" />
+    <PackageReference Include="DevExpress.Reporting.Core" Version="24.1.6" />
     <PackageReference Include="MailKit" Version="4.8.0" />
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1652.0" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.23" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v24.1">
+      <HintPath>..\..\..\..\Downloads\DevExpress.Data.Desktop.v24.1_x86\DevExpress.Data.Desktop.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v24.1">
+      <HintPath>..\..\..\..\Downloads\DevExpress.Utils.v24.1_x86\DevExpress.Utils.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v24.1">
+      <HintPath>..\..\..\..\Downloads\DevExpress.XtraBars.v24.1_x86\DevExpress.XtraBars.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v24.1">
+      <HintPath>..\..\..\..\Downloads\DevExpress.XtraEditors.v24.1_x86\DevExpress.XtraEditors.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v24.1">
+      <HintPath>..\..\..\..\Downloads\DevExpress.XtraLayout.v24.1_x86\DevExpress.XtraLayout.v24.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v24.1">
+      <HintPath>..\..\..\..\Downloads\DevExpress.XtraPrinting.v24.1_x86\DevExpress.XtraPrinting.v24.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v24.1">
+      <HintPath>..\..\..\..\Downloads\DevExpress.XtraTreeList.v24.1_x86\DevExpress.XtraTreeList.v24.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DSReporteEntradas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReporteEntradas.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

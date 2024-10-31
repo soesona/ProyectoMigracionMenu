@@ -113,7 +113,7 @@ namespace ProyectoMigracionMenu
         {
             FormRecuperarContrasena formRecuperarContrasena = new FormRecuperarContrasena();
 
-            // Mostrar el formulario de recuperación de contraseña
+            
             formRecuperarContrasena.ShowDialog();
         }
     }

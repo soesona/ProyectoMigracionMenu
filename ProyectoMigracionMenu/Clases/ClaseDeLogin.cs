@@ -15,15 +15,18 @@ namespace ProyectoMigracionMenu.Clases
         public string Delegacion { get; private set; }
         public string Rol { get; private set; }
 
+        public int IdDelegacion { get; private set; }
+
         public bool IniciarSesion(string usuario, string clave)
         {
             using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
-                string query = "SELECT u.Nombre, d.NombreDelegacion, r.NombreRol " +
-                               "FROM Usuarios u " +
-                               "JOIN Delegaciones d ON u.IdDelegacion = d.IdDelegacion " +
-                               "JOIN Roles r ON u.IdRol = r.IdRol " +
-                               "WHERE u.Usuario = @usuario AND u.Clave = @clave AND u.Activo = 1";
+
+                string query = "SELECT u.Nombre, d.NombreDelegacion, r.NombreRol, u.IdDelegacion " +
+                       "FROM Usuarios u " +
+                       "JOIN Delegaciones d ON u.IdDelegacion = d.IdDelegacion " +
+                       "JOIN Roles r ON u.IdRol = r.IdRol " +
+                       "WHERE u.Usuario = @usuario AND u.Clave = @clave AND u.Activo = 1";
 
                 using (SqlCommand command = new SqlCommand(query, conexion))
                 {
@@ -36,6 +39,7 @@ namespace ProyectoMigracionMenu.Clases
                         {
                             Nombre = reader["Nombre"].ToString();
                             Delegacion = reader["NombreDelegacion"].ToString();
+                            IdDelegacion = Convert.ToInt32(reader["IdDelegacion"]);
                             Rol = reader["NombreRol"].ToString();
                             return true; 
                         }

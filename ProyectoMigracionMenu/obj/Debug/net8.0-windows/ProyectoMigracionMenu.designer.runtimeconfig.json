@@ -13,7 +13,8 @@
     ],
     "additionalProbingPaths": [
       "C:\\Users\\Sthefany\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Sthefany\\.nuget\\packages"
+      "C:\\Users\\Sthefany\\.nuget\\packages",
+      "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,

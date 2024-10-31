@@ -11,12 +11,10 @@ namespace ProyectoMigracionMenu.Clases
     public class Delegaciones
     {
 
-
-        private string connectionString = "Server=ENAMORADO\\SQLEXPRESS;Database=MigracionPrueba;Integrated Security=True;";
-
         public DataTable CargarDelegaciones()
         {
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+         
+            using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
                 using (SqlDataAdapter da = new SqlDataAdapter("Delegaciones_ComboBox", conexion))
                 {
@@ -29,3 +27,4 @@ namespace ProyectoMigracionMenu.Clases
         }
     }
 }
+

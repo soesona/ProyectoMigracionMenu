@@ -36,267 +36,287 @@
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
-            label14 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox5 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            listView1 = new ListView();
-            Fotografia = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader1 = new ColumnHeader();
-            button1 = new Button();
-            button2 = new Button();
+            txtIdentidad = new TextBox();
+            dtpFecha = new DateTimePicker();
+            dgvTransacciones = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Doc = new DataGridViewTextBoxColumn();
+            paisEmisor = new DataGridViewTextBoxColumn();
+            identidad = new DataGridViewTextBoxColumn();
+            FechaV = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Sexo = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
+            Apellido = new DataGridViewTextBoxColumn();
+            Imagen = new DataGridViewTextBoxColumn();
+            txtTipoDoc = new TextBox();
+            txtPaisEmision = new TextBox();
+            txtRegistro = new TextBox();
+            txtNombre = new TextBox();
+            txtApellido = new TextBox();
+            pic = new PictureBox();
+            btnCancelar = new Button();
+            btnGuardar = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvTransacciones).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic).BeginInit();
             SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(86, 32);
+            label2.Location = new Point(31, 27);
             label2.Name = "label2";
-            label2.Size = new Size(143, 20);
+            label2.Size = new Size(114, 15);
             label2.TabIndex = 1;
             label2.Text = "Tipo de documento:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(574, 32);
+            label3.Location = new Point(469, 27);
             label3.Name = "label3";
-            label3.Size = new Size(99, 20);
+            label3.Size = new Size(53, 15);
             label3.TabIndex = 2;
-            label3.Text = "Id del viajero:";
+            label3.Text = "Registro:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1102, 36);
+            label4.Location = new Point(843, 27);
             label4.Name = "label4";
-            label4.Size = new Size(93, 20);
+            label4.Size = new Size(90, 15);
             label4.TabIndex = 3;
-            label4.Text = "Fecha inicial:";
+            label4.Text = "Fecha Solicitud:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(574, 295);
+            label5.Location = new Point(468, 130);
             label5.Name = "label5";
-            label5.Size = new Size(69, 20);
+            label5.Size = new Size(54, 15);
             label5.TabIndex = 4;
             label5.Text = "Apellido:";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(86, 177);
+            label11.Location = new Point(53, 76);
             label11.Name = "label11";
-            label11.Size = new Size(114, 20);
+            label11.Size = new Size(92, 15);
             label11.TabIndex = 10;
             label11.Text = "Pais de emision:";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(86, 303);
+            label12.Location = new Point(35, 130);
             label12.Name = "label12";
-            label12.Size = new Size(136, 20);
+            label12.Size = new Size(110, 15);
             label12.TabIndex = 11;
             label12.Text = "No. de documento:";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(574, 177);
+            label13.Location = new Point(468, 76);
             label13.Name = "label13";
-            label13.Size = new Size(67, 20);
+            label13.Size = new Size(54, 15);
             label13.TabIndex = 12;
             label13.Text = "Nombre:";
             // 
-            // label14
+            // txtIdentidad
             // 
-            label14.AutoSize = true;
-            label14.Location = new Point(1102, 177);
-            label14.Name = "label14";
-            label14.Size = new Size(83, 20);
-            label14.TabIndex = 13;
-            label14.Text = "Fecha final:";
+            txtIdentidad.Enabled = false;
+            txtIdentidad.Location = new Point(160, 125);
+            txtIdentidad.Name = "txtIdentidad";
+            txtIdentidad.Size = new Size(234, 23);
+            txtIdentidad.TabIndex = 18;
             // 
-            // comboBox1
+            // dtpFecha
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(250, 32);
-            comboBox1.Margin = new Padding(3, 4, 3, 4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(267, 28);
-            comboBox1.TabIndex = 16;
+            dtpFecha.Enabled = false;
+            dtpFecha.Format = DateTimePickerFormat.Short;
+            dtpFecha.Location = new Point(951, 24);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(117, 23);
+            dtpFecha.TabIndex = 23;
             // 
-            // comboBox2
+            // dgvTransacciones
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(250, 167);
-            comboBox2.Margin = new Padding(3, 4, 3, 4);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(267, 28);
-            comboBox2.TabIndex = 17;
+            dgvTransacciones.AllowUserToAddRows = false;
+            dgvTransacciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTransacciones.Columns.AddRange(new DataGridViewColumn[] { Id, Doc, paisEmisor, identidad, FechaV, Nombre, Sexo, Estado, Apellido, Imagen });
+            dgvTransacciones.Location = new Point(12, 177);
+            dgvTransacciones.Name = "dgvTransacciones";
+            dgvTransacciones.ReadOnly = true;
+            dgvTransacciones.Size = new Size(1461, 451);
+            dgvTransacciones.TabIndex = 28;
+            dgvTransacciones.SelectionChanged += dgvTransacciones_SelectionChanged;
             // 
-            // textBox1
+            // Id
             // 
-            textBox1.Location = new Point(250, 292);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(267, 27);
-            textBox1.TabIndex = 18;
+            Id.HeaderText = "No. Transacción";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
-            // textBox2
+            // Doc
             // 
-            textBox2.Location = new Point(684, 167);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(347, 27);
-            textBox2.TabIndex = 19;
+            Doc.HeaderText = "Tipo Documento";
+            Doc.Name = "Doc";
+            Doc.ReadOnly = true;
+            Doc.Width = 200;
             // 
-            // textBox3
+            // paisEmisor
             // 
-            textBox3.Location = new Point(684, 32);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(347, 27);
-            textBox3.TabIndex = 20;
+            paisEmisor.HeaderText = "Pais Emisor";
+            paisEmisor.Name = "paisEmisor";
+            paisEmisor.ReadOnly = true;
+            paisEmisor.Width = 200;
             // 
-            // textBox5
+            // identidad
             // 
-            textBox5.Location = new Point(684, 292);
-            textBox5.Margin = new Padding(3, 4, 3, 4);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(347, 27);
-            textBox5.TabIndex = 22;
+            identidad.HeaderText = "No. Documento";
+            identidad.Name = "identidad";
+            identidad.ReadOnly = true;
+            identidad.Width = 200;
             // 
-            // dateTimePicker1
+            // FechaV
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(1222, 35);
-            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(317, 27);
-            dateTimePicker1.TabIndex = 23;
+            FechaV.HeaderText = "Fecha Vencimiento";
+            FechaV.Name = "FechaV";
+            FechaV.ReadOnly = true;
+            FechaV.Width = 150;
             // 
-            // dateTimePicker2
+            // Nombre
             // 
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(1222, 169);
-            dateTimePicker2.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(317, 27);
-            dateTimePicker2.TabIndex = 24;
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
             // 
-            // listView1
+            // Sexo
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { Fotografia, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader1 });
-            listView1.Location = new Point(86, 516);
-            listView1.Margin = new Padding(3, 4, 3, 4);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(1511, 311);
-            listView1.TabIndex = 25;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            Sexo.HeaderText = "Sexo";
+            Sexo.Name = "Sexo";
+            Sexo.ReadOnly = true;
+            Sexo.Width = 150;
             // 
-            // Fotografia
+            // Estado
             // 
-            Fotografia.Tag = "";
-            Fotografia.Text = "Fotografia";
-            Fotografia.Width = 150;
+            Estado.HeaderText = "Estado";
+            Estado.Name = "Estado";
+            Estado.ReadOnly = true;
+            Estado.Width = 200;
             // 
-            // columnHeader2
+            // Apellido
             // 
-            columnHeader2.Text = "No.de transaccion";
-            columnHeader2.Width = 150;
+            Apellido.HeaderText = "Apellido";
+            Apellido.Name = "Apellido";
+            Apellido.ReadOnly = true;
+            Apellido.Visible = false;
             // 
-            // columnHeader3
+            // Imagen
             // 
-            columnHeader3.Text = "Tipo de documento";
-            columnHeader3.Width = 150;
+            Imagen.HeaderText = "Imagen";
+            Imagen.Name = "Imagen";
+            Imagen.ReadOnly = true;
+            Imagen.Visible = false;
             // 
-            // columnHeader4
+            // txtTipoDoc
             // 
-            columnHeader4.Text = "Pais emisor";
-            columnHeader4.Width = 150;
+            txtTipoDoc.Enabled = false;
+            txtTipoDoc.Location = new Point(160, 24);
+            txtTipoDoc.Name = "txtTipoDoc";
+            txtTipoDoc.Size = new Size(234, 23);
+            txtTipoDoc.TabIndex = 29;
             // 
-            // columnHeader5
+            // txtPaisEmision
             // 
-            columnHeader5.Text = "No.de documento";
-            columnHeader5.Width = 150;
+            txtPaisEmision.Enabled = false;
+            txtPaisEmision.Location = new Point(160, 73);
+            txtPaisEmision.Name = "txtPaisEmision";
+            txtPaisEmision.Size = new Size(234, 23);
+            txtPaisEmision.TabIndex = 30;
             // 
-            // columnHeader6
+            // txtRegistro
             // 
-            columnHeader6.Text = "Fecha de vencimineto";
-            columnHeader6.Width = 150;
+            txtRegistro.Enabled = false;
+            txtRegistro.Location = new Point(538, 24);
+            txtRegistro.Name = "txtRegistro";
+            txtRegistro.Size = new Size(234, 23);
+            txtRegistro.TabIndex = 31;
             // 
-            // columnHeader7
+            // txtNombre
             // 
-            columnHeader7.Text = "Nombre";
-            columnHeader7.Width = 150;
+            txtNombre.Enabled = false;
+            txtNombre.Location = new Point(538, 73);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(234, 23);
+            txtNombre.TabIndex = 32;
             // 
-            // columnHeader8
+            // txtApellido
             // 
-            columnHeader8.Text = "Sexo";
-            columnHeader8.Width = 150;
+            txtApellido.Enabled = false;
+            txtApellido.Location = new Point(538, 125);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(234, 23);
+            txtApellido.TabIndex = 33;
             // 
-            // columnHeader1
+            // pic
             // 
-            columnHeader1.Text = "Estado";
+            pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
+            pic.Location = new Point(1299, 12);
+            pic.Name = "pic";
+            pic.Size = new Size(158, 159);
+            pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            pic.TabIndex = 34;
+            pic.TabStop = false;
             // 
-            // button1
+            // btnCancelar
             // 
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(86, 405);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(105, 61);
-            button1.TabIndex = 26;
-            button1.Text = "Buscar";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
+            btnCancelar.BackColor = Color.LightCoral;
+            btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
+            btnCancelar.Location = new Point(1026, 108);
+            btnCancelar.Margin = new Padding(3, 2, 3, 2);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(152, 40);
+            btnCancelar.TabIndex = 36;
+            btnCancelar.Text = "Rechazar";
+            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // button2
+            // btnGuardar
             // 
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(250, 405);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(105, 61);
-            button2.TabIndex = 27;
-            button2.Text = "Limpiar";
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = true;
+            btnGuardar.BackColor = Color.LightGreen;
+            btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
+            btnGuardar.Location = new Point(843, 108);
+            btnGuardar.Margin = new Padding(3, 2, 3, 2);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(152, 40);
+            btnGuardar.TabIndex = 35;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // FormInspSecundaria
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(1697, 853);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(listView1);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox5);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
-            Controls.Add(label14);
+            ClientSize = new Size(1485, 640);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnGuardar);
+            Controls.Add(pic);
+            Controls.Add(txtApellido);
+            Controls.Add(txtNombre);
+            Controls.Add(txtRegistro);
+            Controls.Add(txtPaisEmision);
+            Controls.Add(txtTipoDoc);
+            Controls.Add(dgvTransacciones);
+            Controls.Add(dtpFecha);
+            Controls.Add(txtIdentidad);
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(label11);
@@ -304,9 +324,10 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormInspSecundaria";
             Text = "Inspección secundaria";
+            ((System.ComponentModel.ISupportInitialize)dgvTransacciones).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -319,26 +340,26 @@
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label14;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox5;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
-        private ListView listView1;
-        private Button button1;
-        private ColumnHeader Fotografia;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader8;
-        private Button button2;
-        private ColumnHeader columnHeader1;
+        private TextBox txtIdentidad;
+        private DateTimePicker dtpFecha;
+        private DataGridView dgvTransacciones;
+        private TextBox txtTipoDoc;
+        private TextBox txtPaisEmision;
+        private TextBox txtRegistro;
+        private TextBox txtNombre;
+        private TextBox txtApellido;
+        private PictureBox pic;
+        private Button btnCancelar;
+        private Button btnGuardar;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Doc;
+        private DataGridViewTextBoxColumn paisEmisor;
+        private DataGridViewTextBoxColumn identidad;
+        private DataGridViewTextBoxColumn FechaV;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Sexo;
+        private DataGridViewTextBoxColumn Estado;
+        private DataGridViewTextBoxColumn Apellido;
+        private DataGridViewTextBoxColumn Imagen;
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿
+using DevExpress.XtraReports.UI;
+using Microsoft.Reporting.WinForms;
+using ProyectoMigracionMenu.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
 
 namespace ProyectoMigracionMenu
 {
@@ -20,16 +26,16 @@ namespace ProyectoMigracionMenu
         }
         private void ApplyShadowEffect(Panel panel, int shadowSize, Color shadowColor, int cornerRadius)
         {
-          
+
             Panel shadowPanel = new Panel();
             shadowPanel.Size = panel.Size;
             shadowPanel.Location = new Point(panel.Location.X + shadowSize, panel.Location.Y + shadowSize);
             shadowPanel.BackColor = shadowColor;
 
-          
+
             ApplyRoundedCorners(shadowPanel, cornerRadius);
 
-          
+
             panel.Parent.Controls.Add(shadowPanel);
             shadowPanel.SendToBack();
         }
@@ -47,11 +53,11 @@ namespace ProyectoMigracionMenu
 
         private void FormReportes_Load(object sender, EventArgs e)
         {
-            int shadowSize = 5; 
-            int cornerRadius = 20; 
+            int shadowSize = 5;
+            int cornerRadius = 20;
             Color shadowColor = Color.Gray;
 
-            
+
             ApplyShadowEffect(panelReporte, shadowSize, shadowColor, cornerRadius);
             ApplyRoundedCorners(panelReporte, cornerRadius);
 
@@ -60,8 +66,37 @@ namespace ProyectoMigracionMenu
 
             CboDelegaciones.DataSource = dtDelegaciones;
             CboDelegaciones.DisplayMember = "NombreDelegacion";
-           CboDelegaciones.ValueMember = "NombreDelegacion";
+            CboDelegaciones.ValueMember = "IdDelegacion";
         }
 
+        private void BtnGenerar_Click(object sender, EventArgs e)
+        {
+            DateTime fechaInicio = dtpFechaInicio.Value;
+            DateTime fechaFin = dtpFechaFin.Value;
+            int idDelegacion = (int)CboDelegaciones.SelectedValue;
+
+
+            DataAccess dataAccess = new DataAccess();
+            var dataSet = dataAccess.LlenarDataSet(fechaInicio, fechaFin, idDelegacion);
+
+
+            var report = new ReporteEntradas();
+            report.DataSource = dataSet;
+            report.DataMember = "DSReporteEntradasDelegaciones";
+
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters) p.Visible = false;
+
+            report.parametros(fechaInicio, fechaFin);
+
+            ReportPrintTool printTool = new ReportPrintTool(report);
+            printTool.ShowRibbonPreview();
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            dtpFechaInicio.Value = DateTime.Now;
+            dtpFechaFin.Value = DateTime.Now; 
+            CboDelegaciones.SelectedIndex = -1; 
+        }
     }
 }

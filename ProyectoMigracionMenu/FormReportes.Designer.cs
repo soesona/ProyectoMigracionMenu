@@ -34,9 +34,9 @@
             panelReporte = new Panel();
             CboDelegaciones = new ComboBox();
             label4 = new Label();
-            dateTimePicker2 = new DateTimePicker();
+            dtpFechaFin = new DateTimePicker();
             label3 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dtpFechaInicio = new DateTimePicker();
             label2 = new Label();
             panelReporte.SuspendLayout();
             SuspendLayout();
@@ -50,6 +50,7 @@
             BtnLimpiar.TabIndex = 0;
             BtnLimpiar.Text = "Limpiar";
             BtnLimpiar.UseVisualStyleBackColor = true;
+            BtnLimpiar.Click += BtnLimpiar_Click;
             // 
             // BtnGenerar
             // 
@@ -60,6 +61,7 @@
             BtnGenerar.TabIndex = 1;
             BtnGenerar.Text = "Generar reporte";
             BtnGenerar.UseVisualStyleBackColor = true;
+            BtnGenerar.Click += BtnGenerar_Click;
             // 
             // label1
             // 
@@ -76,9 +78,9 @@
             panelReporte.BackColor = Color.FromArgb(52, 161, 166);
             panelReporte.Controls.Add(CboDelegaciones);
             panelReporte.Controls.Add(label4);
-            panelReporte.Controls.Add(dateTimePicker2);
+            panelReporte.Controls.Add(dtpFechaFin);
             panelReporte.Controls.Add(label3);
-            panelReporte.Controls.Add(dateTimePicker1);
+            panelReporte.Controls.Add(dtpFechaInicio);
             panelReporte.Controls.Add(label2);
             panelReporte.Location = new Point(493, 296);
             panelReporte.Name = "panelReporte";
@@ -103,12 +105,13 @@
             label4.TabIndex = 4;
             label4.Text = "Delegación:";
             // 
-            // dateTimePicker2
+            // dtpFechaFin
             // 
-            dateTimePicker2.Location = new Point(301, 89);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(250, 27);
-            dateTimePicker2.TabIndex = 3;
+            dtpFechaFin.Format = DateTimePickerFormat.Short;
+            dtpFechaFin.Location = new Point(301, 89);
+            dtpFechaFin.Name = "dtpFechaFin";
+            dtpFechaFin.Size = new Size(250, 27);
+            dtpFechaFin.TabIndex = 3;
             // 
             // label3
             // 
@@ -120,12 +123,13 @@
             label3.TabIndex = 2;
             label3.Text = "Fecha final:";
             // 
-            // dateTimePicker1
+            // dtpFechaInicio
             // 
-            dateTimePicker1.Location = new Point(301, 25);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 27);
-            dateTimePicker1.TabIndex = 1;
+            dtpFechaInicio.Format = DateTimePickerFormat.Short;
+            dtpFechaInicio.Location = new Point(301, 25);
+            dtpFechaInicio.Name = "dtpFechaInicio";
+            dtpFechaInicio.Size = new Size(250, 27);
+            dtpFechaInicio.TabIndex = 1;
             // 
             // label2
             // 
@@ -165,8 +169,8 @@
         private Label label2;
         private ComboBox CboDelegaciones;
         private Label label4;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpFechaFin;
         private Label label3;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpFechaInicio;
     }
 }

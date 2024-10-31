@@ -9,8 +9,6 @@ namespace ProyectoMigracionMenu.Clases
 {
     public class TokenGenerador
     {
-        private string connectionString = $"Server=ENAMORADO\\SQLEXPRESS;Database=MigracionPrueba;Integrated Security=True;";
-
         public string GenerarToken(int idUsuario)
         {
             string token = Guid.NewGuid().ToString(); // genera el token
@@ -24,9 +22,9 @@ namespace ProyectoMigracionMenu.Clases
 
         private void AlmacenarTokenEnBD(string token, int idUsuario, DateTime fechaCreacion, DateTime fechaExpiracion)
         {
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
-                conexion.Open();
+                
                 string query = "INSERT INTO Tokens (Token, IdUsuario, FechaCreacion, FechaExpiracion) VALUES (@Token, @IdUsuario, @FechaCreacion, @FechaExpiracion)";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
@@ -42,9 +40,9 @@ namespace ProyectoMigracionMenu.Clases
         public bool VerificarToken(int idUsuario, string token)
         {
             bool tokenValido = false;
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
-                conexion.Open();
+               
                 string query = "SELECT COUNT(*) FROM Tokens WHERE IdUsuario = @IdUsuario AND Token = @Token AND FechaExpiracion > GETDATE() AND Usado = 0";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
@@ -64,9 +62,9 @@ namespace ProyectoMigracionMenu.Clases
 
         private void MarcarTokenComoUsado(int idUsuario, string token)
         {
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
-                conexion.Open();
+               
                 string query = "UPDATE Tokens SET Usado = 1 WHERE IdUsuario = @IdUsuario AND Token = @Token";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
