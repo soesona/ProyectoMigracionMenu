@@ -159,7 +159,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     var list = new List<document>
                     {
                         new document { codigo = 1, des = "IDENTIDAD" },
-                        new document { codigo = 1, des = "PASAPORTE" }
+                        new document { codigo = 2, des = "PASAPORTE" }
                     };
                     cbDoc.DataSource = list;
                     cbDoc.DisplayMember = "des";
@@ -203,22 +203,112 @@ namespace interfaz_grafica_de_inspeccion_primaria
             }
         }
 
+        private Image ObtenerImagenDesdeBaseDeDatos(string identidad)
+        {
+            using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
+            {
+                string query = "SELECT Fotografia FROM Personas WHERE Identidad = @Identidad";
+                using (SqlCommand cmd = new SqlCommand(query, sqlcon))
+                {
+                    cmd.Parameters.AddWithValue("@Identidad", identidad);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader["Fotografia"] != DBNull.Value)
+                            {
+                                byte[] imgData = (byte[])reader["Fotografia"];
+                                using (MemoryStream ms = new MemoryStream(imgData))
+                                {
+                                    return Image.FromStream(ms);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private bool ImagesAreEqual(Image img1, Image img2)
+        {
+           
+            if (img1 == null || img2 == null)
+            {
+                return false;
+            }
+
+           
+            if (img1.Width != img2.Width || img1.Height != img2.Height)
+            {
+                return false;
+            }
+
+            // compara pixel a pixel 
+            using (Bitmap bmp1 = new Bitmap(img1))
+            using (Bitmap bmp2 = new Bitmap(img2))
+            {
+                for (int y = 0; y < bmp1.Height; y++)
+                {
+                    for (int x = 0; x < bmp1.Width; x++)
+                    {
+                        if (bmp1.GetPixel(x, y) != bmp2.GetPixel(x, y))
+                        {
+                            return false; 
+                        }
+                    }
+                }
+            }
+
+            return true; 
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
             {
-                if (!gl.validaCombox(cbDoc, errorProvider1) || !gl.validaCombox(cbPaisEmision, errorProvider1) || !gl.validaCombox(cbTrabajo, errorProvider1) || !gl.validaCombox(cbPaisRes, errorProvider1) || !gl.validaCombox(cbPaisNa, errorProvider1) || !gl.validaCombox(cbPaisDestino, errorProvider1) || !gl.validaCombox(cbMotivos, errorProvider1) || !gl.validaCombox(cbSexo, errorProvider1) || !gl.validaCombox(cbNacionalidad, errorProvider1))
+                if (!gl.validaCombox(cbDoc, errorProvider1) ||
+                    !gl.validaCombox(cbPaisEmision, errorProvider1) ||
+                    !gl.validaCombox(cbTrabajo, errorProvider1) ||
+                    !gl.validaCombox(cbPaisRes, errorProvider1) ||
+                    !gl.validaCombox(cbPaisNa, errorProvider1) ||
+                    !gl.validaCombox(cbPaisDestino, errorProvider1) ||
+                    !gl.validaCombox(cbMotivos, errorProvider1) ||
+                    !gl.validaCombox(cbSexo, errorProvider1) ||
+                    !gl.validaCombox(cbNacionalidad, errorProvider1))
                 {
                     return;
                 }
-                if (string.IsNullOrEmpty(txtApellido.Text) || string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtEdad.Text) || string.IsNullOrEmpty(txtIdentidad.Text))
+
+                if (string.IsNullOrEmpty(txtApellido.Text) ||
+                    string.IsNullOrEmpty(txtNombre.Text) ||
+                    string.IsNullOrEmpty(txtIdentidad.Text)) 
                 {
                     MessageBox.Show("Campos obligatorios Vacios. ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
+
+                if (pic.Image == null)
+                {
+                    MessageBox.Show("La imagen es obligatoria. Por favor, seleccione una imagen.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+               
+                Image imagenOriginal = ObtenerImagenDesdeBaseDeDatos(txtIdentidad.Text);
+
+                
+                if (imagenOriginal != null && ImagesAreEqual(pic.Image, imagenOriginal))
+                {
+                    MessageBox.Show("La imagen cargada ya existe. Debe proporcionar una imagen reciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
                 byte[] fotografia = ImageToByteArray(pic.Image);
 
-                SqlCommand msc = new SqlCommand("InsertarPersona ", sqlcon);
+
+
+                SqlCommand msc = new SqlCommand("InsertarPersona", sqlcon);
                 msc.CommandType = CommandType.StoredProcedure;
                 msc.Parameters.AddWithValue("@TipoDocumento", cbDoc.SelectedValue);
                 msc.Parameters.AddWithValue("@Identidad", txtIdentidad.Text);
@@ -237,7 +327,6 @@ namespace interfaz_grafica_de_inspeccion_primaria
                 msc.Parameters.AddWithValue("@f_Nacimiento", dtpFechaNa.Value);
                 msc.Parameters.AddWithValue("@IdMotivoViaje", cbMotivos.SelectedValue);
                 msc.Parameters.AddWithValue("@IdPaisDestino", cbPaisDestino.SelectedValue);
-                msc.Parameters.AddWithValue("@Edad", txtEdad.Text);
                 msc.Parameters.AddWithValue("@IdTrabajo", cbTrabajo.SelectedValue);
                 msc.Parameters.AddWithValue("@Fotografia", fotografia);
                 msc.Parameters.AddWithValue("@diasOtogados", txtEstadia.Text);
@@ -246,6 +335,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                 msc.Parameters.AddWithValue("@Interpol", chk4.Checked);
                 msc.Parameters.AddWithValue("@AlertaMigratoria", chk3.Checked);
                 msc.Parameters.AddWithValue("@Prechequeo", chk5.Checked);
+
                 msc.ExecuteNonQuery();
                 MessageBox.Show("Registro agregado con éxito. ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnCancelar.PerformClick();
@@ -264,7 +354,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     System.IO.FileInfo f2 = new System.IO.FileInfo(f.FileName);
                     if ((f2.Length / 1024) > 120)
                     {
-                        throw new Exception("¡El tamaño del archivo no puede superar los 60 kilobyte!");
+                        throw new Exception("¡El tamaño del archivo no puede superar los 120 kilobyte!");
                     }
                     else
                     {
@@ -282,51 +372,89 @@ namespace interfaz_grafica_de_inspeccion_primaria
             }
         }
 
-        private void txtEdad_TextChanged(object sender, EventArgs e)
-        {
-            gl.validarInt(txtEdad, errorProvider1);
-        }
+
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             try
             {
+                
+                if (string.IsNullOrWhiteSpace(txtIdentidad.Text))
+                {
+                    MessageBox.Show("Por favor, ingresa un número de documento válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
                 {
                     int contador = 0;
                     if (listo == false)
                     {
-                        query = "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, CASE WHEN TipoDocumento = 1 THEN 'Identidad' WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro'" +
-                                " END tipoDocu, A.Identidad no, E.Descripcion Origen, I.Descripcion Destino, A.Observacion Observaciones, A.UsuarioCreado usuario, A.Nombres, A.Apellidos, A.Edad, A.Fotografia Imagen  FROM Personas A " +
-                                " INNER JOIN Pais E ON A.IdPaisResidencia = E.IdPais " +
-                                " INNER JOIN Pais I ON A.IdPaisDestino = I.IdPais where (A.Identidad like '%" + txtIdentidad.Text.Trim() + "%')";
-                        DataTable personas = gl.retornaTabla(query, sqlcon);
-                        if (personas.Rows.Count > 0)
+                        
+                        query = "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, " +
+                                "CASE WHEN TipoDocumento = 1 THEN 'Identidad' " +
+                                "WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END tipoDocu, " +
+                                "A.Identidad no, E.Descripcion Origen, I.Descripcion Destino, " +
+                                "A.Observacion Observaciones, A.UsuarioCreado usuario, A.Nombres, A.Apellidos, " +
+                                "A.Fotografia Imagen, A.f_Nacimiento, A.IdSexo, A.IdPaisNacimiento, " +
+                                "A.IdPaisEmision, A.f_regFinal, A.TipoDocumento " + 
+                                "FROM Personas A " +
+                                "INNER JOIN Pais E ON A.IdPaisResidencia = E.IdPais " +
+                                "INNER JOIN Pais I ON A.IdPaisDestino = I.IdPais " +
+                                "WHERE A.Identidad = @Identidad";  
+
+                       
+                        using (SqlCommand cmd = new SqlCommand(query, sqlcon))
                         {
-                            foreach (DataRow row in personas.Rows)
+                            cmd.Parameters.AddWithValue("@Identidad", txtIdentidad.Text.Trim());
+
+                            
+                            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                             {
-                                dgvTransacciones.Rows.Add(row["Fecha"].ToString(), row["tipoDocu"].ToString(), row["no"].ToString(), row["Origen"].ToString(), row["Destino"].ToString());
-                                dgvObservaciones.Rows.Add(row["Observaciones"].ToString(), row["usuario"].ToString());
-                                contador++;
-                            }
-                            txtNombre.Text = personas.Rows[0]["Nombres"].ToString();
-                            txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
-                            txtEdad.Text = personas.Rows[0]["Edad"].ToString();
-                            contadortxtx.Text = Convert.ToString(contador);
-                            if (personas.Rows[0]["Imagen"] != DBNull.Value)
-                            {
-                                byte[] imagenBytes = (byte[])personas.Rows[0]["Imagen"];
-                                using (MemoryStream ms = new MemoryStream(imagenBytes))
+                                DataTable personas = new DataTable();
+                                adapter.Fill(personas);
+
+                                if (personas.Rows.Count > 0)
                                 {
-                                    pic.Image = Image.FromStream(ms);
+                                    foreach (DataRow row in personas.Rows)
+                                    {
+                                        dgvTransacciones.Rows.Add(row["Fecha"].ToString(), row["tipoDocu"].ToString(), row["no"].ToString(), row["Origen"].ToString(), row["Destino"].ToString());
+                                        dgvObservaciones.Rows.Add(row["Observaciones"].ToString(), row["usuario"].ToString());
+                                        contador++;
+                                    }
+                                    txtNombre.Text = personas.Rows[0]["Nombres"].ToString();
+                                    txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
+
+                                    
+                                    dtpFechaNa.Value = Convert.ToDateTime(personas.Rows[0]["f_Nacimiento"]);
+                                    cbSexo.SelectedValue = personas.Rows[0]["IdSexo"];
+                                    cbNacionalidad.SelectedValue = personas.Rows[0]["IdPaisNacimiento"];
+                                    cbDoc.SelectedValue = personas.Rows[0]["TipoDocumento"]; 
+                                    cbPaisEmision.SelectedValue = personas.Rows[0]["IdPaisEmision"];
+                                    dtpfechaVenci.Value = Convert.ToDateTime(personas.Rows[0]["f_regFinal"]);
+
+                                    
+                                    if (personas.Rows[0]["Imagen"] != DBNull.Value)
+                                    {
+                                        byte[] imagenBytes = (byte[])personas.Rows[0]["Imagen"];
+                                        using (MemoryStream ms = new MemoryStream(imagenBytes))
+                                        {
+                                            pic.Image = Image.FromStream(ms); 
+                                        }
+                                    }
+                                    else
+                                    {
+                                        pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_; 
+                                    }
+
+                                    contadortxtx.Text = Convert.ToString(contador);
+                                    listo = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se encontraron registros para el número de documento proporcionado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
-                            else
-                            {
-                                pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
-                            }
-
-                            listo = true;
                         }
                     }
                 }
@@ -337,13 +465,15 @@ namespace interfaz_grafica_de_inspeccion_primaria
             }
         }
 
-        private void btnCancelarInfo_Click(object sender, EventArgs e)
+
+            private void btnCancelarInfo_Click(object sender, EventArgs e)
         {
             listo = false;
             dgvObservaciones.DataSource = null;
             dgvObservaciones.Rows.Clear();
             dgvTransacciones.DataSource = null;
             dgvTransacciones.Rows.Clear();
+            contadortxtx.Text = "";
             btnCancelar.PerformClick();
         }
 
@@ -362,7 +492,10 @@ namespace interfaz_grafica_de_inspeccion_primaria
             dgvObservaciones.Rows.Clear();
             dgvTransacciones.DataSource = null;
             dgvTransacciones.Rows.Clear();
+            contadortxtx.Text = "";
             errorProvider1.Clear();
         }
+
+        
     }
 }
