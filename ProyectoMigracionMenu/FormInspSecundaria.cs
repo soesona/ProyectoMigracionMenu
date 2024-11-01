@@ -2,6 +2,7 @@ using ProyectoMigracionMenu.Clases;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Inspeccionsecundaria
 {
@@ -26,6 +27,8 @@ namespace Inspeccionsecundaria
                 if (dgvTransacciones.DataSource != null)
                 {
                     dgvTransacciones.DataSource = null;
+                    dgvTransacciones.Rows.Clear();
+
                 }
                 using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
                 {
@@ -78,7 +81,16 @@ namespace Inspeccionsecundaria
                         txtPaisEmision.Text = personas.Rows[0]["paisEmisor"].ToString();
                         txtIdentidad.Text = personas.Rows[0]["identidad"].ToString();
                         txtRegistro.Text = personas.Rows[0]["Id"].ToString();
-                        // dtpFecha.Value = Convert.ToDateTime(personas.Rows[0]["Fecha"]);
+
+                        string fechaTexto = personas.Rows[0]["Fecha"].ToString();
+                        if (!string.IsNullOrEmpty(fechaTexto))
+                        {
+                            dtpFecha.Value = DateTime.ParseExact(fechaTexto, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                        }
+                        else
+                        {
+                            dtpFecha.Value = DateTime.Now;
+                        }
                         if (personas.Rows[0]["Imagen"] != DBNull.Value)
                         {
                             byte[] imagenBytes = (byte[])personas.Rows[0]["Imagen"];
@@ -133,9 +145,7 @@ namespace Inspeccionsecundaria
                     query = "update Personas set Estado = 0  WHERE IdPersonas = '" + dgvTransacciones.CurrentRow.Cells[0].Value.ToString() + "' ";
                     gl.registra(query, sqlcon);
                     MessageBox.Show("Registro modificado con éxito. ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     llenadoGrid();
-                    
                 }
             }
         }
