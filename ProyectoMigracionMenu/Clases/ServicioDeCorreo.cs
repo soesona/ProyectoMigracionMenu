@@ -13,9 +13,8 @@ namespace ProyectoMigracionMenu.Clases
 {
     public class ServicioDeCorreo
     {
-
-        private readonly string _correoRemitente = "htambien088@gmail.com"; 
-        private readonly string _contrasena = "rwsy stqx ljcp yoan"; 
+        private readonly string _correoRemitente = "htambien088@gmail.com";
+        private readonly string _contrasena = "rwsy stqx ljcp yoan";
 
         public void EnviarCorreo(string destinatario, string asunto, string mensaje)
         {
@@ -24,7 +23,7 @@ namespace ProyectoMigracionMenu.Clases
                 MailMessage mailMessage = new MailMessage(_correoRemitente, destinatario);
                 mailMessage.Subject = asunto;
                 mailMessage.Body = mensaje;
-                mailMessage.IsBodyHtml = true; 
+                mailMessage.IsBodyHtml = true;
 
                 using (System.Net.Mail.SmtpClient smtpClient = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))
                 {
@@ -34,12 +33,10 @@ namespace ProyectoMigracionMenu.Clases
 
                     smtpClient.Send(mailMessage);
                 }
-
-                Console.WriteLine("Correo enviado exitosamente.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al enviar el correo: " + ex.Message);
+                MessageBox.Show("Error al enviar el correo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

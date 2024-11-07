@@ -14,39 +14,12 @@ namespace ProyectoMigracionMenu
         private int todayCount = 0;
         private int monthCount = 0;
         private int yearCount = 0;
-        private PersonaService personaService = new PersonaService(); 
+        private PersonaService personaService = new PersonaService();
 
         public FormDashboard()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
-        }
-
-        private void ApplyShadowEffect(Panel panel, int shadowSize, Color shadowColor, int cornerRadius)
-        {
-            Panel shadowPanel = new Panel();
-            shadowPanel.Size = panel.Size;
-            shadowPanel.Location = new Point(panel.Location.X + shadowSize, panel.Location.Y + shadowSize);
-            shadowPanel.BackColor = shadowColor;
-
-            ApplyRoundedCorners(shadowPanel, cornerRadius);
-
-            panel.Parent.Controls.Add(shadowPanel);
-            shadowPanel.SendToBack();
-        }
-
-        private void ApplyRoundedCorners(Panel panel, int cornerRadius)
-        {
-            GraphicsPath path = new GraphicsPath();
-            path.StartFigure();
-
-            path.AddArc(new Rectangle(0, 0, cornerRadius, cornerRadius), 180, 90);
-            path.AddArc(new Rectangle(panel.Width - cornerRadius, 0, cornerRadius, cornerRadius), 270, 90);
-            path.AddArc(new Rectangle(panel.Width - cornerRadius, panel.Height - cornerRadius, cornerRadius, cornerRadius), 0, 90);
-            path.AddArc(new Rectangle(0, panel.Height - cornerRadius, cornerRadius, cornerRadius), 90, 90);
-
-            path.CloseFigure();
-            panel.Region = new Region(path);
         }
 
         private void FormDashboard_Load(object sender, EventArgs e)
@@ -55,21 +28,21 @@ namespace ProyectoMigracionMenu
             int cornerRadius = 20;
             Color shadowColor = Color.Gray;
 
-            ApplyShadowEffect(panelHoy, shadowSize, shadowColor, cornerRadius);
-            ApplyRoundedCorners(panelHoy, cornerRadius);
+            EstiloPanel.AplicarSombra(panelHoy, shadowSize, shadowColor, cornerRadius);
+            EstiloPanel.AplicarEsquinasRedondeadas(panelHoy, cornerRadius);
 
-            ApplyShadowEffect(panelMes, shadowSize, shadowColor, cornerRadius);
-            ApplyRoundedCorners(panelMes, cornerRadius);
+            EstiloPanel.AplicarSombra(panelMes, shadowSize, shadowColor, cornerRadius);
+            EstiloPanel.AplicarEsquinasRedondeadas(panelMes, cornerRadius);
 
-            ApplyShadowEffect(panelAno, shadowSize, shadowColor, cornerRadius);
-            ApplyRoundedCorners(panelAno, cornerRadius);
+            EstiloPanel.AplicarSombra(panelAno, shadowSize, shadowColor, cornerRadius);
+            EstiloPanel.AplicarEsquinasRedondeadas(panelAno, cornerRadius);
 
             UpdateDashboard();
         }
 
         private int GetUserActivityCount(DateTime date)
         {
-            string usuarioActual = Login.UsuarioActual.Nombre; 
+            string usuarioActual = Login.UsuarioActual.Nombre;
             return personaService.ObtenerConteoActividadUsuario(date, usuarioActual);
         }
 
@@ -77,8 +50,8 @@ namespace ProyectoMigracionMenu
         {
             DateTime today = DateTime.Today;
             todayCount = GetUserActivityCount(today);
-            monthCount = GetMonthlyUserActivityCount(today); 
-            yearCount = GetYearlyUserActivityCount(today); 
+            monthCount = GetMonthlyUserActivityCount(today);
+            yearCount = GetYearlyUserActivityCount(today);
 
             PersonasHoy.Text = todayCount.ToString();
             PersonasMes.Text = monthCount.ToString();
@@ -101,79 +74,54 @@ namespace ProyectoMigracionMenu
 
         private void UpdateChart()
         {
-            var monthlyData = new Dictionary<int, int>();
+            
+            var monthlyData = new Dictionary<string, int>();
             DateTime currentDate = DateTime.Today;
+
             for (int i = 1; i <= 12; i++)
             {
                 DateTime monthStart = new DateTime(currentDate.Year, i, 1);
-                DateTime monthEnd = monthStart.AddMonths(1).AddDays(-1); // Fin del mes
-                int monthlyCount = personaService.ObtenerConteoActividadUsuarioPorRango(monthStart, monthEnd);
-                monthlyData[i] = monthlyCount;
+                string monthName = monthStart.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es-ES"));
+                monthlyData[monthName] = 0; 
             }
 
+            
+            for (int i = 1; i <= 12; i++)
+            {
+                DateTime monthStart = new DateTime(currentDate.Year, i, 1);
+                DateTime monthEnd = monthStart.AddMonths(1).AddDays(-1);
+                int monthlyCount = personaService.ObtenerConteoActividadUsuarioPorRango(monthStart, monthEnd);
+
+                string monthName = monthStart.ToString("MMM", System.Globalization.CultureInfo.CreateSpecificCulture("es-ES"));
+                monthlyData[monthName] = monthlyCount;
+            }
+
+          
             chart1.Series["Movimientos"].Points.Clear();
+
+           
+            int monthIndex = 1;
             foreach (var data in monthlyData)
             {
-                chart1.Series["Movimientos"].Points.AddXY(data.Key, data.Value);
+                DataPoint point = new DataPoint(monthIndex, data.Value); 
+                point.AxisLabel = data.Key;  
+                chart1.Series["Movimientos"].Points.Add(point);
+                monthIndex++;
             }
+
+            
+            var chartArea = chart1.ChartAreas[0];
+            chartArea.AxisX.Interval = 1; 
+            chartArea.AxisX.Minimum = 1;  
+            chartArea.AxisX.Maximum = 12; 
+            chartArea.AxisX.LabelStyle.Angle = -45; 
+            chartArea.AxisX.LabelStyle.IsEndLabelVisible = true;
+            chartArea.AxisX.MajorGrid.LineWidth = 0; 
+
+            
+            chartArea.AxisY.Minimum = 0;
         }
 
-        private void panelHoy_Paint(object sender, PaintEventArgs e) { }
-        private void panelMes_Paint(object sender, PaintEventArgs e) { }
-        private void panelAno_Paint(object sender, PaintEventArgs e) { }
-        private void chart1_Click(object sender, EventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void label2_Click(object sender, EventArgs e) { }
-        private void label3_Click(object sender, EventArgs e) { }
-        private void label4_Click(object sender, EventArgs e) { }
-        private void label6_Click(object sender, EventArgs e) { }
-        private void label7_Click(object sender, EventArgs e) { }
-        private void label15_Click(object sender, EventArgs e) { }
     }
 }
 
-namespace ProyectoMigracionMenu.Clases
-{
-    public class PersonaService
-    {
-        public int ObtenerConteoActividadUsuario(DateTime fecha, string usuarioActual)
-        {
-            int conteoActividad = 0;
-
-            using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
-            {
-                string query = "SELECT COUNT(*) FROM Personas WHERE UsuarioCreado = @usuario AND CAST(f_regCreado AS DATE) = @fecha";
-
-                using (SqlCommand command = new SqlCommand(query, conexion))
-                {
-                    command.Parameters.AddWithValue("@usuario", usuarioActual);
-                    command.Parameters.AddWithValue("@fecha", fecha.Date);
-
-                    conteoActividad = (int)command.ExecuteScalar();
-                }
-            }
-            return conteoActividad;
-        }
-
-        public int ObtenerConteoActividadUsuarioPorRango(DateTime fechaInicio, DateTime fechaFin)
-        {
-            int conteoActividad = 0;
-            string usuarioActual = Login.UsuarioActual.Nombre;
-
-            using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
-            {
-                string query = "SELECT COUNT(*) FROM Personas WHERE UsuarioCreado = @usuario AND CAST(f_regCreado AS DATE) BETWEEN @fechaInicio AND @fechaFin";
-
-                using (SqlCommand command = new SqlCommand(query, conexion))
-                {
-                    command.Parameters.AddWithValue("@usuario", usuarioActual);
-                    command.Parameters.AddWithValue("@fechaInicio", fechaInicio.Date);
-                    command.Parameters.AddWithValue("@fechaFin", fechaFin.Date);
-
-                    conteoActividad = (int)command.ExecuteScalar();
-                }
-            }
-            return conteoActividad;
-        }
-    }
-}

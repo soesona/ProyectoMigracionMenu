@@ -11,7 +11,7 @@ namespace ProyectoMigracionMenu.Clases
     {
         public string GenerarToken(int idUsuario)
         {
-            string token = Guid.NewGuid().ToString(); // genera el token
+            string token = Guid.NewGuid().ToString(); 
             DateTime fechaCreacion = DateTime.Now;
             DateTime fechaExpiracion = fechaCreacion.AddHours(1);
 

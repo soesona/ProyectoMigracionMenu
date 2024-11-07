@@ -23,6 +23,8 @@ namespace ProyectoMigracionMenu
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             string nombreUsuario = txtUsuario.Text;
@@ -38,11 +40,11 @@ namespace ProyectoMigracionMenu
 
                 string correo = recuperacion.ObtenerCorreoDelUsuario(idUsuario);
 
-                // Generar el token
+                
                 TokenGenerador tokenGenerador = new TokenGenerador();
                 string token = tokenGenerador.GenerarToken(idUsuario);
 
-                // Enviar el correo con el token
+                
                 ServicioDeCorreo servicioDeCorreo = new ServicioDeCorreo();
                 string asunto = "Recuperación de Contraseña";
                 string mensaje = $"Aquí está su token de recuperación: {token}";
@@ -61,7 +63,7 @@ namespace ProyectoMigracionMenu
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close(); 
         }
 
         private void BtnMinimizar_Click(object sender, EventArgs e)

@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             label15 = new Label();
             panelAno = new Panel();
+            label3 = new Label();
             PersonasAno = new Label();
             panelMes = new Panel();
+            label2 = new Label();
             PersonasMes = new Label();
             panelHoy = new Panel();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            PersonasHoy = new Label();
             label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            PersonasHoy = new Label();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panelAno.SuspendLayout();
             panelMes.SuspendLayout();
             panelHoy.SuspendLayout();
@@ -52,9 +52,9 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(307, 382);
+            label15.Location = new Point(269, 286);
             label15.Name = "label15";
-            label15.Size = new Size(549, 31);
+            label15.Size = new Size(456, 25);
             label15.TabIndex = 11;
             label15.Text = "Total de transacciones que has registrado este año";
             // 
@@ -64,18 +64,29 @@
             panelAno.Controls.Add(label3);
             panelAno.Controls.Add(PersonasAno);
             panelAno.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelAno.Location = new Point(1057, 147);
+            panelAno.Location = new Point(925, 110);
+            panelAno.Margin = new Padding(3, 2, 3, 2);
             panelAno.Name = "panelAno";
-            panelAno.Size = new Size(366, 154);
+            panelAno.Size = new Size(320, 116);
             panelAno.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(20, 14);
+            label3.Name = "label3";
+            label3.Size = new Size(261, 25);
+            label3.TabIndex = 7;
+            label3.Text = "Personas atendidas este año";
             // 
             // PersonasAno
             // 
             PersonasAno.AutoSize = true;
             PersonasAno.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PersonasAno.Location = new Point(23, 64);
+            PersonasAno.Location = new Point(20, 48);
             PersonasAno.Name = "PersonasAno";
-            PersonasAno.Size = new Size(27, 31);
+            PersonasAno.Size = new Size(23, 25);
             PersonasAno.TabIndex = 6;
             PersonasAno.Text = "0";
             // 
@@ -85,18 +96,29 @@
             panelMes.Controls.Add(label2);
             panelMes.Controls.Add(PersonasMes);
             panelMes.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelMes.Location = new Point(658, 147);
+            panelMes.Location = new Point(576, 110);
+            panelMes.Margin = new Padding(3, 2, 3, 2);
             panelMes.Name = "panelMes";
-            panelMes.Size = new Size(348, 154);
+            panelMes.Size = new Size(304, 116);
             panelMes.TabIndex = 10;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(262, 25);
+            label2.TabIndex = 6;
+            label2.Text = "Personas atendidas este mes";
             // 
             // PersonasMes
             // 
             PersonasMes.AutoSize = true;
             PersonasMes.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PersonasMes.Location = new Point(14, 64);
+            PersonasMes.Location = new Point(12, 48);
             PersonasMes.Name = "PersonasMes";
-            PersonasMes.Size = new Size(27, 31);
+            PersonasMes.Size = new Size(23, 25);
             PersonasMes.TabIndex = 5;
             PersonasMes.Text = "0";
             // 
@@ -106,79 +128,63 @@
             panelHoy.Controls.Add(label1);
             panelHoy.Controls.Add(PersonasHoy);
             panelHoy.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelHoy.Location = new Point(307, 147);
+            panelHoy.Location = new Point(269, 110);
+            panelHoy.Margin = new Padding(3, 2, 3, 2);
             panelHoy.Name = "panelHoy";
-            panelHoy.Size = new Size(291, 154);
+            panelHoy.Size = new Size(255, 116);
             panelHoy.TabIndex = 8;
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
-            chart1.Location = new Point(307, 442);
-            chart1.Name = "chart1";
-            chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Movimientos";
-            chart1.Series.Add(series2);
-            chart1.Size = new Size(800, 375);
-            chart1.TabIndex = 12;
-            chart1.Text = "chart1";
-            // 
-            // PersonasHoy
-            // 
-            PersonasHoy.AutoSize = true;
-            PersonasHoy.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PersonasHoy.Location = new Point(14, 64);
-            PersonasHoy.Name = "PersonasHoy";
-            PersonasHoy.Size = new Size(27, 31);
-            PersonasHoy.TabIndex = 4;
-            PersonasHoy.Text = "0";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(14, 19);
+            label1.Location = new Point(12, 14);
             label1.Name = "label1";
-            label1.Size = new Size(264, 31);
+            label1.Size = new Size(220, 25);
             label1.TabIndex = 5;
             label1.Text = "Personas atendidas hoy";
             // 
-            // label2
+            // PersonasHoy
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(14, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(316, 31);
-            label2.TabIndex = 6;
-            label2.Text = "Personas atendidas este mes";
+            PersonasHoy.AutoSize = true;
+            PersonasHoy.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PersonasHoy.Location = new Point(12, 48);
+            PersonasHoy.Name = "PersonasHoy";
+            PersonasHoy.Size = new Size(23, 25);
+            PersonasHoy.TabIndex = 4;
+            PersonasHoy.Text = "0";
             // 
-            // label3
+            // chart1
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(23, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(313, 31);
-            label3.TabIndex = 7;
-            label3.Text = "Personas atendidas este año";
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
+            chart1.Location = new Point(269, 332);
+            chart1.Margin = new Padding(3, 2, 3, 2);
+            chart1.Name = "chart1";
+            chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Movimientos";
+            chart1.Series.Add(series1);
+            chart1.Size = new Size(700, 281);
+            chart1.TabIndex = 12;
+            chart1.Text = "chart1";
+         
             // 
             // FormDashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(1697, 853);
+            ClientSize = new Size(1485, 640);
             Controls.Add(chart1);
             Controls.Add(label15);
             Controls.Add(panelAno);
             Controls.Add(panelMes);
             Controls.Add(panelHoy);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormDashboard";
             Text = "Dashboard";
             Load += FormDashboard_Load;

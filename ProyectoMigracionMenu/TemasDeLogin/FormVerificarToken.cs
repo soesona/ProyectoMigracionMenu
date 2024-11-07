@@ -66,7 +66,7 @@ namespace ProyectoMigracionMenu.TemasDeLogin
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close(); 
         }
     }
 }

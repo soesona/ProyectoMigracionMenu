@@ -1,3 +1,4 @@
+using DevExpress.Xpo.DB.Helpers;
 using ProyectoMigracionMenu;
 using ProyectoMigracionMenu.Clases;
 using System.Data;
@@ -378,7 +379,6 @@ namespace interfaz_grafica_de_inspeccion_primaria
         {
             try
             {
-                
                 if (string.IsNullOrWhiteSpace(txtIdentidad.Text))
                 {
                     MessageBox.Show("Por favor, ingresa un número de documento válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -387,76 +387,80 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
                 using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
                 {
-                    int contador = 0;
-                    if (listo == false)
+                   
+                    query = "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, " +
+                            "CASE WHEN TipoDocumento = 1 THEN 'Identidad' " +
+                            "WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END tipoDocu, " +
+                            "A.Identidad no, E.Descripcion Origen, I.Descripcion Destino, " +
+                            "A.Observacion Observaciones, A.UsuarioCreado usuario, A.Nombres, A.Apellidos, " +
+                            "A.f_Nacimiento, A.IdSexo, A.IdPaisNacimiento, " +
+                            "A.IdPaisEmision, A.f_regFinal, A.TipoDocumento " +
+                            "FROM Personas A " +
+                            "INNER JOIN Pais E ON A.IdPaisResidencia = E.IdPais " +
+                            "INNER JOIN Pais I ON A.IdPaisDestino = I.IdPais " +
+                            "WHERE A.Identidad = @Identidad";
+
+                    using (SqlCommand cmd = new SqlCommand(query, sqlcon))
                     {
-                        
-                        query = "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, " +
-                                "CASE WHEN TipoDocumento = 1 THEN 'Identidad' " +
-                                "WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END tipoDocu, " +
-                                "A.Identidad no, E.Descripcion Origen, I.Descripcion Destino, " +
-                                "A.Observacion Observaciones, A.UsuarioCreado usuario, A.Nombres, A.Apellidos, " +
-                                "A.Fotografia Imagen, A.f_Nacimiento, A.IdSexo, A.IdPaisNacimiento, " +
-                                "A.IdPaisEmision, A.f_regFinal, A.TipoDocumento " + 
-                                "FROM Personas A " +
-                                "INNER JOIN Pais E ON A.IdPaisResidencia = E.IdPais " +
-                                "INNER JOIN Pais I ON A.IdPaisDestino = I.IdPais " +
-                                "WHERE A.Identidad = @Identidad";  
+                        cmd.Parameters.AddWithValue("@Identidad", txtIdentidad.Text.Trim());
 
-                       
-                        using (SqlCommand cmd = new SqlCommand(query, sqlcon))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                         {
-                            cmd.Parameters.AddWithValue("@Identidad", txtIdentidad.Text.Trim());
+                            DataTable personas = new DataTable();
+                            adapter.Fill(personas);
 
-                            
-                            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                            if (personas.Rows.Count > 0)
                             {
-                                DataTable personas = new DataTable();
-                                adapter.Fill(personas);
-
-                                if (personas.Rows.Count > 0)
+                                foreach (DataRow row in personas.Rows)
                                 {
-                                    foreach (DataRow row in personas.Rows)
-                                    {
-                                        dgvTransacciones.Rows.Add(row["Fecha"].ToString(), row["tipoDocu"].ToString(), row["no"].ToString(), row["Origen"].ToString(), row["Destino"].ToString());
-                                        dgvObservaciones.Rows.Add(row["Observaciones"].ToString(), row["usuario"].ToString());
-                                        contador++;
-                                    }
-                                    txtNombre.Text = personas.Rows[0]["Nombres"].ToString();
-                                    txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
-
-                                    
-                                    dtpFechaNa.Value = Convert.ToDateTime(personas.Rows[0]["f_Nacimiento"]);
-                                    cbSexo.SelectedValue = personas.Rows[0]["IdSexo"];
-                                    cbNacionalidad.SelectedValue = personas.Rows[0]["IdPaisNacimiento"];
-                                    cbDoc.SelectedValue = personas.Rows[0]["TipoDocumento"]; 
-                                    cbPaisEmision.SelectedValue = personas.Rows[0]["IdPaisEmision"];
-                                    dtpfechaVenci.Value = Convert.ToDateTime(personas.Rows[0]["f_regFinal"]);
-
-                                    
-                                    if (personas.Rows[0]["Imagen"] != DBNull.Value)
-                                    {
-                                        byte[] imagenBytes = (byte[])personas.Rows[0]["Imagen"];
-                                        using (MemoryStream ms = new MemoryStream(imagenBytes))
-                                        {
-                                            pic.Image = Image.FromStream(ms); 
-                                        }
-                                    }
-                                    else
-                                    {
-                                        pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_; 
-                                    }
-
-                                    contadortxtx.Text = Convert.ToString(contador);
-                                    listo = true;
+                                    dgvTransacciones.Rows.Add(row["Fecha"].ToString(), row["tipoDocu"].ToString(), row["no"].ToString(), row["Origen"].ToString(), row["Destino"].ToString());
+                                    dgvObservaciones.Rows.Add(row["Observaciones"].ToString(), row["usuario"].ToString());
                                 }
-                                else
-                                {
-                                    MessageBox.Show("No se encontraron registros para el número de documento proporcionado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+
+                              
+                                txtNombre.Text = personas.Rows[0]["Nombres"].ToString();
+                                txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
+                                dtpFechaNa.Value = Convert.ToDateTime(personas.Rows[0]["f_Nacimiento"]);
+                                cbSexo.SelectedValue = personas.Rows[0]["IdSexo"];
+                                cbNacionalidad.SelectedValue = personas.Rows[0]["IdPaisNacimiento"];
+                                cbDoc.SelectedValue = personas.Rows[0]["TipoDocumento"];
+                                cbPaisEmision.SelectedValue = personas.Rows[0]["IdPaisEmision"];
+                                dtpfechaVenci.Value = Convert.ToDateTime(personas.Rows[0]["f_regFinal"]);
+
+                                contadortxtx.Text = personas.Rows.Count.ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontraron registros para el número de documento proporcionado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
                             }
                         }
                     }
+
+                    
+                    string queryUltimoRegistro = "SELECT TOP 1 A.Fotografia Imagen FROM Personas A " +
+                                                 "WHERE A.Identidad = @Identidad " +
+                                                 "ORDER BY A.f_regCreado DESC";
+
+                    using (SqlCommand cmdUltimo = new SqlCommand(queryUltimoRegistro, sqlcon))
+                    {
+                        cmdUltimo.Parameters.AddWithValue("@Identidad", txtIdentidad.Text.Trim());
+
+                        byte[] imagenBytes = cmdUltimo.ExecuteScalar() as byte[];
+                        if (imagenBytes != null)
+                        {
+                            using (MemoryStream ms = new MemoryStream(imagenBytes))
+                            {
+                                pic.Image = Image.FromStream(ms);
+                            }
+                        }
+                        else
+                        {
+                            pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
+                        }
+                    }
+
+                    listo = true;
                 }
             }
             catch (Exception ex)

@@ -73,6 +73,7 @@
             // 
             txtNuevaContrasena.Location = new Point(284, 214);
             txtNuevaContrasena.Name = "txtNuevaContrasena";
+            txtNuevaContrasena.PasswordChar = '*';
             txtNuevaContrasena.Size = new Size(240, 27);
             txtNuevaContrasena.TabIndex = 3;
             // 
@@ -80,6 +81,7 @@
             // 
             txtConfirmarContrasena.Location = new Point(284, 308);
             txtConfirmarContrasena.Name = "txtConfirmarContrasena";
+            txtConfirmarContrasena.PasswordChar = '*';
             txtConfirmarContrasena.Size = new Size(240, 27);
             txtConfirmarContrasena.TabIndex = 4;
             // 

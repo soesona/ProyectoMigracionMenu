@@ -24,32 +24,7 @@ namespace ProyectoMigracionMenu
             InitializeComponent();
             this.DoubleBuffered = true;
         }
-        private void ApplyShadowEffect(Panel panel, int shadowSize, Color shadowColor, int cornerRadius)
-        {
-
-            Panel shadowPanel = new Panel();
-            shadowPanel.Size = panel.Size;
-            shadowPanel.Location = new Point(panel.Location.X + shadowSize, panel.Location.Y + shadowSize);
-            shadowPanel.BackColor = shadowColor;
-
-
-            ApplyRoundedCorners(shadowPanel, cornerRadius);
-
-
-            panel.Parent.Controls.Add(shadowPanel);
-            shadowPanel.SendToBack();
-        }
-        private void ApplyRoundedCorners(Panel panel, int cornerRadius)
-        {
-            GraphicsPath path = new GraphicsPath();
-            path.StartFigure();
-            path.AddArc(new Rectangle(0, 0, cornerRadius, cornerRadius), 180, 90);
-            path.AddArc(new Rectangle(panel.Width - cornerRadius, 0, cornerRadius, cornerRadius), 270, 90);
-            path.AddArc(new Rectangle(panel.Width - cornerRadius, panel.Height - cornerRadius, cornerRadius, cornerRadius), 0, 90);
-            path.AddArc(new Rectangle(0, panel.Height - cornerRadius, cornerRadius, cornerRadius), 90, 90);
-            path.CloseFigure();
-            panel.Region = new Region(path);
-        }
+  
 
         private void FormReportes_Load(object sender, EventArgs e)
         {
@@ -57,9 +32,8 @@ namespace ProyectoMigracionMenu
             int cornerRadius = 20;
             Color shadowColor = Color.Gray;
 
-
-            ApplyShadowEffect(panelReporte, shadowSize, shadowColor, cornerRadius);
-            ApplyRoundedCorners(panelReporte, cornerRadius);
+            EstiloPanel.AplicarSombra(panelReporte, shadowSize, shadowColor, cornerRadius);
+            EstiloPanel.AplicarEsquinasRedondeadas(panelReporte, cornerRadius);
 
             Clases.Delegaciones delegaciones = new Clases.Delegaciones();
             DataTable dtDelegaciones = delegaciones.CargarDelegaciones();
@@ -75,16 +49,15 @@ namespace ProyectoMigracionMenu
             DateTime fechaFin = dtpFechaFin.Value;
             int idDelegacion = (int)CboDelegaciones.SelectedValue;
 
-
             DataAccess dataAccess = new DataAccess();
-            var dataSet = dataAccess.LlenarDataSet(fechaInicio, fechaFin, idDelegacion);
+            DataSet dataSet = dataAccess.LlenarDataSet(fechaInicio, fechaFin, idDelegacion);
 
-
-            var report = new ReporteEntradas();
+            ReporteEntradas report = new ReporteEntradas();
             report.DataSource = dataSet;
             report.DataMember = "DSReporteEntradasDelegaciones";
 
-            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters) p.Visible = false;
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
 
             report.parametros(fechaInicio, fechaFin);
 
