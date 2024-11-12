@@ -211,6 +211,7 @@
             cbDoc.Size = new Size(218, 28);
             cbDoc.TabIndex = 10;
             cbDoc.Tag = "obligatorio";
+            
             // 
             // label4
             // 

@@ -233,19 +233,19 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
         private bool ImagesAreEqual(Image img1, Image img2)
         {
-           
+
             if (img1 == null || img2 == null)
             {
                 return false;
             }
 
-           
+
             if (img1.Width != img2.Width || img1.Height != img2.Height)
             {
                 return false;
             }
 
-            // compara pixel a pixel 
+
             using (Bitmap bmp1 = new Bitmap(img1))
             using (Bitmap bmp2 = new Bitmap(img2))
             {
@@ -255,13 +255,13 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     {
                         if (bmp1.GetPixel(x, y) != bmp2.GetPixel(x, y))
                         {
-                            return false; 
+                            return false;
                         }
                     }
                 }
             }
 
-            return true; 
+            return true;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -283,7 +283,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
                 if (string.IsNullOrEmpty(txtApellido.Text) ||
                     string.IsNullOrEmpty(txtNombre.Text) ||
-                    string.IsNullOrEmpty(txtIdentidad.Text)) 
+                    string.IsNullOrEmpty(txtIdentidad.Text))
                 {
                     MessageBox.Show("Campos obligatorios Vacios. ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -295,10 +295,10 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     return;
                 }
 
-               
+
                 Image imagenOriginal = ObtenerImagenDesdeBaseDeDatos(txtIdentidad.Text);
 
-                
+
                 if (imagenOriginal != null && ImagesAreEqual(pic.Image, imagenOriginal))
                 {
                     MessageBox.Show("La imagen cargada ya existe. Debe proporcionar una imagen reciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -387,7 +387,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
                 using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
                 {
-                   
+
                     query = "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, " +
                             "CASE WHEN TipoDocumento = 1 THEN 'Identidad' " +
                             "WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END tipoDocu, " +
@@ -417,7 +417,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                                     dgvObservaciones.Rows.Add(row["Observaciones"].ToString(), row["usuario"].ToString());
                                 }
 
-                              
+
                                 txtNombre.Text = personas.Rows[0]["Nombres"].ToString();
                                 txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
                                 dtpFechaNa.Value = Convert.ToDateTime(personas.Rows[0]["f_Nacimiento"]);
@@ -437,7 +437,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                         }
                     }
 
-                    
+
                     string queryUltimoRegistro = "SELECT TOP 1 A.Fotografia Imagen FROM Personas A " +
                                                  "WHERE A.Identidad = @Identidad " +
                                                  "ORDER BY A.f_regCreado DESC";
@@ -470,7 +470,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
         }
 
 
-            private void btnCancelarInfo_Click(object sender, EventArgs e)
+        private void btnCancelarInfo_Click(object sender, EventArgs e)
         {
             listo = false;
             dgvObservaciones.DataSource = null;
@@ -500,6 +500,6 @@ namespace interfaz_grafica_de_inspeccion_primaria
             errorProvider1.Clear();
         }
 
-        
+      
     }
 }

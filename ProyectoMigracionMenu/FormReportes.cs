@@ -23,8 +23,14 @@ namespace ProyectoMigracionMenu
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            CargarReportes();
         }
-  
+
+        public class TiposReportes
+        {
+            public int Id { get; set; }         
+            public string Descripcion { get; set; }  
+        }
 
         private void FormReportes_Load(object sender, EventArgs e)
         {
@@ -32,6 +38,8 @@ namespace ProyectoMigracionMenu
             int cornerRadius = 20;
             Color shadowColor = Color.Gray;
 
+            EstiloPanel.AplicarSombra(PanelTipoReporte, shadowSize, shadowColor, cornerRadius);
+            EstiloPanel.AplicarEsquinasRedondeadas(PanelTipoReporte, cornerRadius);
             EstiloPanel.AplicarSombra(panelReporte, shadowSize, shadowColor, cornerRadius);
             EstiloPanel.AplicarEsquinasRedondeadas(panelReporte, cornerRadius);
 
@@ -41,35 +49,126 @@ namespace ProyectoMigracionMenu
             CboDelegaciones.DataSource = dtDelegaciones;
             CboDelegaciones.DisplayMember = "NombreDelegacion";
             CboDelegaciones.ValueMember = "IdDelegacion";
+            CboDelegaciones.SelectedIndex = -1;
         }
 
-        private void BtnGenerar_Click(object sender, EventArgs e)
+
+        private void MostrarReporte()
         {
             DateTime fechaInicio = dtpFechaInicio.Value;
             DateTime fechaFin = dtpFechaFin.Value;
-            int idDelegacion = (int)CboDelegaciones.SelectedValue;
+            string nombreDelegacion = CboDelegaciones.Text;
+
+            int tipoReporteId = (int)CboTipoReporte.SelectedValue;
 
             DataAccess dataAccess = new DataAccess();
-            DataSet dataSet = dataAccess.LlenarDataSet(fechaInicio, fechaFin, idDelegacion);
 
-            ReporteEntradas report = new ReporteEntradas();
-            report.DataSource = dataSet;
-            report.DataMember = "DSReporteEntradasDelegaciones";
+            switch (tipoReporteId)
+            {
+                case 1:
+                    DSReporteEntradas dataSetGeneral = dataAccess.LlenarReporteGeneral(fechaInicio, fechaFin, nombreDelegacion);
+                    ReporteEntradas reporteGeneral = new ReporteEntradas();
+                    reporteGeneral.DataSource = dataSetGeneral.DSReporteEntradasDelegaciones;
+                    reporteGeneral.DataMember = dataSetGeneral.DSReporteEntradasDelegaciones.TableName;
 
-            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
-                p.Visible = false;
+                   
+                    foreach (DevExpress.XtraReports.Parameters.Parameter p in reporteGeneral.Parameters)
+                        p.Visible = false;
 
-            report.parametros(fechaInicio, fechaFin);
+                 
+                    reporteGeneral.parametros(fechaInicio, fechaFin, nombreDelegacion);
 
-            ReportPrintTool printTool = new ReportPrintTool(report);
-            printTool.ShowRibbonPreview();
+                    
+                    ReportPrintTool printToolGeneral = new ReportPrintTool(reporteGeneral);
+                    printToolGeneral.ShowRibbonPreview();
+                    break;
+
+                case 2: 
+                    DSReporteRechazados dataSetRechazados = dataAccess.LlenarReporteRechazados(fechaInicio, fechaFin, nombreDelegacion);
+                    ReporteRechazados reporteRechazados = new ReporteRechazados();
+                    reporteRechazados.DataSource = dataSetRechazados.DSReporteRechazosDelegaciones;
+                    reporteRechazados.DataMember = dataSetRechazados.DSReporteRechazosDelegaciones.TableName;
+
+                    
+                    foreach (DevExpress.XtraReports.Parameters.Parameter p in reporteRechazados.Parameters)
+                        p.Visible = false;
+
+                    
+                    reporteRechazados.parametros(fechaInicio, fechaFin, nombreDelegacion);
+
+                    
+                    ReportPrintTool printToolRechazados = new ReportPrintTool(reporteRechazados);
+                    printToolRechazados.ShowRibbonPreview();
+                    break;
+
+               //  case 3: // reporte entradas
+                //  
+                 //   break;
+
+                default:
+                    MessageBox.Show("Selecciona un tipo de reporte válido.");
+                    break;
+            }
+        }
+        private void BtnGenerar_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+
+            bool hayError = false;
+
+            if (CboDelegaciones.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(CboDelegaciones, "Selecciona una delegación.");
+                hayError = true;
+            }
+
+            if (CboTipoReporte.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(CboTipoReporte, "Selecciona un tipo de reporte.");
+                hayError = true;
+            }
+
+            if (hayError)
+            {
+                return;
+            }
+
+            MostrarReporte();
+
+
         }
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
             dtpFechaInicio.Value = DateTime.Now;
             dtpFechaFin.Value = DateTime.Now; 
-            CboDelegaciones.SelectedIndex = -1; 
+            CboDelegaciones.SelectedIndex = -1;
+            CboTipoReporte.SelectedIndex = -1;
+            errorProvider1.Clear();
+        }
+
+        private void CargarReportes()
+        {
+            try
+            {
+               
+
+                List<TiposReportes> opcionesReporte = new List<TiposReportes>
+        {
+            new TiposReportes { Id = 1, Descripcion = "General de entradas" },
+            new TiposReportes { Id = 2, Descripcion = "Migrantes rechazados" },
+            new TiposReportes { Id = 3, Descripcion = "Migrantes aceptados" }
+        };
+
+                CboTipoReporte.DataSource = opcionesReporte;
+                CboTipoReporte.DisplayMember = "Descripcion";
+                CboTipoReporte.ValueMember = "Id";
+                CboTipoReporte.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.ToString());
+            }
         }
     }
 }

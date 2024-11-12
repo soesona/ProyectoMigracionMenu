@@ -13,12 +13,13 @@ namespace ProyectoMigracionMenu
             InitializeComponent();
         }
 
-          public void parametros(DateTime fechaInicio, DateTime fechaFin)
+          public void parametros(DateTime fechaInicio, DateTime fechaFin, string nombreDelegacion)
         {
             try
             {
                 Parameters["FechaInicio"].Value = fechaInicio.ToString("yyyy-MM-dd");
                 Parameters["FechaFin"].Value = fechaFin.ToString("yyyy-MM-dd");
+                Parameters["Delegacion"].Value = nombreDelegacion;
 
             }
             catch (Exception)

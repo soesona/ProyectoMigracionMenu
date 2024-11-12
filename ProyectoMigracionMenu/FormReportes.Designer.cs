@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             BtnLimpiar = new Button();
             BtnGenerar = new Button();
             label1 = new Label();
@@ -38,7 +39,13 @@
             label3 = new Label();
             dtpFechaInicio = new DateTimePicker();
             label2 = new Label();
+            PanelTipoReporte = new Panel();
+            CboTipoReporte = new ComboBox();
+            label5 = new Label();
+            errorProvider1 = new ErrorProvider(components);
             panelReporte.SuspendLayout();
+            PanelTipoReporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // BtnLimpiar
@@ -89,10 +96,11 @@
             // 
             // CboDelegaciones
             // 
+            CboDelegaciones.DropDownStyle = ComboBoxStyle.DropDownList;
             CboDelegaciones.FormattingEnabled = true;
             CboDelegaciones.Location = new Point(301, 140);
             CboDelegaciones.Name = "CboDelegaciones";
-            CboDelegaciones.Size = new Size(151, 28);
+            CboDelegaciones.Size = new Size(217, 28);
             CboDelegaciones.TabIndex = 5;
             // 
             // label4
@@ -141,12 +149,46 @@
             label2.TabIndex = 0;
             label2.Text = "Fecha inicial:";
             // 
+            // PanelTipoReporte
+            // 
+            PanelTipoReporte.BackColor = Color.FromArgb(52, 161, 166);
+            PanelTipoReporte.Controls.Add(CboTipoReporte);
+            PanelTipoReporte.Controls.Add(label5);
+            PanelTipoReporte.Location = new Point(493, 167);
+            PanelTipoReporte.Name = "PanelTipoReporte";
+            PanelTipoReporte.Size = new Size(590, 89);
+            PanelTipoReporte.TabIndex = 4;
+            // 
+            // CboTipoReporte
+            // 
+            CboTipoReporte.DropDownStyle = ComboBoxStyle.DropDownList;
+            CboTipoReporte.FormattingEnabled = true;
+            CboTipoReporte.Location = new Point(301, 29);
+            CboTipoReporte.Name = "CboTipoReporte";
+            CboTipoReporte.Size = new Size(250, 28);
+            CboTipoReporte.TabIndex = 5;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(57, 29);
+            label5.Name = "label5";
+            label5.Size = new Size(186, 31);
+            label5.TabIndex = 4;
+            label5.Text = "Tipo de reporte:";
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // FormReportes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(1697, 853);
+            Controls.Add(PanelTipoReporte);
             Controls.Add(BtnGenerar);
             Controls.Add(panelReporte);
             Controls.Add(label1);
@@ -156,6 +198,9 @@
             Load += FormReportes_Load;
             panelReporte.ResumeLayout(false);
             panelReporte.PerformLayout();
+            PanelTipoReporte.ResumeLayout(false);
+            PanelTipoReporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -172,5 +217,9 @@
         private DateTimePicker dtpFechaFin;
         private Label label3;
         private DateTimePicker dtpFechaInicio;
+        private Panel PanelTipoReporte;
+        private ComboBox CboTipoReporte;
+        private Label label5;
+        private ErrorProvider errorProvider1;
     }
 }

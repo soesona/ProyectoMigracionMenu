@@ -287,10 +287,6 @@ namespace ProyectoMigracionMenu {
             
             private global::System.Data.DataColumn columnTotalMenores;
             
-            private global::System.Data.DataColumn columnFechaInicio;
-            
-            private global::System.Data.DataColumn columnFechaFin;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DSReporteEntradasDelegacionesDataTable() {
@@ -358,22 +354,6 @@ namespace ProyectoMigracionMenu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FechaInicioColumn {
-                get {
-                    return this.columnFechaInicio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FechaFinColumn {
-                get {
-                    return this.columnFechaFin;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,15 +389,13 @@ namespace ProyectoMigracionMenu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DSReporteEntradasDelegacionesRow AddDSReporteEntradasDelegacionesRow(string NombreDelegacion, int TotalFemeninos, int TotalMasculinos, int TotalMenores, System.DateTime FechaInicio, System.DateTime FechaFin) {
+            public DSReporteEntradasDelegacionesRow AddDSReporteEntradasDelegacionesRow(string NombreDelegacion, int TotalFemeninos, int TotalMasculinos, int TotalMenores) {
                 DSReporteEntradasDelegacionesRow rowDSReporteEntradasDelegacionesRow = ((DSReporteEntradasDelegacionesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NombreDelegacion,
                         TotalFemeninos,
                         TotalMasculinos,
-                        TotalMenores,
-                        FechaInicio,
-                        FechaFin};
+                        TotalMenores};
                 rowDSReporteEntradasDelegacionesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDSReporteEntradasDelegacionesRow);
                 return rowDSReporteEntradasDelegacionesRow;
@@ -444,8 +422,6 @@ namespace ProyectoMigracionMenu {
                 this.columnTotalFemeninos = base.Columns["TotalFemeninos"];
                 this.columnTotalMasculinos = base.Columns["TotalMasculinos"];
                 this.columnTotalMenores = base.Columns["TotalMenores"];
-                this.columnFechaInicio = base.Columns["FechaInicio"];
-                this.columnFechaFin = base.Columns["FechaFin"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -459,17 +435,11 @@ namespace ProyectoMigracionMenu {
                 base.Columns.Add(this.columnTotalMasculinos);
                 this.columnTotalMenores = new global::System.Data.DataColumn("TotalMenores", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalMenores);
-                this.columnFechaInicio = new global::System.Data.DataColumn("FechaInicio", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaInicio);
-                this.columnFechaFin = new global::System.Data.DataColumn("FechaFin", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaFin);
                 this.columnNombreDelegacion.AllowDBNull = false;
                 this.columnNombreDelegacion.MaxLength = 100;
                 this.columnTotalFemeninos.ReadOnly = true;
                 this.columnTotalMasculinos.ReadOnly = true;
                 this.columnTotalMenores.ReadOnly = true;
-                this.columnFechaInicio.ReadOnly = true;
-                this.columnFechaFin.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -674,40 +644,6 @@ namespace ProyectoMigracionMenu {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime FechaInicio {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDSReporteEntradasDelegaciones.FechaInicioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FechaInicio\' in table \'DSReporteEntradasDelegaciones\' is DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableDSReporteEntradasDelegaciones.FechaInicioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime FechaFin {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDSReporteEntradasDelegaciones.FechaFinColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FechaFin\' in table \'DSReporteEntradasDelegaciones\' is DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableDSReporteEntradasDelegaciones.FechaFinColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsTotalFemeninosNull() {
                 return this.IsNull(this.tableDSReporteEntradasDelegaciones.TotalFemeninosColumn);
             }
@@ -740,30 +676,6 @@ namespace ProyectoMigracionMenu {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTotalMenoresNull() {
                 this[this.tableDSReporteEntradasDelegaciones.TotalMenoresColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFechaInicioNull() {
-                return this.IsNull(this.tableDSReporteEntradasDelegaciones.FechaInicioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFechaInicioNull() {
-                this[this.tableDSReporteEntradasDelegaciones.FechaInicioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFechaFinNull() {
-                return this.IsNull(this.tableDSReporteEntradasDelegaciones.FechaFinColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFechaFinNull() {
-                this[this.tableDSReporteEntradasDelegaciones.FechaFinColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -930,8 +842,6 @@ namespace ProyectoMigracionMenu.DSReporteEntradasTableAdapters {
             tableMapping.ColumnMappings.Add("TotalFemeninos", "TotalFemeninos");
             tableMapping.ColumnMappings.Add("TotalMasculinos", "TotalMasculinos");
             tableMapping.ColumnMappings.Add("TotalMenores", "TotalMenores");
-            tableMapping.ColumnMappings.Add("FechaInicio", "FechaInicio");
-            tableMapping.ColumnMappings.Add("FechaFin", "FechaFin");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -950,12 +860,10 @@ namespace ProyectoMigracionMenu.DSReporteEntradasTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT 
-    d.NombreDelegacion,
+    d.NombreDelegacion,  
     SUM(CASE WHEN m.IdSexo = 2 THEN 1 ELSE 0 END) AS TotalFemeninos,  
     SUM(CASE WHEN m.IdSexo = 1 THEN 1 ELSE 0 END) AS TotalMasculinos,  
-    SUM(CASE WHEN DATEDIFF(YEAR, m.f_Nacimiento, GETDATE()) < 18 THEN 1 ELSE 0 END) AS TotalMenores,
-    @FechaInicio AS FechaInicio,
-    @FechaFin AS FechaFin
+    SUM(CASE WHEN DATEDIFF(YEAR, m.f_Nacimiento, GETDATE()) < 18 THEN 1 ELSE 0 END) AS TotalMenores
 FROM 
     Personas m
 JOIN 
@@ -963,15 +871,14 @@ JOIN
 JOIN 
     Delegaciones d ON u.IdDelegacion = d.IdDelegacion
 WHERE 
-    u.IdDelegacion = @IdDelegacion AND  
+    d.NombreDelegacion = @NombreDelegacion AND  
     m.f_regCreado BETWEEN @FechaInicio AND @FechaFin
 GROUP BY 
-    d.NombreDelegacion;
-";
+    d.NombreDelegacion;";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NombreDelegacion", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NombreDelegacion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicio", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "f_regCreado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "f_regCreado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdDelegacion", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdDelegacion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT 
@@ -1003,21 +910,26 @@ GROUP BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillEntrada(DSReporteEntradas.DSReporteEntradasDelegacionesDataTable dataTable, global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin, int IdDelegacion) {
+        public virtual int FillEntrada(DSReporteEntradas.DSReporteEntradasDelegacionesDataTable dataTable, string NombreDelegacion, global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((FechaInicio.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FechaInicio.Value));
+            if ((NombreDelegacion == null)) {
+                throw new global::System.ArgumentNullException("NombreDelegacion");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NombreDelegacion));
             }
-            if ((FechaFin.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FechaFin.Value));
+            if ((FechaInicio.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FechaInicio.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(IdDelegacion));
+            if ((FechaFin.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(FechaFin.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1029,21 +941,26 @@ GROUP BY
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSReporteEntradas.DSReporteEntradasDelegacionesDataTable GetDataEntrada(global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin, int IdDelegacion) {
+        public virtual DSReporteEntradas.DSReporteEntradasDelegacionesDataTable GetDataEntrada(string NombreDelegacion, global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((FechaInicio.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FechaInicio.Value));
+            if ((NombreDelegacion == null)) {
+                throw new global::System.ArgumentNullException("NombreDelegacion");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NombreDelegacion));
             }
-            if ((FechaFin.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FechaFin.Value));
+            if ((FechaInicio.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FechaInicio.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(IdDelegacion));
+            if ((FechaFin.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(FechaFin.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             DSReporteEntradas.DSReporteEntradasDelegacionesDataTable dataTable = new DSReporteEntradas.DSReporteEntradasDelegacionesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

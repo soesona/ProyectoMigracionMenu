@@ -215,3 +215,4 @@ C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\D
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\DevExpress.Data.Desktop.v24.1.dll
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\DevExpress.XtraTreeList.v24.1.dll
 C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\bin\Debug\net8.0-windows\DevExpress.XtraLayout.v24.1.dll
+C:\Users\Sthefany\source\repos\ProyectoMigracionMenu\ProyectoMigracionMenu\obj\Debug\net8.0-windows\ProyectoMigracionMenu.ReporteRechazados.resources
