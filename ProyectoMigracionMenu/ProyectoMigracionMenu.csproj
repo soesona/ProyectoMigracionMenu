@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="dsEntra.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dsEntra.xsd</DependentUpon>
+    </Compile>
     <Compile Update="DSReporteEntradas.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -36,6 +41,7 @@
   <ItemGroup>
     <PackageReference Include="AF.DataAccessor" Version="2.0.2" />
     <PackageReference Include="DevExpress.Reporting.Core" Version="24.1.6" />
+    <PackageReference Include="DevExpress.Win.Design" Version="24.1.6" />
     <PackageReference Include="MailKit" Version="4.8.0" />
     <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1652.0" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.23" />
@@ -68,6 +74,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="dsEntra.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEntra.Designer.cs</LastGenOutput>
+    </None>
     <None Update="DSReporteEntradas.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DSReporteEntradas.Designer.cs</LastGenOutput>

@@ -22,6 +22,9 @@
     <Compile Update="ReporteEntradas.cs">
       <SubType>XtraReport</SubType>
     </Compile>
+    <Compile Update="rptEntra.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="TemasDeLogin\FormRecuperarContrasena.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -50,6 +53,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Update="dsEntra.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Update="DSReporteEntradas.xsd">
       <SubType>Designer</SubType>
     </None>
