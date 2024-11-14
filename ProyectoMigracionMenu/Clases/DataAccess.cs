@@ -95,8 +95,51 @@ namespace ProyectoMigracionMenu.Clases
 
             return dataSet;
         }
+        public dsEntra LlenarReporteEntradas(DateTime fechaInicio, DateTime fechaFin, string nombreDelegacion)
+        {
+            dsEntra dataSet = new dsEntra();
 
+            using (SqlConnection connection = new SqlServerConnection().EstablecerConexion())
+            {
+                string query = @"
+                    SELECT 
+                        CONCAT(m.Nombres, ' ', m.Apellidos) AS NombreCompleto,
+                        m.Identidad AS NumeroDocumento,
+                        DATEDIFF(YEAR, m.f_Nacimiento, GETDATE()) AS Edad,
+                        CASE WHEN m.IdSexo = 1 THEN 'Femenino' 
+                             WHEN m.IdSexo = 2 THEN 'Masculino' 
+                        END AS Sexo,
+                        pbn.Descripcion AS PaisNacimiento,
+                        pbd.Descripcion AS PaisDestino
+                    FROM 
+                        Personas m
+                    JOIN 
+                        Pais pbn ON m.IdPaisNacimiento = pbn.IdPais
+                    JOIN 
+                        Pais pbd ON m.IdPaisDestino = pbd.IdPais
+                    WHERE 
+                        m.Estado = 2
+                        AND m.f_regCreado BETWEEN @FechaInicio AND @FechaFin
+                        AND EXISTS (
+                            SELECT 1 FROM Usuarios u 
+                            WHERE u.Nombre = m.UsuarioCreado
+                            AND u.IdDelegacion IN (SELECT IdDelegacion FROM Delegaciones WHERE NombreDelegacion = @NombreDelegacion)
+                        )";
 
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NombreDelegacion", nombreDelegacion);
+                    command.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                    command.Parameters.AddWithValue("@FechaFin", fechaFin);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataSet.DataTable1);
+                    }
+                }
+            }
+
+            return dataSet;
+        }
     }
-   
 }

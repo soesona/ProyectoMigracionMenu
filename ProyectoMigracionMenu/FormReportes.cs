@@ -71,37 +71,57 @@ namespace ProyectoMigracionMenu
                     reporteGeneral.DataSource = dataSetGeneral.DSReporteEntradasDelegaciones;
                     reporteGeneral.DataMember = dataSetGeneral.DSReporteEntradasDelegaciones.TableName;
 
-                   
+
                     foreach (DevExpress.XtraReports.Parameters.Parameter p in reporteGeneral.Parameters)
                         p.Visible = false;
 
-                 
+
                     reporteGeneral.parametros(fechaInicio, fechaFin, nombreDelegacion);
 
-                    
+
                     ReportPrintTool printToolGeneral = new ReportPrintTool(reporteGeneral);
                     printToolGeneral.ShowRibbonPreview();
                     break;
 
-                case 2: 
+                case 2:
                     DSReporteRechazados dataSetRechazados = dataAccess.LlenarReporteRechazados(fechaInicio, fechaFin, nombreDelegacion);
                     ReporteRechazados reporteRechazados = new ReporteRechazados();
                     reporteRechazados.DataSource = dataSetRechazados.DSReporteRechazosDelegaciones;
                     reporteRechazados.DataMember = dataSetRechazados.DSReporteRechazosDelegaciones.TableName;
 
-                    
+
                     foreach (DevExpress.XtraReports.Parameters.Parameter p in reporteRechazados.Parameters)
                         p.Visible = false;
 
-                    
+
                     reporteRechazados.parametros(fechaInicio, fechaFin, nombreDelegacion);
 
-                    
+
                     ReportPrintTool printToolRechazados = new ReportPrintTool(reporteRechazados);
                     printToolRechazados.ShowRibbonPreview();
                     break;
 
-              
+                case 3:
+                    dsEntra dsEntras = dataAccess.LlenarReporteEntradas(fechaInicio, fechaFin, nombreDelegacion);
+                    rptEntra reporteEntra = new rptEntra();
+                    reporteEntra.DataSource = dsEntras.DataTable1;
+                    reporteEntra.DataMember = dsEntras.DataTable1.TableName;
+
+
+                    foreach (DevExpress.XtraReports.Parameters.Parameter p in reporteEntra.Parameters)
+                        p.Visible = false;
+
+
+                    reporteEntra.parametros(fechaInicio, fechaFin, nombreDelegacion);
+
+
+                    ReportPrintTool printToolE = new ReportPrintTool(reporteEntra);
+                    printToolE.ShowRibbonPreview();
+                    break;
+
+                default:
+                    MessageBox.Show("Selecciona un tipo de reporte válido.");
+                    break;
             }
         }
         private void BtnGenerar_Click(object sender, EventArgs e)
