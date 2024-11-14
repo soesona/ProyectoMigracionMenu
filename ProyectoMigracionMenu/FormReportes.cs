@@ -101,13 +101,7 @@ namespace ProyectoMigracionMenu
                     printToolRechazados.ShowRibbonPreview();
                     break;
 
-               //  case 3: // reporte entradas
-                //  
-                 //   break;
-
-                default:
-                    MessageBox.Show("Selecciona un tipo de reporte válido.");
-                    break;
+              
             }
         }
         private void BtnGenerar_Click(object sender, EventArgs e)

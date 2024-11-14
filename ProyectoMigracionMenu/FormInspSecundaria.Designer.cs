@@ -104,7 +104,7 @@
             label11.Name = "label11";
             label11.Size = new Size(114, 20);
             label11.TabIndex = 10;
-            label11.Text = "Pais de emision:";
+            label11.Text = "País de emision:";
             // 
             // label12
             // 
@@ -319,7 +319,7 @@
             btnGuardar.Text = "Guardar";
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += this.btnGuardar_Click;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // FormInspSecundaria
             // 

@@ -23,7 +23,28 @@ namespace ProyectoMigracionMenu
         {
             InitializeComponent();
             _tabla = tabla;
+        }
 
+        private void txtAgregar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtAgregar.Text.Length >= 20 && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAgregar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAgregar.Text.Length > 20)
+            {
+                txtAgregar.Text = txtAgregar.Text.Substring(0, 20);
+                txtAgregar.SelectionStart = txtAgregar.Text.Length;
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -32,11 +53,19 @@ namespace ProyectoMigracionMenu
             {
                 if (!string.IsNullOrWhiteSpace(txtAgregar.Text))
                 {
-                    query = "insert into " + _tabla + " (Descripcion, f_regCreado, Activo) values ('" + txtAgregar.Text + "',GETDATE(), 1)";
-                    gl.registra(query, sqlcon);
-                    MessageBox.Show("Registro Agregado con Exito.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtAgregar.Clear();
-                    this.Close();
+                    if (txtAgregar.Text.Length <= 20 && System.Text.RegularExpressions.Regex.IsMatch(txtAgregar.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        query = "insert into " + _tabla + " (Descripcion, f_regCreado, Activo) values ('" + txtAgregar.Text + "',GETDATE(), 1)";
+                        gl.registra(query, sqlcon);
+                        MessageBox.Show("Registro Agregado con Exito.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtAgregar.Clear();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El texto ingresado solo debe contener letras y espacios, y no puede exceder los 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtAgregar.Focus();
+                    }
                 }
                 else
                 {
@@ -50,6 +79,11 @@ namespace ProyectoMigracionMenu
         private void button8_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Documentoviaje_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

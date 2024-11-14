@@ -49,7 +49,6 @@
             cbNacionalidad = new ComboBox();
             dtpFechaNa = new DateTimePicker();
             label7 = new Label();
-            label8 = new Label();
             label9 = new Label();
             label10 = new Label();
             groupBox1 = new GroupBox();
@@ -147,10 +146,11 @@
             Documentoviaje.TabIndex = 9;
             Documentoviaje.TabStop = false;
             Documentoviaje.Text = "Documento de Viaje";
+            Documentoviaje.Enter += Documentoviaje_Enter;
             // 
             // btnCancelarInfo
             // 
-            btnCancelarInfo.Location = new Point(301, 243);
+            btnCancelarInfo.Location = new Point(312, 253);
             btnCancelarInfo.Margin = new Padding(3, 4, 3, 4);
             btnCancelarInfo.Name = "btnCancelarInfo";
             btnCancelarInfo.Size = new Size(86, 31);
@@ -162,15 +162,16 @@
             // dtpfechaVenci
             // 
             dtpfechaVenci.Format = DateTimePickerFormat.Short;
-            dtpfechaVenci.Location = new Point(168, 196);
+            dtpfechaVenci.Location = new Point(180, 202);
             dtpfechaVenci.Margin = new Padding(3, 4, 3, 4);
             dtpfechaVenci.Name = "dtpfechaVenci";
             dtpfechaVenci.Size = new Size(218, 27);
             dtpfechaVenci.TabIndex = 16;
+            dtpfechaVenci.ValueChanged += dtpfechaVenci_ValueChanged;
             // 
             // btnbuscar
             // 
-            btnbuscar.Location = new Point(155, 243);
+            btnbuscar.Location = new Point(204, 253);
             btnbuscar.Margin = new Padding(3, 4, 3, 4);
             btnbuscar.Name = "btnbuscar";
             btnbuscar.Size = new Size(86, 31);
@@ -182,59 +183,61 @@
             // txtIdentidad
             // 
             txtIdentidad.CharacterCasing = CharacterCasing.Upper;
-            txtIdentidad.Location = new Point(168, 143);
+            txtIdentidad.Location = new Point(180, 95);
             txtIdentidad.Margin = new Padding(3, 4, 3, 4);
             txtIdentidad.MaxLength = 30;
             txtIdentidad.Name = "txtIdentidad";
             txtIdentidad.Size = new Size(218, 27);
             txtIdentidad.TabIndex = 14;
             txtIdentidad.Tag = "obligatorio";
+            txtIdentidad.TextChanged += txtIdentidad_TextChanged;
             // 
             // cbPaisEmision
             // 
             cbPaisEmision.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPaisEmision.FormattingEnabled = true;
-            cbPaisEmision.Location = new Point(168, 96);
+            cbPaisEmision.Location = new Point(180, 145);
             cbPaisEmision.Margin = new Padding(3, 4, 3, 4);
             cbPaisEmision.Name = "cbPaisEmision";
             cbPaisEmision.Size = new Size(218, 28);
             cbPaisEmision.TabIndex = 13;
             cbPaisEmision.Tag = "obligatorio";
+            cbPaisEmision.SelectedIndexChanged += cbPaisEmision_SelectedIndexChanged;
             // 
             // cbDoc
             // 
             cbDoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDoc.FormattingEnabled = true;
-            cbDoc.Location = new Point(168, 41);
+            cbDoc.Location = new Point(180, 40);
             cbDoc.Margin = new Padding(3, 4, 3, 4);
             cbDoc.Name = "cbDoc";
             cbDoc.Size = new Size(218, 28);
             cbDoc.TabIndex = 10;
             cbDoc.Tag = "obligatorio";
-            
+            cbDoc.SelectedIndexChanged += cbDoc_SelectedIndexChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(9, 96);
+            label4.Location = new Point(7, 148);
             label4.Name = "label4";
             label4.Size = new Size(114, 20);
             label4.TabIndex = 10;
-            label4.Text = "Pais de Emision:";
+            label4.Text = "País de Emisión:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(7, 149);
+            label5.Location = new Point(7, 98);
             label5.Name = "label5";
             label5.Size = new Size(167, 20);
             label5.TabIndex = 11;
-            label5.Text = "Numero de documento:";
+            label5.Text = "Número de documento:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(7, 204);
+            label6.Location = new Point(7, 202);
             label6.Name = "label6";
             label6.Size = new Size(156, 20);
             label6.TabIndex = 12;
@@ -248,27 +251,29 @@
             Label3.Size = new Size(143, 20);
             Label3.TabIndex = 0;
             Label3.Text = "Tipo de documento:";
+            Label3.Click += Label3_Click;
             // 
             // datosdeviaje
             // 
             datosdeviaje.Controls.Add(txtApellido);
             datosdeviaje.Controls.Add(txtNombre);
             datosdeviaje.Controls.Add(cbSexo);
+            datosdeviaje.Controls.Add(cbPaisNa);
             datosdeviaje.Controls.Add(label11);
-            datosdeviaje.Controls.Add(cbNacionalidad);
             datosdeviaje.Controls.Add(dtpFechaNa);
+            datosdeviaje.Controls.Add(label21);
             datosdeviaje.Controls.Add(label7);
-            datosdeviaje.Controls.Add(label8);
             datosdeviaje.Controls.Add(label9);
             datosdeviaje.Controls.Add(label10);
             datosdeviaje.Location = new Point(437, 37);
             datosdeviaje.Margin = new Padding(3, 4, 3, 4);
             datosdeviaje.Name = "datosdeviaje";
             datosdeviaje.Padding = new Padding(3, 4, 3, 4);
-            datosdeviaje.Size = new Size(489, 301);
+            datosdeviaje.Size = new Size(512, 302);
             datosdeviaje.TabIndex = 10;
             datosdeviaje.TabStop = false;
             datosdeviaje.Text = "Datos Personales";
+            datosdeviaje.Enter += datosdeviaje_Enter;
             // 
             // txtApellido
             // 
@@ -279,6 +284,7 @@
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(391, 27);
             txtApellido.TabIndex = 25;
+            txtApellido.TextChanged += txtApellido_TextChanged;
             // 
             // txtNombre
             // 
@@ -289,6 +295,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(391, 27);
             txtNombre.TabIndex = 24;
+            txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // cbSexo
             // 
@@ -299,6 +306,7 @@
             cbSexo.Name = "cbSexo";
             cbSexo.Size = new Size(110, 28);
             cbSexo.TabIndex = 19;
+            cbSexo.SelectedIndexChanged += cbSexo_SelectedIndexChanged;
             // 
             // label11
             // 
@@ -313,11 +321,12 @@
             // 
             cbNacionalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cbNacionalidad.FormattingEnabled = true;
-            cbNacionalidad.Location = new Point(168, 203);
+            cbNacionalidad.Location = new Point(273, 168);
             cbNacionalidad.Margin = new Padding(3, 4, 3, 4);
             cbNacionalidad.Name = "cbNacionalidad";
             cbNacionalidad.Size = new Size(314, 28);
             cbNacionalidad.TabIndex = 17;
+            cbNacionalidad.SelectedIndexChanged += cbNacionalidad_SelectedIndexChanged;
             // 
             // dtpFechaNa
             // 
@@ -327,6 +336,7 @@
             dtpFechaNa.Name = "dtpFechaNa";
             dtpFechaNa.Size = new Size(138, 27);
             dtpFechaNa.TabIndex = 16;
+            dtpFechaNa.ValueChanged += dtpFechaNa_ValueChanged;
             // 
             // label7
             // 
@@ -336,15 +346,7 @@
             label7.Size = new Size(69, 20);
             label7.TabIndex = 10;
             label7.Text = "Apellido:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(7, 207);
-            label8.Name = "label8";
-            label8.Size = new Size(98, 20);
-            label8.TabIndex = 11;
-            label8.Text = "Nacionalidad";
+            label7.Click += label7_Click;
             // 
             // label9
             // 
@@ -363,19 +365,20 @@
             label10.Size = new Size(67, 20);
             label10.TabIndex = 0;
             label10.Text = "Nombre:";
+            label10.Click += label10_Click;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(pic);
             groupBox1.Controls.Add(btnfotografia);
-            groupBox1.Location = new Point(933, 37);
+            groupBox1.Location = new Point(955, 37);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(224, 304);
+            groupBox1.Size = new Size(224, 301);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Fotografia";
+            groupBox1.Text = "Fotografía";
             // 
             // pic
             // 
@@ -390,7 +393,7 @@
             // 
             // btnfotografia
             // 
-            btnfotografia.Location = new Point(70, 263);
+            btnfotografia.Location = new Point(70, 251);
             btnfotografia.Margin = new Padding(3, 4, 3, 4);
             btnfotografia.Name = "btnfotografia";
             btnfotografia.Size = new Size(86, 31);
@@ -409,11 +412,11 @@
             groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(label12);
-            groupBox2.Location = new Point(1162, 37);
+            groupBox2.Location = new Point(1185, 37);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(422, 303);
+            groupBox2.Size = new Size(422, 301);
             groupBox2.TabIndex = 12;
             groupBox2.TabStop = false;
             groupBox2.Text = "Validaciones";
@@ -505,10 +508,9 @@
             groupBox3.Controls.Add(btnPaises);
             groupBox3.Controls.Add(btnTrabajo);
             groupBox3.Controls.Add(txtEstadia);
-            groupBox3.Controls.Add(cbPaisNa);
+            groupBox3.Controls.Add(cbNacionalidad);
             groupBox3.Controls.Add(cbPaisRes);
             groupBox3.Controls.Add(cbTrabajo);
-            groupBox3.Controls.Add(label21);
             groupBox3.Controls.Add(label27);
             groupBox3.Controls.Add(label20);
             groupBox3.Controls.Add(label19);
@@ -519,7 +521,7 @@
             groupBox3.Size = new Size(579, 196);
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Informacion adicional";
+            groupBox3.Text = "Información adicional";
             // 
             // btnPaises
             // 
@@ -554,54 +556,60 @@
             txtEstadia.TabIndex = 17;
             txtEstadia.Text = "5";
             txtEstadia.TextAlign = HorizontalAlignment.Center;
+            txtEstadia.TextChanged += txtEstadia_TextChanged;
             // 
             // cbPaisNa
             // 
             cbPaisNa.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPaisNa.FormattingEnabled = true;
-            cbPaisNa.Location = new Point(162, 116);
+            cbPaisNa.Location = new Point(168, 199);
             cbPaisNa.Margin = new Padding(3, 4, 3, 4);
             cbPaisNa.Name = "cbPaisNa";
-            cbPaisNa.Size = new Size(230, 28);
+            cbPaisNa.Size = new Size(313, 28);
             cbPaisNa.TabIndex = 22;
+            cbPaisNa.SelectedIndexChanged += cbPaisNa_SelectedIndexChanged;
             // 
             // cbPaisRes
             // 
             cbPaisRes.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPaisRes.FormattingEnabled = true;
-            cbPaisRes.Location = new Point(165, 72);
+            cbPaisRes.Location = new Point(162, 72);
             cbPaisRes.Margin = new Padding(3, 4, 3, 4);
             cbPaisRes.Name = "cbPaisRes";
             cbPaisRes.Size = new Size(228, 28);
             cbPaisRes.TabIndex = 23;
+            cbPaisRes.SelectedIndexChanged += cbPaisRes_SelectedIndexChanged;
             // 
             // cbTrabajo
             // 
             cbTrabajo.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTrabajo.FormattingEnabled = true;
-            cbTrabajo.Location = new Point(165, 25);
+            cbTrabajo.Location = new Point(162, 27);
             cbTrabajo.Margin = new Padding(3, 4, 3, 4);
             cbTrabajo.Name = "cbTrabajo";
             cbTrabajo.Size = new Size(228, 28);
             cbTrabajo.TabIndex = 24;
+            cbTrabajo.SelectedIndexChanged += cbTrabajo_SelectedIndexChanged;
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(16, 119);
+            label21.Location = new Point(7, 205);
             label21.Name = "label21";
             label21.Size = new Size(136, 20);
             label21.TabIndex = 2;
-            label21.Text = "Pais de nacimiento:";
+            label21.Text = "País de nacimiento:";
+            label21.Click += label21_Click;
             // 
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(30, 157);
+            label27.Location = new Point(16, 157);
             label27.Name = "label27";
             label27.Size = new Size(126, 20);
             label27.TabIndex = 8;
-            label27.Text = "Estadia otorgada:";
+            label27.Text = "Estadía otorgada:";
+            label27.Click += label27_Click;
             // 
             // label20
             // 
@@ -610,7 +618,7 @@
             label20.Name = "label20";
             label20.Size = new Size(129, 20);
             label20.TabIndex = 1;
-            label20.Text = "Pais de residencia:";
+            label20.Text = "País de residencia:";
             // 
             // label19
             // 
@@ -637,11 +645,11 @@
             groupBox4.Size = new Size(579, 211);
             groupBox4.TabIndex = 14;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Informacion del viaje";
+            groupBox4.Text = "Información del viaje";
             // 
             // btnMotivos
             // 
-            btnMotivos.Location = new Point(361, 81);
+            btnMotivos.Location = new Point(408, 78);
             btnMotivos.Margin = new Padding(3, 4, 3, 4);
             btnMotivos.Name = "btnMotivos";
             btnMotivos.Size = new Size(82, 31);
@@ -652,18 +660,19 @@
             // 
             // txtResidencia
             // 
-            txtResidencia.Location = new Point(128, 137);
+            txtResidencia.Location = new Point(127, 134);
             txtResidencia.Margin = new Padding(3, 4, 3, 4);
             txtResidencia.MaxLength = 200;
             txtResidencia.Multiline = true;
             txtResidencia.Name = "txtResidencia";
-            txtResidencia.Size = new Size(438, 64);
+            txtResidencia.Size = new Size(420, 64);
             txtResidencia.TabIndex = 18;
+            txtResidencia.TextChanged += txtResidencia_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(37, 137);
+            label1.Location = new Point(16, 137);
             label1.Name = "label1";
             label1.Size = new Size(83, 20);
             label1.TabIndex = 23;
@@ -673,39 +682,43 @@
             // 
             cbPaisDestino.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPaisDestino.FormattingEnabled = true;
-            cbPaisDestino.Location = new Point(120, 36);
+            cbPaisDestino.Location = new Point(162, 34);
             cbPaisDestino.Margin = new Padding(3, 4, 3, 4);
             cbPaisDestino.Name = "cbPaisDestino";
             cbPaisDestino.Size = new Size(206, 28);
             cbPaisDestino.TabIndex = 22;
+            cbPaisDestino.SelectedIndexChanged += cbPaisDestino_SelectedIndexChanged;
             // 
             // cbMotivos
             // 
             cbMotivos.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMotivos.FormattingEnabled = true;
-            cbMotivos.Location = new Point(118, 81);
+            cbMotivos.Location = new Point(162, 77);
             cbMotivos.Margin = new Padding(3, 4, 3, 4);
             cbMotivos.Name = "cbMotivos";
             cbMotivos.Size = new Size(209, 28);
             cbMotivos.TabIndex = 20;
+            cbMotivos.SelectedIndexChanged += cbMotivos_SelectedIndexChanged;
             // 
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(11, 40);
+            label26.Location = new Point(16, 44);
             label26.Name = "label26";
             label26.Size = new Size(111, 20);
             label26.TabIndex = 7;
-            label26.Text = "Pais de destino:";
+            label26.Text = "País de destino:";
+            label26.Click += label26_Click;
             // 
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(8, 85);
+            label25.Location = new Point(16, 85);
             label25.Name = "label25";
             label25.Size = new Size(115, 20);
             label25.TabIndex = 6;
             label25.Text = "Motivo de viaje:";
+            label25.Click += label25_Click;
             // 
             // groupBox5
             // 
@@ -718,7 +731,7 @@
             groupBox5.Size = new Size(581, 120);
             groupBox5.TabIndex = 14;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Decision";
+            groupBox5.Text = "Decisión";
             // 
             // txtObservaciones
             // 
@@ -727,8 +740,9 @@
             txtObservaciones.MaxLength = 200;
             txtObservaciones.Multiline = true;
             txtObservaciones.Name = "txtObservaciones";
-            txtObservaciones.Size = new Size(438, 85);
+            txtObservaciones.Size = new Size(420, 85);
             txtObservaciones.TabIndex = 17;
+            txtObservaciones.TextChanged += txtObservaciones_TextChanged;
             // 
             // label28
             // 
@@ -746,7 +760,7 @@
             groupBox6.Margin = new Padding(3, 4, 3, 4);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 4, 3, 4);
-            groupBox6.Size = new Size(977, 213);
+            groupBox6.Size = new Size(1000, 213);
             groupBox6.TabIndex = 14;
             groupBox6.TabStop = false;
             groupBox6.Text = "Historial de viajes";
@@ -760,7 +774,7 @@
             dgvTransacciones.Name = "dgvTransacciones";
             dgvTransacciones.ReadOnly = true;
             dgvTransacciones.RowHeadersWidth = 51;
-            dgvTransacciones.Size = new Size(957, 171);
+            dgvTransacciones.Size = new Size(986, 171);
             dgvTransacciones.TabIndex = 26;
             // 
             // Fecha
@@ -846,7 +860,7 @@
             groupBox7.Margin = new Padding(3, 4, 3, 4);
             groupBox7.Name = "groupBox7";
             groupBox7.Padding = new Padding(3, 4, 3, 4);
-            groupBox7.Size = new Size(774, 227);
+            groupBox7.Size = new Size(804, 227);
             groupBox7.TabIndex = 15;
             groupBox7.TabStop = false;
             groupBox7.Text = "Historial de observaciones";
@@ -860,7 +874,7 @@
             dgvObservaciones.Name = "dgvObservaciones";
             dgvObservaciones.ReadOnly = true;
             dgvObservaciones.RowHeadersWidth = 51;
-            dgvObservaciones.Size = new Size(752, 171);
+            dgvObservaciones.Size = new Size(789, 184);
             dgvObservaciones.TabIndex = 27;
             // 
             // Observaciones
@@ -953,7 +967,7 @@
             // 
             btnGuardar.BackColor = Color.LightGreen;
             btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
-            btnGuardar.Location = new Point(1410, 691);
+            btnGuardar.Location = new Point(1433, 690);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(174, 53);
             btnGuardar.TabIndex = 23;
@@ -966,7 +980,7 @@
             // 
             btnCancelar.BackColor = Color.LightCoral;
             btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
-            btnCancelar.Location = new Point(1410, 749);
+            btnCancelar.Location = new Point(1433, 764);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(174, 53);
             btnCancelar.TabIndex = 25;
@@ -1083,7 +1097,6 @@
         private TextBox txtObservaciones;
         private Button btnGuardar;
         private Button btnCancelar;
-        private Label label8;
         private ComboBox cbPaisNa;
         private TextBox txtResidencia;
         private Label label1;
