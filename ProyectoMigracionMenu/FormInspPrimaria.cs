@@ -2,6 +2,7 @@ using ProyectoMigracionMenu;
 using ProyectoMigracionMenu.Clases;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace interfaz_grafica_de_inspeccion_primaria
 {
@@ -46,7 +47,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     if (ta.Rows.Count > 0)
                     {
                         DataTable taEmision = ta.Copy();
-                        DataTable taNacionalidad = ta.Copy();
+                       
                         DataTable taDestino = ta.Copy();
                         DataTable taRes = ta.Copy();
                         DataTable taNac = ta.Copy();
@@ -56,10 +57,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                         cbPaisEmision.ValueMember = "IdPais";
                         cbPaisEmision.SelectedIndex = -1;
 
-                        cbNacionalidad.DataSource = taNacionalidad;
-                        cbNacionalidad.DisplayMember = "Descripcion";
-                        cbNacionalidad.ValueMember = "IdPais";
-                        cbNacionalidad.SelectedIndex = -1;
+                       
 
                         cbPaisDestino.DataSource = taDestino;
                         cbPaisDestino.DisplayMember = "Descripcion";
@@ -267,10 +265,11 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            btnGuardar.Enabled = false; 
+            btnGuardar.Enabled = false;
 
             using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
             {
+               
                 if (!gl.validaCombox(cbDoc, errorProvider1) ||
                     !gl.validaCombox(cbPaisEmision, errorProvider1) ||
                     !gl.validaCombox(cbTrabajo, errorProvider1) ||
@@ -278,10 +277,9 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     !gl.validaCombox(cbPaisNa, errorProvider1) ||
                     !gl.validaCombox(cbPaisDestino, errorProvider1) ||
                     !gl.validaCombox(cbMotivos, errorProvider1) ||
-                    !gl.validaCombox(cbSexo, errorProvider1) ||
-                    !gl.validaCombox(cbNacionalidad, errorProvider1))
+                    !gl.validaCombox(cbSexo, errorProvider1))
                 {
-                    btnGuardar.Enabled = true; 
+                    btnGuardar.Enabled = true;
                     return;
                 }
 
@@ -292,69 +290,74 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     string.IsNullOrWhiteSpace(txtObservaciones.Text))
                 {
                     MessageBox.Show("Campos obligatorios vacíos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    btnGuardar.Enabled = true; 
+                    btnGuardar.Enabled = true;
                     return;
                 }
 
-                if (txtNombre.Text.Length < 3)
+                if (txtNombre.Text.Length < 3 || txtApellido.Text.Length < 3)
                 {
-                    MessageBox.Show("El campo de nombre debe contener al menos 3 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtNombre.Focus();
-                    btnGuardar.Enabled = true; 
+                    MessageBox.Show("Los campos de nombre y apellido deben contener al menos 3 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnGuardar.Enabled = true;
                     return;
                 }
 
-                if (txtApellido.Text.Length < 3)
+              
+
+                if (txtResidencia.Text.Length < 20 || txtObservaciones.Text.Length < 20)
                 {
-                    MessageBox.Show("El campo de apellido debe contener al menos 3 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtApellido.Focus();
-                    btnGuardar.Enabled = true; 
+                    MessageBox.Show("Los campos de residencia y observaciones deben contener al menos 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnGuardar.Enabled = true;
                     return;
                 }
 
-                if (txtIdentidad.Text.Length < 13 || !System.Text.RegularExpressions.Regex.IsMatch(txtIdentidad.Text, @"^\d{13}$"))
+              
+                Image imagenOriginal = ObtenerImagenDesdeBaseDeDatos(txtIdentidad.Text);
+                if (imagenOriginal != null && ImagesAreEqual(pic.Image, imagenOriginal))
                 {
-                    MessageBox.Show("El campo de identidad debe contener exactamente 13 dígitos numéricos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtIdentidad.Focus();
-                    btnGuardar.Enabled = true; 
+                    MessageBox.Show("La imagen cargada ya existe. Debe proporcionar una imagen reciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    btnGuardar.Enabled = true;
                     return;
                 }
 
-                if (txtResidencia.Text.Length < 20)
-                {
-                    MessageBox.Show("El campo de residencia debe contener al menos 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtResidencia.Focus();
-                    btnGuardar.Enabled = true; 
-                    return;
-                }
-
-                if (txtObservaciones.Text.Length < 20)
-                {
-                    MessageBox.Show("El campo de observaciones debe contener al menos 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtObservaciones.Focus();
-                    btnGuardar.Enabled = true; 
-                    return;
-                }
+                byte[] fotografia = ImageToByteArray(pic.Image);
 
                 try
                 {
                     if (sqlcon.State != ConnectionState.Open)
                         sqlcon.Open();
 
-                   
-                    string query = "INSERT INTO [MigracionQA].[dbo].[Personas] (Apellidos, Nombres, Identidad, LugarResidencia) VALUES (@Apellido, @Nombre, @Identidad, @Residencia)";
+                    SqlCommand msc = new SqlCommand("InsertarPersona", sqlcon);
+                    msc.CommandType = CommandType.StoredProcedure;
+                    msc.Parameters.AddWithValue("@TipoDocumento", cbDoc.SelectedValue);
+                    msc.Parameters.AddWithValue("@Identidad", txtIdentidad.Text);
+                    msc.Parameters.AddWithValue("@Nombres", txtNombre.Text);
+                    msc.Parameters.AddWithValue("@Apellidos", txtApellido.Text);
+                    msc.Parameters.AddWithValue("@IdSexo", cbSexo.SelectedValue);
+                    msc.Parameters.AddWithValue("@IdPaisEmision", cbPaisEmision.SelectedValue);
+                    msc.Parameters.AddWithValue("@UsuarioCreado", Login.UsuarioActual.Nombre);
+                    msc.Parameters.AddWithValue("@f_regCreado", DateTime.Now);
+                    msc.Parameters.AddWithValue("@f_regFinal", dtpfechaVenci.Value);
+                    msc.Parameters.AddWithValue("@Estado", 1);
+                    msc.Parameters.AddWithValue("@IdPaisNacimiento", cbPaisNa.SelectedValue);
+                    msc.Parameters.AddWithValue("@IdPaisResidencia", cbPaisRes.SelectedValue);
+                    msc.Parameters.AddWithValue("@Observacion", txtObservaciones.Text);
+                    msc.Parameters.AddWithValue("@LugarResidencia", txtResidencia.Text);
+                    msc.Parameters.AddWithValue("@f_Nacimiento", dtpFechaNa.Value);
+                    msc.Parameters.AddWithValue("@IdMotivoViaje", cbMotivos.SelectedValue);
+                    msc.Parameters.AddWithValue("@IdPaisDestino", cbPaisDestino.SelectedValue);
+                    msc.Parameters.AddWithValue("@IdTrabajo", cbTrabajo.SelectedValue);
+                    msc.Parameters.AddWithValue("@Fotografia", fotografia);
+                    msc.Parameters.AddWithValue("@diasOtogados", txtEstadia.Text);
+                    msc.Parameters.AddWithValue("@DocumentoRobado", chk1.Checked);
+                    msc.Parameters.AddWithValue("@DocumentoVencido", chk2.Checked);
+                    msc.Parameters.AddWithValue("@Interpol", chk4.Checked);
+                    msc.Parameters.AddWithValue("@AlertaMigratoria", chk3.Checked);
+                    msc.Parameters.AddWithValue("@Prechequeo", chk5.Checked);
 
-                    using (SqlCommand cmd = new SqlCommand(query, sqlcon))
-                    {
-                        cmd.Parameters.AddWithValue("@Apellido", txtApellido.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Identidad", txtIdentidad.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Residencia", txtResidencia.Text.Trim());
+                    msc.ExecuteNonQuery();
 
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Registro agregado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnCancelar.PerformClick();
                 }
                 catch (Exception ex)
                 {
@@ -362,58 +365,8 @@ namespace interfaz_grafica_de_inspeccion_primaria
                 }
                 finally
                 {
-                    btnGuardar.Enabled = true; 
+                    btnGuardar.Enabled = true;
                 }
-
-
-                
-
-
-
-                Image imagenOriginal = ObtenerImagenDesdeBaseDeDatos(txtIdentidad.Text);
-
-
-                if (imagenOriginal != null && ImagesAreEqual(pic.Image, imagenOriginal))
-                {
-                    MessageBox.Show("La imagen cargada ya existe. Debe proporcionar una imagen reciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-
-                byte[] fotografia = ImageToByteArray(pic.Image);
-
-
-
-                SqlCommand msc = new SqlCommand("InsertarPersona", sqlcon);
-                msc.CommandType = CommandType.StoredProcedure;
-                msc.Parameters.AddWithValue("@TipoDocumento", cbDoc.SelectedValue);
-                msc.Parameters.AddWithValue("@Identidad", txtIdentidad.Text);
-                msc.Parameters.AddWithValue("@Nombres", txtNombre.Text);
-                msc.Parameters.AddWithValue("@Apellidos", txtApellido.Text);
-                msc.Parameters.AddWithValue("@IdSexo", cbSexo.SelectedValue);
-                msc.Parameters.AddWithValue("@IdPaisEmision", cbPaisEmision.SelectedValue);
-                msc.Parameters.AddWithValue("@UsuarioCreado", Login.UsuarioActual.Nombre);
-                msc.Parameters.AddWithValue("@f_regCreado", DateTime.Now);
-                msc.Parameters.AddWithValue("@f_regFinal", dtpfechaVenci.Value);
-                msc.Parameters.AddWithValue("@Estado", 1);
-                msc.Parameters.AddWithValue("@IdPaisNacimiento", cbPaisNa.SelectedValue);
-                msc.Parameters.AddWithValue("@IdPaisResidencia", cbPaisRes.SelectedValue);
-                msc.Parameters.AddWithValue("@Observacion", txtObservaciones.Text);
-                msc.Parameters.AddWithValue("@LugarResidencia", txtResidencia.Text);
-                msc.Parameters.AddWithValue("@f_Nacimiento", dtpFechaNa.Value);
-                msc.Parameters.AddWithValue("@IdMotivoViaje", cbMotivos.SelectedValue);
-                msc.Parameters.AddWithValue("@IdPaisDestino", cbPaisDestino.SelectedValue);
-                msc.Parameters.AddWithValue("@IdTrabajo", cbTrabajo.SelectedValue);
-                msc.Parameters.AddWithValue("@Fotografia", fotografia);
-                msc.Parameters.AddWithValue("@diasOtogados", txtEstadia.Text);
-                msc.Parameters.AddWithValue("@DocumentoRobado", chk1.Checked);
-                msc.Parameters.AddWithValue("@DocumentoVencido", chk2.Checked);
-                msc.Parameters.AddWithValue("@Interpol", chk4.Checked);
-                msc.Parameters.AddWithValue("@AlertaMigratoria", chk3.Checked);
-                msc.Parameters.AddWithValue("@Prechequeo", chk5.Checked);
-
-                msc.ExecuteNonQuery();
-                MessageBox.Show("Registro agregado con éxito. ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnCancelar.PerformClick();
             }
         }
 
@@ -453,7 +406,6 @@ namespace interfaz_grafica_de_inspeccion_primaria
         {
             try
             {
-
                 if (string.IsNullOrWhiteSpace(txtIdentidad.Text))
                 {
                     MessageBox.Show("Por favor, ingresa un número de documento válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -462,27 +414,26 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
                 using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
                 {
-                    int contador = 0;
+                    int contadorRechazos = 0; 
+                    int contadortxt = 0; 
+
                     if (listo == false)
                     {
-
                         query = "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, " +
                                 "CASE WHEN TipoDocumento = 1 THEN 'Identidad' " +
                                 "WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END tipoDocu, " +
                                 "A.Identidad no, E.Descripcion Origen, I.Descripcion Destino, " +
                                 "A.Observacion Observaciones, A.UsuarioCreado usuario, A.Nombres, A.Apellidos, " +
                                 "A.Fotografia Imagen, A.f_Nacimiento, A.IdSexo, A.IdPaisNacimiento, " +
-                                "A.IdPaisEmision, A.f_regFinal, A.TipoDocumento " +
+                                "A.IdPaisEmision, A.f_regFinal, A.TipoDocumento, A.Estado " + 
                                 "FROM Personas A " +
                                 "INNER JOIN Pais E ON A.IdPaisResidencia = E.IdPais " +
                                 "INNER JOIN Pais I ON A.IdPaisDestino = I.IdPais " +
                                 "WHERE A.Identidad = @Identidad";
 
-
                         using (SqlCommand cmd = new SqlCommand(query, sqlcon))
                         {
                             cmd.Parameters.AddWithValue("@Identidad", txtIdentidad.Text.Trim());
-
 
                             using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                             {
@@ -493,22 +444,30 @@ namespace interfaz_grafica_de_inspeccion_primaria
                                 {
                                     foreach (DataRow row in personas.Rows)
                                     {
+                                        
+                                        if (row["Estado"] != DBNull.Value)
+                                        {
+                                            int estado = Convert.ToInt32(row["Estado"]);
+                                            if (estado == 0) contadorRechazos++; 
+                                            if (estado == 2) contadortxt++;      
+                                        }
+
+                                        
                                         dgvTransacciones.Rows.Add(row["Fecha"].ToString(), row["tipoDocu"].ToString(), row["no"].ToString(), row["Origen"].ToString(), row["Destino"].ToString());
                                         dgvObservaciones.Rows.Add(row["Observaciones"].ToString(), row["usuario"].ToString());
-                                        contador++;
                                     }
+
+                                 
                                     txtNombre.Text = personas.Rows[0]["Nombres"].ToString();
                                     txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
-
-
                                     dtpFechaNa.Value = Convert.ToDateTime(personas.Rows[0]["f_Nacimiento"]);
                                     cbSexo.SelectedValue = personas.Rows[0]["IdSexo"];
-                                    cbNacionalidad.SelectedValue = personas.Rows[0]["IdPaisNacimiento"];
+                                    cbPaisNa.SelectedValue = personas.Rows[0]["IdPaisNacimiento"];
                                     cbDoc.SelectedValue = personas.Rows[0]["TipoDocumento"];
                                     cbPaisEmision.SelectedValue = personas.Rows[0]["IdPaisEmision"];
                                     dtpfechaVenci.Value = Convert.ToDateTime(personas.Rows[0]["f_regFinal"]);
 
-
+                                   
                                     if (personas.Rows[0]["Imagen"] != DBNull.Value)
                                     {
                                         byte[] imagenBytes = (byte[])personas.Rows[0]["Imagen"];
@@ -522,7 +481,11 @@ namespace interfaz_grafica_de_inspeccion_primaria
                                         pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
                                     }
 
-                                    contadortxtx.Text = Convert.ToString(contador);
+                                   
+                                    contadorNegadoTxt.Text = contadorRechazos.ToString(); 
+
+                                    contadortxtx.Text = Convert.ToString(contadortxt);
+
                                     listo = true;
                                 }
                                 else
@@ -555,7 +518,9 @@ namespace interfaz_grafica_de_inspeccion_primaria
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             gl.limpiarcampos(Documentoviaje);
-            gl.limpiarcampos(groupBox3);
+            
+            cbTrabajo.SelectedIndex = -1;
+            cbPaisRes.SelectedIndex = -1;
             gl.limpiarcampos(groupBox4);
             gl.limpiarcampos(groupBox4);
             gl.limpiarcampos(datosdeviaje);
@@ -568,7 +533,10 @@ namespace interfaz_grafica_de_inspeccion_primaria
             dgvTransacciones.DataSource = null;
             dgvTransacciones.Rows.Clear();
             contadortxtx.Text = "";
+            contadorNegadoTxt.Text = ""; 
             errorProvider1.Clear();
+            dtpFechaNa.Value = DateTime.Now;
+            dtpfechaVenci.Value = DateTime.Now; 
         }
 
         private void cbDoc_SelectedIndexChanged(object sender, EventArgs e)
@@ -605,7 +573,6 @@ namespace interfaz_grafica_de_inspeccion_primaria
         {
             string texto = txtIdentidad.Text;
 
-            // Valida que solo contenga hasta 13 dígitos numéricos
             if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^\d{0,13}$"))
             {
                 MessageBox.Show("Solo se permiten hasta 13 dígitos numéricos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -670,15 +637,13 @@ namespace interfaz_grafica_de_inspeccion_primaria
             string texto = txtResidencia.Text;
 
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s]{0,80}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s.,#áéíóúÁÉÍÓÚ]{0,80}$"))
             {
-
-                MessageBox.Show("Solo se permiten letras, números y espacios. Máximo 80 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Solo se permiten letras, números, espacios, comas, puntos, el signo # y vocales con tilde. Máximo 80 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtResidencia.Text = texto.Substring(0, texto.Length - 1);
                 txtResidencia.SelectionStart = txtResidencia.Text.Length;
                 return;
             }
-
 
             if (texto.Length > 0 && texto.Length < 20)
             {
@@ -695,17 +660,15 @@ namespace interfaz_grafica_de_inspeccion_primaria
         private void txtObservaciones_TextChanged(object sender, EventArgs e)
         {
             string texto = txtObservaciones.Text;
-
-            // Verificar que el texto solo contenga letras, números y espacios, y tenga un máximo de 150 caracteres
-            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s]{0,150}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]{0,150}$"))
             {
-                MessageBox.Show("Solo se permiten letras, números y espacios. Máximo 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtObservaciones.Text = texto.Substring(0, texto.Length - 1); // Eliminar el último caracter
+                MessageBox.Show("Solo se permiten letras, números, espacios, puntos, comas y vocales con tilde. Máximo 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtObservaciones.Text = texto.Substring(0, texto.Length - 1); 
                 txtObservaciones.SelectionStart = txtObservaciones.Text.Length;
                 return;
             }
 
-            // Validar que el texto tenga al menos 20 caracteres
+            
             if (texto.Length > 0 && texto.Length < 20)
             {
                 errorProvider1.SetError(txtObservaciones, "Debe contener al menos 20 caracteres.");
@@ -721,16 +684,16 @@ namespace interfaz_grafica_de_inspeccion_primaria
         {
             string texto = txtNombre.Text;
 
-            // Validación para solo permitir letras y espacios, entre 0 y 20 caracteres
-            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z\s]{0,20}$"))
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{0,20}$"))
             {
                 MessageBox.Show("Solo se permiten letras y espacios. Entre 3 y 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtNombre.Text = texto.Substring(0, texto.Length - 1); // Eliminar el último caracter
+                txtNombre.Text = texto.Substring(0, texto.Length - 1); 
                 txtNombre.SelectionStart = txtNombre.Text.Length;
                 return;
             }
 
-            // Validar que el texto tenga al menos 3 caracteres
+
             if (texto.Length > 0 && texto.Length < 3)
             {
                 errorProvider1.SetError(txtNombre, "Debe contener al menos 3 caracteres.");
@@ -753,16 +716,16 @@ namespace interfaz_grafica_de_inspeccion_primaria
         {
             string texto = txtApellido.Text;
 
-            // Validación para solo permitir letras y espacios, entre 0 y 20 caracteres
-            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z\s]{0,20}$"))
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{0,20}$"))
             {
                 MessageBox.Show("Solo se permiten letras y espacios. Entre 3 y 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtApellido.Text = texto.Substring(0, texto.Length - 1); // Eliminar el último caracter
+                txtApellido.Text = texto.Substring(0, texto.Length - 1); 
                 txtApellido.SelectionStart = txtApellido.Text.Length;
                 return;
             }
 
-            // Validar que el texto tenga al menos 3 caracteres
+
             if (texto.Length > 0 && texto.Length < 3)
             {
                 errorProvider1.SetError(txtApellido, "Debe contener al menos 3 caracteres.");

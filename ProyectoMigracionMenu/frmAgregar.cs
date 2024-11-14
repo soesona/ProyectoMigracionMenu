@@ -53,7 +53,8 @@ namespace ProyectoMigracionMenu
             {
                 if (!string.IsNullOrWhiteSpace(txtAgregar.Text))
                 {
-                    if (txtAgregar.Text.Length <= 20 && System.Text.RegularExpressions.Regex.IsMatch(txtAgregar.Text, @"^[a-zA-Z ]+$"))
+                   
+                    if (txtAgregar.Text.Length <= 20 && System.Text.RegularExpressions.Regex.IsMatch(txtAgregar.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"))
                     {
                         query = "insert into " + _tabla + " (Descripcion, f_regCreado, Activo) values ('" + txtAgregar.Text + "',GETDATE(), 1)";
                         gl.registra(query, sqlcon);
@@ -63,7 +64,7 @@ namespace ProyectoMigracionMenu
                     }
                     else
                     {
-                        MessageBox.Show("El texto ingresado solo debe contener letras y espacios, y no puede exceder los 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El texto ingresado solo debe contener letras, espacios, y no puede exceder los 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtAgregar.Focus();
                     }
                 }

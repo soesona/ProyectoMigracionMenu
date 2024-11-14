@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[24.1.6, )"
             },
+            "DevExpress.Win.Design": {
+              "target": "Package",
+              "version": "[24.1.6, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.8.0, )"
@@ -85,7 +89,7 @@
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "Microsoft.WindowsDesktop.App": {
               "privateAssets": "none"
             }
           },

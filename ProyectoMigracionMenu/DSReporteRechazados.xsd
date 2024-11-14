@@ -16,8 +16,8 @@
                         CONCAT(m.Nombres, ' ', m.Apellidos) AS NombreCompleto,
                         m.Identidad AS NumeroDocumento,
                         DATEDIFF(YEAR, m.f_Nacimiento, GETDATE()) AS Edad,
-                        CASE WHEN m.IdSexo = 1 THEN 'Femenino' 
-                             WHEN m.IdSexo = 2 THEN 'Masculino' 
+                        CASE WHEN m.IdSexo = 1 THEN 'Masculino' 
+                             WHEN m.IdSexo = 2 THEN 'Femenino' 
                         END AS Sexo,
                         pbn.Descripcion AS PaisNacimiento,
                         pbd.Descripcion AS PaisDestino

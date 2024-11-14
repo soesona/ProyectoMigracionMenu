@@ -109,6 +109,26 @@
           }
         }
       },
+      "DevExpress.Data.Desktop/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.Data.Desktop.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.Data.Desktop.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/netcoreapp3.0/DevExpress.Data.Desktop.props": {}
+        }
+      },
       "DevExpress.DataAccess/24.1.6": {
         "type": "package",
         "dependencies": {
@@ -132,6 +152,38 @@
           }
         }
       },
+      "DevExpress.DataAccess.UI/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.CodeParser": "[24.1.6]",
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.DataAccess": "[24.1.6]",
+          "DevExpress.Diagram.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.RichEdit.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Utils.UI": "[24.1.6]",
+          "DevExpress.Win.Diagram": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.RichEdit": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]",
+          "DevExpress.Xpo": "[24.1.6]",
+          "System.Data.SqlClient": "4.8.6"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.DataAccess.v24.1.UI.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.DataAccess.v24.1.UI.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "DevExpress.DataVisualization.Core/24.1.6": {
         "type": "package",
         "dependencies": {
@@ -143,6 +195,25 @@
         },
         "runtime": {
           "lib/net6.0/DevExpress.DataVisualization.v24.1.Core.dll": {}
+        }
+      },
+      "DevExpress.Diagram.Core/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.Diagram.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.Diagram.v24.1.Core.dll": {
+            "related": ".xml"
+          }
         }
       },
       "DevExpress.Drawing/24.1.6": {
@@ -177,6 +248,52 @@
         },
         "runtime": {
           "lib/net6.0/DevExpress.XtraGauges.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Images/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "System.Drawing.Common": "4.7.2"
+        },
+        "compile": {
+          "lib/net6.0/DevExpress.Images.v24.1.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/DevExpress.Images.v24.1.dll": {}
+        }
+      },
+      "DevExpress.Map.Core/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "System.Drawing.Common": "4.7.2"
+        },
+        "compile": {
+          "lib/net6.0/DevExpress.Map.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/DevExpress.Map.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Mvvm/24.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows/DevExpress.Mvvm.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.Mvvm.v24.1.dll": {
             "related": ".xml"
           }
         }
@@ -359,6 +476,44 @@
           "lib/net6.0/DevExpress.RichEdit.v24.1.Export.dll": {}
         }
       },
+      "DevExpress.Scheduler.Core/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "System.Drawing.Common": "4.7.2"
+        },
+        "compile": {
+          "lib/net6.0/DevExpress.XtraScheduler.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/DevExpress.XtraScheduler.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Scheduler.CoreDesktop/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Images": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Scheduler.Core": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Core.Desktop.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Core.Desktop.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "DevExpress.Sparkline.Core/24.1.6": {
         "type": "package",
         "dependencies": {
@@ -373,6 +528,759 @@
         },
         "runtime": {
           "lib/net6.0/DevExpress.Sparkline.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.SpellChecker.Core/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0/DevExpress.SpellChecker.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/DevExpress.SpellChecker.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Spreadsheet.Core/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.DataAccess": "[24.1.6]",
+          "DevExpress.DataVisualization.Core": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Office.Core": "[24.1.6]",
+          "DevExpress.Pdf.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Sparkline.Core": "[24.1.6]",
+          "System.Drawing.Common": "4.7.2"
+        },
+        "compile": {
+          "lib/net6.0/DevExpress.Spreadsheet.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/DevExpress.Spreadsheet.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.TreeMap/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.DataVisualization.Core": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.TreeMap.Core": "[24.1.6]",
+          "System.Drawing.Common": "4.7.2"
+        },
+        "compile": {
+          "lib/net6.0/DevExpress.XtraTreeMap.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/DevExpress.XtraTreeMap.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.TreeMap.Core/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0/DevExpress.TreeMap.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/DevExpress.TreeMap.v24.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Utils/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.Utils.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.Utils.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Utils.UI/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.DataAccess": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.RichEdit.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.RichEdit": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]",
+          "DevExpress.Win.VerticalGrid": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.Utils.v24.1.UI.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.Utils.v24.1.UI.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.RichEdit.Export": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.PivotGrid": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]",
+          "DevExpress.Win.VerticalGrid": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraNavBar.v24.1.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraWizard.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraNavBar.v24.1.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraWizard.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Charts/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Charts": "[24.1.6]",
+          "DevExpress.Charts.Core": "[24.1.6]",
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.DataAccess.UI": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Utils.UI": "[24.1.6]",
+          "DevExpress.Win": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]",
+          "DevExpress.Win.VerticalGrid": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.Extensions.dll": {},
+          "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.UI.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.Wizard.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.Extensions.dll": {},
+          "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.UI.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.Wizard.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Design/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Mvvm": "[24.1.6]",
+          "DevExpress.Win": "[24.1.6]",
+          "DevExpress.Win.Charts": "[24.1.6]",
+          "DevExpress.Win.Diagram": "[24.1.6]",
+          "DevExpress.Win.Dialogs": "[24.1.6]",
+          "DevExpress.Win.Gantt": "[24.1.6]",
+          "DevExpress.Win.Gauges": "[24.1.6]",
+          "DevExpress.Win.Map": "[24.1.6]",
+          "DevExpress.Win.PdfViewer": "[24.1.6]",
+          "DevExpress.Win.Reporting": "[24.1.6]",
+          "DevExpress.Win.RichEdit": "[24.1.6]",
+          "DevExpress.Win.SchedulerExtensions": "[24.1.6]",
+          "DevExpress.Win.SpellChecker": "[24.1.6]",
+          "DevExpress.Win.Spreadsheet": "[24.1.6]",
+          "DevExpress.Win.TreeMap": "[24.1.6]",
+          "DevExpress.Xpo": "[24.1.6]"
+        }
+      },
+      "DevExpress.Win.Diagram/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Diagram.Core": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Pdf.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.VerticalGrid": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraDiagram.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraDiagram.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Dialogs/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Dialogs.Core": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraDialogs.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraDialogs.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Dialogs.Core/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.Dialogs.v24.1.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.Dialogs.v24.1.Core.dll": {}
+        }
+      },
+      "DevExpress.Win.Gantt/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraGantt.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraGantt.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Gauges/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Gauges.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Presets.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Win.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Presets.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Win.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Grid/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraGrid.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraGrid.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Map/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Map.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "System.Data.SqlClient": "4.8.6"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraMap.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraMap.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Navigation/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Sparkline.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraBars.v24.1.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraEditors.v24.1.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraLayout.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraBars.v24.1.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraEditors.v24.1.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraLayout.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.PdfViewer/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Pdf.Core": "[24.1.6]",
+          "DevExpress.Pdf.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraPdfViewer.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraPdfViewer.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.PivotGrid/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.PivotGrid.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraPivotGrid.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraPivotGrid.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Printing/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.RichEdit.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraPrinting.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraPrinting.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Reporting/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Charts": "[24.1.6]",
+          "DevExpress.Charts.Core": "[24.1.6]",
+          "DevExpress.CodeParser": "[24.1.6]",
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.DataAccess": "[24.1.6]",
+          "DevExpress.DataAccess.UI": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Gauges.Core": "[24.1.6]",
+          "DevExpress.Office.Core": "[24.1.6]",
+          "DevExpress.PivotGrid.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Reporting.Core": "[24.1.6]",
+          "DevExpress.RichEdit.Core": "[24.1.6]",
+          "DevExpress.Sparkline.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Utils.UI": "[24.1.6]",
+          "DevExpress.Win": "[24.1.6]",
+          "DevExpress.Win.Charts": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.PivotGrid": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.RichEdit": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]",
+          "DevExpress.Win.VerticalGrid": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraReports.v24.1.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraReports.v24.1.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.RichEdit/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Images": "[24.1.6]",
+          "DevExpress.Office.Core": "[24.1.6]",
+          "DevExpress.Pdf.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.RichEdit.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraRichEdit.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraRichEdit.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Scheduler/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Scheduler.Core": "[24.1.6]",
+          "DevExpress.Scheduler.CoreDesktop": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.SchedulerExtensions/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Reporting.Core": "[24.1.6]",
+          "DevExpress.Scheduler.Core": "[24.1.6]",
+          "DevExpress.Scheduler.CoreDesktop": "[24.1.6]",
+          "DevExpress.SpellChecker.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.Reporting": "[24.1.6]",
+          "DevExpress.Win.Scheduler": "[24.1.6]",
+          "DevExpress.Win.SchedulerReporting": "[24.1.6]",
+          "DevExpress.Win.SpellChecker": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Extensions.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Extensions.dll": {
+            "related": ".xml"
+          },
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.SchedulerReporting/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Reporting.Core": "[24.1.6]",
+          "DevExpress.Scheduler.Core": "[24.1.6]",
+          "DevExpress.Scheduler.CoreDesktop": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.Scheduler": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.SpellChecker/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.SpellChecker.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraSpellChecker.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraSpellChecker.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.Spreadsheet/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Charts": "[24.1.6]",
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.DataAccess": "[24.1.6]",
+          "DevExpress.DataAccess.UI": "[24.1.6]",
+          "DevExpress.DataVisualization.Core": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Images": "[24.1.6]",
+          "DevExpress.Office.Core": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.RichEdit.Core": "[24.1.6]",
+          "DevExpress.Spreadsheet.Core": "[24.1.6]",
+          "DevExpress.TreeMap": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Utils.UI": "[24.1.6]",
+          "DevExpress.Win": "[24.1.6]",
+          "DevExpress.Win.Grid": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]",
+          "DevExpress.Win.RichEdit": "[24.1.6]",
+          "DevExpress.Win.TreeList": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraSpreadsheet.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraSpreadsheet.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.TreeList/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraTreeList.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraTreeList.v24.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.TreeMap/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.TreeMap": "[24.1.6]",
+          "DevExpress.TreeMap.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraTreeMap.v24.1.UI.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraTreeMap.v24.1.UI.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Win.VerticalGrid/24.1.6": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data.Desktop": "[24.1.6]",
+          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Utils": "[24.1.6]",
+          "DevExpress.Win.Navigation": "[24.1.6]",
+          "DevExpress.Win.Printing": "[24.1.6]"
+        },
+        "compile": {
+          "lib/net6.0-windows/DevExpress.XtraVerticalGrid.v24.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows/DevExpress.XtraVerticalGrid.v24.1.dll": {
             "related": ".xml"
           }
         }
@@ -1957,6 +2865,22 @@
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
+    "DevExpress.Data.Desktop/24.1.6": {
+      "sha512": "kjX0ycTXKRObnSLk1nvlhxni8z8RgCQ8REW3He+BOfvP1h75XTczF7N1x8yGRMUTxnmChu3sxBxzdbVbEwVenA==",
+      "type": "package",
+      "path": "devexpress.data.desktop/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/netcoreapp3.0/DevExpress.Data.Desktop.props",
+        "devexpress.data.desktop.24.1.6.nupkg.sha512",
+        "devexpress.data.desktop.nuspec",
+        "lib/net452/DevExpress.Data.Desktop.v24.1.dll",
+        "lib/net452/DevExpress.Data.Desktop.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.Data.Desktop.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.Data.Desktop.v24.1.xml"
+      ]
+    },
     "DevExpress.DataAccess/24.1.6": {
       "sha512": "eg3IyVFr/gWUnZPSQoxrwY6rYvOruxv/SOq6IyAVj7fFT9BGhqzN5umZVUl1wLu1gjDpIcjq3JgoSXUrna6ITw==",
       "type": "package",
@@ -1974,6 +2898,25 @@
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
+    "DevExpress.DataAccess.UI/24.1.6": {
+      "sha512": "hrFsf++Jy7MiERFzbLCffZMWbLQzGICbCECncKZ7fGLZt4X1451uIYOtgKhGDe1u3Yuu5uW2jWvzjwXQO2mMeQ==",
+      "type": "package",
+      "path": "devexpress.dataaccess.ui/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.dataaccess.ui.24.1.6.nupkg.sha512",
+        "devexpress.dataaccess.ui.nuspec",
+        "lib/net452/DevExpress.DataAccess.v24.1.UI.dll",
+        "lib/net452/DevExpress.DataAccess.v24.1.UI.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.DataAccess.v24.1.Design.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.Xpo.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.DataAccess.v24.1.UI.dll",
+        "lib/net6.0-windows/DevExpress.DataAccess.v24.1.UI.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
     "DevExpress.DataVisualization.Core/24.1.6": {
       "sha512": "ucUDKuDLBhgEJJVHX5FMItMoUTaJKRbbszx9yzBRs1GxD+G2v1KlGHCHCiiVkghWhZ4EFOpxxArRjRN6YqlzyQ==",
       "type": "package",
@@ -1985,6 +2928,21 @@
         "devexpress.datavisualization.core.nuspec",
         "lib/net452/DevExpress.DataVisualization.v24.1.Core.dll",
         "lib/net6.0/DevExpress.DataVisualization.v24.1.Core.dll"
+      ]
+    },
+    "DevExpress.Diagram.Core/24.1.6": {
+      "sha512": "ZPKKE7ye9TaNWeQ8S/spWOu4uJVvzy1yqdn5qLZ6NCgojTVK/9nK5XXwCU+jx4ZqmXT736tVOwANgHqh+T6ceA==",
+      "type": "package",
+      "path": "devexpress.diagram.core/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.diagram.core.24.1.6.nupkg.sha512",
+        "devexpress.diagram.core.nuspec",
+        "lib/net452/DevExpress.Diagram.v24.1.Core.dll",
+        "lib/net452/DevExpress.Diagram.v24.1.Core.xml",
+        "lib/net6.0-windows/DevExpress.Diagram.v24.1.Core.dll",
+        "lib/net6.0-windows/DevExpress.Diagram.v24.1.Core.xml"
       ]
     },
     "DevExpress.Drawing/24.1.6": {
@@ -2015,6 +2973,49 @@
         "lib/net452/DevExpress.XtraGauges.v24.1.Core.xml",
         "lib/net6.0/DevExpress.XtraGauges.v24.1.Core.dll",
         "lib/net6.0/DevExpress.XtraGauges.v24.1.Core.xml"
+      ]
+    },
+    "DevExpress.Images/24.1.6": {
+      "sha512": "kgbbdLta4w9fK0Nypoe290Skqeue4rxu54nD2AoX0zINuCQmQFEdSDI3XvpfbV8urLuNaljjnYLgNozeAAPEmw==",
+      "type": "package",
+      "path": "devexpress.images/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.images.24.1.6.nupkg.sha512",
+        "devexpress.images.nuspec",
+        "lib/net452/DevExpress.Images.v24.1.dll",
+        "lib/net6.0/DevExpress.Images.v24.1.dll"
+      ]
+    },
+    "DevExpress.Map.Core/24.1.6": {
+      "sha512": "u/vdbF0xBa2vcdNDjmyKP20LyYQ4QG5k85A/Ckxgrd3EAaMkzfyiN+L2LgED71xKW2R0ZNjBVHS6f/A7jB6edw==",
+      "type": "package",
+      "path": "devexpress.map.core/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.map.core.24.1.6.nupkg.sha512",
+        "devexpress.map.core.nuspec",
+        "lib/net452/DevExpress.Map.v24.1.Core.dll",
+        "lib/net452/DevExpress.Map.v24.1.Core.xml",
+        "lib/net6.0/DevExpress.Map.v24.1.Core.dll",
+        "lib/net6.0/DevExpress.Map.v24.1.Core.xml"
+      ]
+    },
+    "DevExpress.Mvvm/24.1.6": {
+      "sha512": "/5hu5VdJM9/hCqUsfVYeK3fVgpXiOmpnf552lylWItD8KSpl5HsHG+lK25HZl8/Y2VgbKZoGNxZeCvru7woo5Q==",
+      "type": "package",
+      "path": "devexpress.mvvm/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.mvvm.24.1.6.nupkg.sha512",
+        "devexpress.mvvm.nuspec",
+        "lib/net452/DevExpress.Mvvm.v24.1.dll",
+        "lib/net452/DevExpress.Mvvm.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.Mvvm.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.Mvvm.v24.1.xml"
       ]
     },
     "DevExpress.Office.Core/24.1.6": {
@@ -2138,6 +3139,36 @@
         "lib/net6.0/DevExpress.RichEdit.v24.1.Export.dll"
       ]
     },
+    "DevExpress.Scheduler.Core/24.1.6": {
+      "sha512": "Zs9u6tBmmB1PJdWpa39nH0oiLcYpvS8r48qNSluurf5ktCZcZZOoJbal7ySu3BfEBX/fEks/w7o9NGUrBb6axA==",
+      "type": "package",
+      "path": "devexpress.scheduler.core/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.scheduler.core.24.1.6.nupkg.sha512",
+        "devexpress.scheduler.core.nuspec",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Core.dll",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Core.xml",
+        "lib/net6.0/DevExpress.XtraScheduler.v24.1.Core.dll",
+        "lib/net6.0/DevExpress.XtraScheduler.v24.1.Core.xml"
+      ]
+    },
+    "DevExpress.Scheduler.CoreDesktop/24.1.6": {
+      "sha512": "98A4gZUqZKlVM6K7PonDL41LFMDgLtzptS5noIpehVqAnLZEyO5t5XC3HcE3hNH7wM7WjmVoJCRp/w9WCkjt8Q==",
+      "type": "package",
+      "path": "devexpress.scheduler.coredesktop/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.scheduler.coredesktop.24.1.6.nupkg.sha512",
+        "devexpress.scheduler.coredesktop.nuspec",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Core.Desktop.dll",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Core.Desktop.xml",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Core.Desktop.dll",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Core.Desktop.xml"
+      ]
+    },
     "DevExpress.Sparkline.Core/24.1.6": {
       "sha512": "eEU1mP+GxQBDdev3IX4cV+ceWenQ1JI2xZqI2R7gPIp90OO2Oai0xh1VWTWmIHWKl5zyoDY4EuGsYdI7OROSZw==",
       "type": "package",
@@ -2151,6 +3182,589 @@
         "lib/net452/DevExpress.Sparkline.v24.1.Core.xml",
         "lib/net6.0/DevExpress.Sparkline.v24.1.Core.dll",
         "lib/net6.0/DevExpress.Sparkline.v24.1.Core.xml"
+      ]
+    },
+    "DevExpress.SpellChecker.Core/24.1.6": {
+      "sha512": "ETWq7JTIzS+81iqsUBJDMB4T5B5+3xeyVrIzMkRywhiOUSc8AvaAgtbxv6Xflj3qoxFWlTJbi7Lv1XZs2CAzaQ==",
+      "type": "package",
+      "path": "devexpress.spellchecker.core/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.spellchecker.core.24.1.6.nupkg.sha512",
+        "devexpress.spellchecker.core.nuspec",
+        "lib/net452/DevExpress.SpellChecker.v24.1.Core.dll",
+        "lib/net452/DevExpress.SpellChecker.v24.1.Core.xml",
+        "lib/net6.0/DevExpress.SpellChecker.v24.1.Core.dll",
+        "lib/net6.0/DevExpress.SpellChecker.v24.1.Core.xml"
+      ]
+    },
+    "DevExpress.Spreadsheet.Core/24.1.6": {
+      "sha512": "EOOVjybr/9WA7ydFN1kGyCLC9reOmcBGG7CI5gUAYak5xsEbXzMPg24fvkqixtOt/d8PEYIjaKdGzlM5zuaLLQ==",
+      "type": "package",
+      "path": "devexpress.spreadsheet.core/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.spreadsheet.core.24.1.6.nupkg.sha512",
+        "devexpress.spreadsheet.core.nuspec",
+        "lib/net452/DevExpress.Spreadsheet.v24.1.Core.dll",
+        "lib/net452/DevExpress.Spreadsheet.v24.1.Core.xml",
+        "lib/net6.0/DevExpress.Spreadsheet.v24.1.Core.dll",
+        "lib/net6.0/DevExpress.Spreadsheet.v24.1.Core.xml"
+      ]
+    },
+    "DevExpress.TreeMap/24.1.6": {
+      "sha512": "eNgf0H+JVedB4nZQG+Gt1yWTp+29o7mue2SHwbaljYPU3wG4TLaMQ1WCnsmKZljdT9jMCKVuKXTn9s0JgJHoTw==",
+      "type": "package",
+      "path": "devexpress.treemap/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.treemap.24.1.6.nupkg.sha512",
+        "devexpress.treemap.nuspec",
+        "lib/net452/DevExpress.XtraTreeMap.v24.1.dll",
+        "lib/net452/DevExpress.XtraTreeMap.v24.1.xml",
+        "lib/net6.0/DevExpress.XtraTreeMap.v24.1.dll",
+        "lib/net6.0/DevExpress.XtraTreeMap.v24.1.xml"
+      ]
+    },
+    "DevExpress.TreeMap.Core/24.1.6": {
+      "sha512": "AiUhJWCUVfA5WOghtRydwLzDygRol23plIrTCGIn5u/cS6G94ABG9KnqadzYCpheJkPmJkuYv7OiLBQFk2vWeg==",
+      "type": "package",
+      "path": "devexpress.treemap.core/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.treemap.core.24.1.6.nupkg.sha512",
+        "devexpress.treemap.core.nuspec",
+        "lib/net452/DevExpress.TreeMap.v24.1.Core.dll",
+        "lib/net452/DevExpress.TreeMap.v24.1.Core.xml",
+        "lib/net6.0/DevExpress.TreeMap.v24.1.Core.dll",
+        "lib/net6.0/DevExpress.TreeMap.v24.1.Core.xml"
+      ]
+    },
+    "DevExpress.Utils/24.1.6": {
+      "sha512": "chbUgAbNqeG39xLT43tu5FW6d79qGMOQpCR9jeGUggrLJzy+ISAOywfykFEQ0t1lHQisPxv7n4vj4NkU5hDhHQ==",
+      "type": "package",
+      "path": "devexpress.utils/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.utils.24.1.6.nupkg.sha512",
+        "devexpress.utils.nuspec",
+        "lib/net452/DevExpress.Utils.v24.1.dll",
+        "lib/net452/DevExpress.Utils.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.Utils.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.Utils.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Utils.UI/24.1.6": {
+      "sha512": "EWq4r71viz2j7d2ZQ3MeHAsvsg1G23UWft1mmnwU7BS0rHxHWWB0NmafMRjAmWWJeMOvPsWxjkElO3ZhmocBCA==",
+      "type": "package",
+      "path": "devexpress.utils.ui/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.utils.ui.24.1.6.nupkg.sha512",
+        "devexpress.utils.ui.nuspec",
+        "lib/net452/DevExpress.Utils.v24.1.UI.dll",
+        "lib/net452/DevExpress.Utils.v24.1.UI.xml",
+        "lib/net6.0-windows/DevExpress.Utils.v24.1.UI.dll",
+        "lib/net6.0-windows/DevExpress.Utils.v24.1.UI.xml"
+      ]
+    },
+    "DevExpress.Win/24.1.6": {
+      "sha512": "tE6MTCqbSg7PXFTe0zQeyMGJAdIMUJd1uWRfwQPrrTWWg3yY60EGqFGC2GLGt4ryh6g8nf1+joEsGyTzoFD2rg==",
+      "type": "package",
+      "path": "devexpress.win/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.24.1.6.nupkg.sha512",
+        "devexpress.win.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraNavBar.v24.1.Design.dll",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraWizard.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraNavBar.v24.1.dll",
+        "lib/net452/DevExpress.XtraNavBar.v24.1.xml",
+        "lib/net452/DevExpress.XtraWizard.v24.1.dll",
+        "lib/net452/DevExpress.XtraWizard.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraNavBar.v24.1.Design.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraWizard.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraNavBar.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraNavBar.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.XtraWizard.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraWizard.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Charts/24.1.6": {
+      "sha512": "iPpN4pHwEUTBl/pc4o4rKPnklVRx1WijxVR3pqv6MM4DvgfblLlY+aoAxGNcFjjIAh2w/VJ5JOb5Dzrkr+v9kQ==",
+      "type": "package",
+      "path": "devexpress.win.charts/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.charts.24.1.6.nupkg.sha512",
+        "devexpress.win.charts.nuspec",
+        "lib/net452/DevExpress.XtraCharts.v24.1.Extensions.dll",
+        "lib/net452/DevExpress.XtraCharts.v24.1.UI.dll",
+        "lib/net452/DevExpress.XtraCharts.v24.1.UI.xml",
+        "lib/net452/DevExpress.XtraCharts.v24.1.Wizard.dll",
+        "lib/net452/DevExpress.XtraCharts.v24.1.Wizard.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraCharts.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.Extensions.dll",
+        "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.UI.dll",
+        "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.UI.xml",
+        "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.Wizard.dll",
+        "lib/net6.0-windows/DevExpress.XtraCharts.v24.1.Wizard.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Design/24.1.6": {
+      "sha512": "V5gLGmiXLOeGiDj7OM4W/7W+02zkzIB99L3LiDeDwOUvl7ABjnD9SR9v47ofERT6aC3Muls3YyCjam2rdZUiEw==",
+      "type": "package",
+      "path": "devexpress.win.design/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.design.24.1.6.nupkg.sha512",
+        "devexpress.win.design.nuspec"
+      ]
+    },
+    "DevExpress.Win.Diagram/24.1.6": {
+      "sha512": "pSl6GC3F/f65z0rg7jRPzncaZKEo5Q5Qjjd2Uksbn78PDRyZoF7HHj0rrodanM9ThKmKkE9awE+XOfNVOtVnIQ==",
+      "type": "package",
+      "path": "devexpress.win.diagram/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.diagram.24.1.6.nupkg.sha512",
+        "devexpress.win.diagram.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraDiagram.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraDiagram.v24.1.dll",
+        "lib/net452/DevExpress.XtraDiagram.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraDiagram.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraDiagram.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraDiagram.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Dialogs/24.1.6": {
+      "sha512": "yL1ikpXcdviVJHoX0Qv7iTLAUvzYNRzFEY1jVB8P1xJ0m4Tk00mLjO5u3I0Zvkv53DGi/XVjUhMWpxD8HLkOWw==",
+      "type": "package",
+      "path": "devexpress.win.dialogs/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.dialogs.24.1.6.nupkg.sha512",
+        "devexpress.win.dialogs.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraDialogs.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraDialogs.v24.1.dll",
+        "lib/net452/DevExpress.XtraDialogs.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraDialogs.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraDialogs.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraDialogs.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Dialogs.Core/24.1.6": {
+      "sha512": "8GrKExGo1RybfQ8SFc9GLcOdEw7y25QFQbyQLPcdSsZ0RZMGAthraOiO6/bwjQlA0+qs/xsOANVRFUU1wXK9Eg==",
+      "type": "package",
+      "path": "devexpress.win.dialogs.core/24.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.dialogs.core.24.1.6.nupkg.sha512",
+        "devexpress.win.dialogs.core.nuspec",
+        "lib/net452/DevExpress.Dialogs.v24.1.Core.dll",
+        "lib/net6.0-windows/DevExpress.Dialogs.v24.1.Core.dll"
+      ]
+    },
+    "DevExpress.Win.Gantt/24.1.6": {
+      "sha512": "Y+c7zOqN87l8XuRwZ52iKB5PF33plYMGV4kHRgQ6ZIZd6PqmtXXC4795csLmhUjRO9enxei7+2kxhvdjpwFsPQ==",
+      "type": "package",
+      "path": "devexpress.win.gantt/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.gantt.24.1.6.nupkg.sha512",
+        "devexpress.win.gantt.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraGantt.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraGantt.v24.1.dll",
+        "lib/net452/DevExpress.XtraGantt.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraGantt.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraGantt.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraGantt.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Gauges/24.1.6": {
+      "sha512": "+2HZkS5WeOKmPQxOQHEA62IraP0KNpaRQvgX7FHgzN/a1uBJfzxpRBuI7enhH594ywnRlTw/yIq5mX1379xwIg==",
+      "type": "package",
+      "path": "devexpress.win.gauges/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.gauges.24.1.6.nupkg.sha512",
+        "devexpress.win.gauges.nuspec",
+        "lib/net452/DevExpress.XtraGauges.v24.1.Presets.dll",
+        "lib/net452/DevExpress.XtraGauges.v24.1.Presets.xml",
+        "lib/net452/DevExpress.XtraGauges.v24.1.Win.dll",
+        "lib/net452/DevExpress.XtraGauges.v24.1.Win.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraGauges.v24.1.Design.Win.dll",
+        "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Presets.dll",
+        "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Presets.xml",
+        "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Win.dll",
+        "lib/net6.0-windows/DevExpress.XtraGauges.v24.1.Win.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Grid/24.1.6": {
+      "sha512": "P0Qj+JeF7T6nMbLHLOGgjVuh9Kuv8C3AIrfNzz9n7wZ9xNrYxePRoGI2vxsW1oKHWxozX+XWfFCM4cV0h/zH+g==",
+      "type": "package",
+      "path": "devexpress.win.grid/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.grid.24.1.6.nupkg.sha512",
+        "devexpress.win.grid.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraGrid.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraGrid.v24.1.dll",
+        "lib/net452/DevExpress.XtraGrid.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraGrid.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraGrid.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraGrid.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Map/24.1.6": {
+      "sha512": "+GjJ17AmjDedlfKtS81qwZ2wmIaXPpNIOR9ZhKhitYS2imjhMpuD7M3i4HpGVYh9Xf9zzd/oU87cd3ZYwYLxvg==",
+      "type": "package",
+      "path": "devexpress.win.map/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.map.24.1.6.nupkg.sha512",
+        "devexpress.win.map.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraMap.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraMap.v24.1.dll",
+        "lib/net452/DevExpress.XtraMap.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraMap.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraMap.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraMap.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Navigation/24.1.6": {
+      "sha512": "VosrFmZtKEHoXI8EfnZH2AuagIKrs57tOrDXSXaiOa6eZ+Ly/F1HqzxmrPtVQpTnKG10ipYjGhT5s9RWN4ttmg==",
+      "type": "package",
+      "path": "devexpress.win.navigation/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.navigation.24.1.6.nupkg.sha512",
+        "devexpress.win.navigation.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraBars.v24.1.Design.dll",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraEditors.v24.1.Design.dll",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraLayout.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraBars.v24.1.dll",
+        "lib/net452/DevExpress.XtraBars.v24.1.xml",
+        "lib/net452/DevExpress.XtraEditors.v24.1.dll",
+        "lib/net452/DevExpress.XtraEditors.v24.1.xml",
+        "lib/net452/DevExpress.XtraLayout.v24.1.dll",
+        "lib/net452/DevExpress.XtraLayout.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/DevExpress.Design.Protocol.RemoteClient.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/DevExpress.Design.RemoteClient.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.Design.Protocol.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.Design.Surface.Core.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.Design.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraBars.v24.1.Design.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraEditors.v24.1.Design.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraLayout.v24.1.Design.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.CodeParser.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.Dialogs.v24.1.Core.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.Images.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.Mvvm.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.Office.v24.1.Core.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.PivotGrid.v24.1.Core.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.RichEdit.v24.1.Core.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.Utils.v24.1.UI.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraDialogs.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraGrid.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraNavBar.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraPrinting.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraTreeList.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraVerticalGrid.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraBars.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraBars.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.XtraEditors.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraEditors.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.XtraLayout.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraLayout.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.PdfViewer/24.1.6": {
+      "sha512": "trXjjgBgQ+jwi/n4zZL+K4F0dRm09gME6L7rEm6PGNPc1cV8V+396yzqkSaCoeBIn44jIe6LvKLsnm+2vxEFmA==",
+      "type": "package",
+      "path": "devexpress.win.pdfviewer/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.pdfviewer.24.1.6.nupkg.sha512",
+        "devexpress.win.pdfviewer.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraPdfViewer.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraPdfViewer.v24.1.dll",
+        "lib/net452/DevExpress.XtraPdfViewer.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraPdfViewer.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraPdfViewer.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraPdfViewer.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.PivotGrid/24.1.6": {
+      "sha512": "FOz53jsvxiAOCJ0F+HOa2JqTHC6Z7oDQXZd2ZFjwsSubYb/a/7Gv1GNFhDWnh723sj59PqoQ/lKjOvdSHxxd1w==",
+      "type": "package",
+      "path": "devexpress.win.pivotgrid/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.pivotgrid.24.1.6.nupkg.sha512",
+        "devexpress.win.pivotgrid.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraPivotGrid.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraPivotGrid.v24.1.dll",
+        "lib/net452/DevExpress.XtraPivotGrid.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraPivotGrid.v24.1.Design.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.DataAccess.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.DataVisualization.v24.1.Core.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.Xpo.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraRichEdit.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraPivotGrid.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraPivotGrid.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Printing/24.1.6": {
+      "sha512": "R0OEKIIm8CqvsMAg66AkDWIJSpytl4JVMjzWg6FMWamLwjO1342yPU7JwKJVwPIIFcF2aPaabJJKoSaTWzQUXg==",
+      "type": "package",
+      "path": "devexpress.win.printing/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.printing.24.1.6.nupkg.sha512",
+        "devexpress.win.printing.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraPrinting.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraPrinting.v24.1.dll",
+        "lib/net452/DevExpress.XtraPrinting.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.XtraPrinting.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraPrinting.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Reporting/24.1.6": {
+      "sha512": "EgYg9KEIDD8S+KynKkaLXv8PduUuPHYh7lvEOxVkvcmczZ/LDR7i5IwA17q26RUU+hnelBmeOJTa+D9JWo8tJA==",
+      "type": "package",
+      "path": "devexpress.win.reporting/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.reporting.24.1.6.nupkg.sha512",
+        "devexpress.win.reporting.nuspec",
+        "lib/net452/DevExpress.XtraReports.v24.1.Extensions.dll",
+        "lib/net452/DevExpress.XtraReports.v24.1.Extensions.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraPrinting.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraReports.v24.1.Extensions.dll",
+        "lib/net6.0-windows/DevExpress.XtraReports.v24.1.Extensions.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.RichEdit/24.1.6": {
+      "sha512": "3fIIRlDocjUltZPZ5NB+TQkGbiSYKHUux06rIeZW8gGijjZ5HB46IiRdtR1XWX6kf2nTMpteAlu1LoIzEX4ELQ==",
+      "type": "package",
+      "path": "devexpress.win.richedit/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.richedit.24.1.6.nupkg.sha512",
+        "devexpress.win.richedit.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraRichEdit.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraRichEdit.v24.1.dll",
+        "lib/net452/DevExpress.XtraRichEdit.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraRichEdit.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraRichEdit.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraRichEdit.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Scheduler/24.1.6": {
+      "sha512": "zJ4g9gK64Zi2dfN3RMtTP94bPkXreKkPGvRxGUr7G0kjo8b+503Sr5mk3IYYm5FUltAFyLd0I4jlgob+bmpegQ==",
+      "type": "package",
+      "path": "devexpress.win.scheduler/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.scheduler.24.1.6.nupkg.sha512",
+        "devexpress.win.scheduler.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraScheduler.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.dll",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.xml",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.SchedulerExtensions/24.1.6": {
+      "sha512": "kOLamtaqLSJ987omex4xKuwMCGEzb1muytvfvmlHxHg4e9INfPbTCcpDpOLJwIeUUm9EslQ29CHlDDav/8XQBg==",
+      "type": "package",
+      "path": "devexpress.win.schedulerextensions/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.schedulerextensions.24.1.6.nupkg.sha512",
+        "devexpress.win.schedulerextensions.nuspec",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Extensions.dll",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Extensions.xml",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Reporting.Extensions.dll",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Reporting.Extensions.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraScheduler.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Extensions.dll",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Extensions.xml",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.Extensions.dll",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.Extensions.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.SchedulerReporting/24.1.6": {
+      "sha512": "e0RA5MM5xSrqfyziTcSbRbYRgGwDe/roBQyr17BuSvOdKmyjO7/M0r1MXbNRlTmxbHS7kdL7Wvn4naiPVeHsZw==",
+      "type": "package",
+      "path": "devexpress.win.schedulerreporting/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.schedulerreporting.24.1.6.nupkg.sha512",
+        "devexpress.win.schedulerreporting.nuspec",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Reporting.dll",
+        "lib/net452/DevExpress.XtraScheduler.v24.1.Reporting.xml",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.dll",
+        "lib/net6.0-windows/DevExpress.XtraScheduler.v24.1.Reporting.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.SpellChecker/24.1.6": {
+      "sha512": "bAJ1PAXQETkcXex8YvXCmJRfHNaovDbnvU3D9KF0Rb+0GhAalOg48mR4NgritlSIGjmRo7zSBNtQQ6Bf7aSgeg==",
+      "type": "package",
+      "path": "devexpress.win.spellchecker/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.spellchecker.24.1.6.nupkg.sha512",
+        "devexpress.win.spellchecker.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraSpellChecker.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraSpellChecker.v24.1.dll",
+        "lib/net452/DevExpress.XtraSpellChecker.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraSpellChecker.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraSpellChecker.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraSpellChecker.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.Spreadsheet/24.1.6": {
+      "sha512": "VpNqHSoOMQIV4jJDcKJGQ/TtBE4fUp14ibIUOvGiRIjZlZXJcCGbk9fM82wh8BZErUdcVar+7TlQiRuqyRqCdQ==",
+      "type": "package",
+      "path": "devexpress.win.spreadsheet/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.spreadsheet.24.1.6.nupkg.sha512",
+        "devexpress.win.spreadsheet.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraSpreadsheet.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraSpreadsheet.v24.1.dll",
+        "lib/net452/DevExpress.XtraSpreadsheet.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraSpreadsheet.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraSpreadsheet.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraSpreadsheet.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.TreeList/24.1.6": {
+      "sha512": "1tYPGb1S9QI8FiL2RDfB4jICbIzATYcEyxz9iQDH8eV3Bta1+WYsijH89mIsJ9/D2RCt6C4oyerKoihXYLUy3A==",
+      "type": "package",
+      "path": "devexpress.win.treelist/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.treelist.24.1.6.nupkg.sha512",
+        "devexpress.win.treelist.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraTreeList.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraTreeList.v24.1.dll",
+        "lib/net452/DevExpress.XtraTreeList.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraTreeList.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraTreeList.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraTreeList.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.TreeMap/24.1.6": {
+      "sha512": "no79qS4QM4hLD7b1y/yFANCNKKOW+7DscYx4G+4fKkQWU4UUHrNuVlUJdZ4UWWLQeelbfeWiHVBlOaA5sH4J0Q==",
+      "type": "package",
+      "path": "devexpress.win.treemap/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.treemap.24.1.6.nupkg.sha512",
+        "devexpress.win.treemap.nuspec",
+        "lib/net452/DevExpress.XtraTreeMap.v24.1.UI.dll",
+        "lib/net452/DevExpress.XtraTreeMap.v24.1.UI.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraTreeMap.v24.1.Design.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.DataAccess.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.Xpo.v24.1.dll",
+        "lib/net6.0-windows/Design/WinForms/Server/lib/DevExpress.XtraRichEdit.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraTreeMap.v24.1.UI.dll",
+        "lib/net6.0-windows/DevExpress.XtraTreeMap.v24.1.UI.xml",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "DevExpress.Win.VerticalGrid/24.1.6": {
+      "sha512": "q/auE9KONDjMHt8+tTqht18xP1PKEUjV15u+CT7oUzf2wTdDxtjqp9mV6W2MO3lEmGPkYjSbqEV0CQ1xVu5bPw==",
+      "type": "package",
+      "path": "devexpress.win.verticalgrid/24.1.6",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.win.verticalgrid.24.1.6.nupkg.sha512",
+        "devexpress.win.verticalgrid.nuspec",
+        "lib/net452/Design/WinForms/Server/DevExpress.XtraVerticalGrid.v24.1.Design.dll",
+        "lib/net452/DevExpress.XtraVerticalGrid.v24.1.dll",
+        "lib/net452/DevExpress.XtraVerticalGrid.v24.1.xml",
+        "lib/net6.0-windows/Design/WinForms/Server/DevExpress.XtraVerticalGrid.v24.1.Design.dll",
+        "lib/net6.0-windows/DevExpress.XtraVerticalGrid.v24.1.dll",
+        "lib/net6.0-windows/DevExpress.XtraVerticalGrid.v24.1.xml",
+        "tools/VisualStudioToolsManifest.xml"
       ]
     },
     "DevExpress.Xpo/24.1.6": {
@@ -5289,6 +6903,7 @@
     "net8.0-windows7.0": [
       "AF.DataAccessor >= 2.0.2",
       "DevExpress.Reporting.Core >= 24.1.6",
+      "DevExpress.Win.Design >= 24.1.6",
       "MailKit >= 4.8.0",
       "Microsoft.ReportingServices.ReportViewerControl.Winforms >= 150.1652.0",
       "ReportViewerCore.WinForms >= 15.1.23",
@@ -5348,6 +6963,10 @@
             "target": "Package",
             "version": "[24.1.6, )"
           },
+          "DevExpress.Win.Design": {
+            "target": "Package",
+            "version": "[24.1.6, )"
+          },
           "MailKit": {
             "target": "Package",
             "version": "[4.8.0, )"
@@ -5380,7 +6999,7 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           },
-          "Microsoft.WindowsDesktop.App.WindowsForms": {
+          "Microsoft.WindowsDesktop.App": {
             "privateAssets": "none"
           }
         },

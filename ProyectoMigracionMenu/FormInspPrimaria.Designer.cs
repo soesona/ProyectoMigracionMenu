@@ -45,9 +45,10 @@
             txtApellido = new TextBox();
             txtNombre = new TextBox();
             cbSexo = new ComboBox();
+            cbPaisNa = new ComboBox();
             label11 = new Label();
-            cbNacionalidad = new ComboBox();
             dtpFechaNa = new DateTimePicker();
+            label21 = new Label();
             label7 = new Label();
             label9 = new Label();
             label10 = new Label();
@@ -67,10 +68,8 @@
             btnPaises = new Button();
             btnTrabajo = new Button();
             txtEstadia = new TextBox();
-            cbPaisNa = new ComboBox();
             cbPaisRes = new ComboBox();
             cbTrabajo = new ComboBox();
-            label21 = new Label();
             label27 = new Label();
             label20 = new Label();
             label19 = new Label();
@@ -110,6 +109,9 @@
             btnGuardar = new Button();
             btnCancelar = new Button();
             errorProvider1 = new ErrorProvider(components);
+            panel2 = new Panel();
+            contadorNegadoTxt = new Label();
+            label2 = new Label();
             Documentoviaje.SuspendLayout();
             datosdeviaje.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -124,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvObservaciones).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // Documentoviaje
@@ -308,6 +311,17 @@
             cbSexo.TabIndex = 19;
             cbSexo.SelectedIndexChanged += cbSexo_SelectedIndexChanged;
             // 
+            // cbPaisNa
+            // 
+            cbPaisNa.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPaisNa.FormattingEnabled = true;
+            cbPaisNa.Location = new Point(168, 199);
+            cbPaisNa.Margin = new Padding(3, 4, 3, 4);
+            cbPaisNa.Name = "cbPaisNa";
+            cbPaisNa.Size = new Size(313, 28);
+            cbPaisNa.TabIndex = 22;
+            cbPaisNa.SelectedIndexChanged += cbPaisNa_SelectedIndexChanged;
+            // 
             // label11
             // 
             label11.AutoSize = true;
@@ -316,17 +330,6 @@
             label11.Size = new Size(41, 20);
             label11.TabIndex = 18;
             label11.Text = "Sexo";
-            // 
-            // cbNacionalidad
-            // 
-            cbNacionalidad.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbNacionalidad.FormattingEnabled = true;
-            cbNacionalidad.Location = new Point(273, 168);
-            cbNacionalidad.Margin = new Padding(3, 4, 3, 4);
-            cbNacionalidad.Name = "cbNacionalidad";
-            cbNacionalidad.Size = new Size(314, 28);
-            cbNacionalidad.TabIndex = 17;
-            cbNacionalidad.SelectedIndexChanged += cbNacionalidad_SelectedIndexChanged;
             // 
             // dtpFechaNa
             // 
@@ -337,6 +340,16 @@
             dtpFechaNa.Size = new Size(138, 27);
             dtpFechaNa.TabIndex = 16;
             dtpFechaNa.ValueChanged += dtpFechaNa_ValueChanged;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(7, 205);
+            label21.Name = "label21";
+            label21.Size = new Size(136, 20);
+            label21.TabIndex = 2;
+            label21.Text = "País de nacimiento:";
+            label21.Click += label21_Click;
             // 
             // label7
             // 
@@ -508,7 +521,6 @@
             groupBox3.Controls.Add(btnPaises);
             groupBox3.Controls.Add(btnTrabajo);
             groupBox3.Controls.Add(txtEstadia);
-            groupBox3.Controls.Add(cbNacionalidad);
             groupBox3.Controls.Add(cbPaisRes);
             groupBox3.Controls.Add(cbTrabajo);
             groupBox3.Controls.Add(label27);
@@ -548,7 +560,7 @@
             // txtEstadia
             // 
             txtEstadia.Enabled = false;
-            txtEstadia.Location = new Point(162, 157);
+            txtEstadia.Location = new Point(162, 115);
             txtEstadia.Margin = new Padding(3, 4, 3, 4);
             txtEstadia.MaxLength = 3;
             txtEstadia.Name = "txtEstadia";
@@ -557,17 +569,6 @@
             txtEstadia.Text = "5";
             txtEstadia.TextAlign = HorizontalAlignment.Center;
             txtEstadia.TextChanged += txtEstadia_TextChanged;
-            // 
-            // cbPaisNa
-            // 
-            cbPaisNa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbPaisNa.FormattingEnabled = true;
-            cbPaisNa.Location = new Point(168, 199);
-            cbPaisNa.Margin = new Padding(3, 4, 3, 4);
-            cbPaisNa.Name = "cbPaisNa";
-            cbPaisNa.Size = new Size(313, 28);
-            cbPaisNa.TabIndex = 22;
-            cbPaisNa.SelectedIndexChanged += cbPaisNa_SelectedIndexChanged;
             // 
             // cbPaisRes
             // 
@@ -591,20 +592,10 @@
             cbTrabajo.TabIndex = 24;
             cbTrabajo.SelectedIndexChanged += cbTrabajo_SelectedIndexChanged;
             // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(7, 205);
-            label21.Name = "label21";
-            label21.Size = new Size(136, 20);
-            label21.TabIndex = 2;
-            label21.Text = "País de nacimiento:";
-            label21.Click += label21_Click;
-            // 
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(16, 157);
+            label27.Location = new Point(14, 122);
             label27.Name = "label27";
             label27.Size = new Size(126, 20);
             label27.TabIndex = 8;
@@ -909,7 +900,7 @@
             // 
             contadortxtx.AutoSize = true;
             contadortxtx.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            contadortxtx.Location = new Point(170, 28);
+            contadortxtx.Location = new Point(164, 40);
             contadortxtx.Name = "contadortxtx";
             contadortxtx.Size = new Size(0, 28);
             contadortxtx.TabIndex = 1;
@@ -917,7 +908,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(9, 19);
+            label15.Location = new Point(9, 16);
             label15.Name = "label15";
             label15.Size = new Size(127, 20);
             label15.TabIndex = 0;
@@ -993,11 +984,42 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.GradientInactiveCaption;
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(contadorNegadoTxt);
+            panel2.ForeColor = SystemColors.ControlDarkDark;
+            panel2.Location = new Point(860, 571);
+            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(226, 83);
+            panel2.TabIndex = 26;
+            // 
+            // contadorNegadoTxt
+            // 
+            contadorNegadoTxt.AutoSize = true;
+            contadorNegadoTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contadorNegadoTxt.Location = new Point(165, 40);
+            contadorNegadoTxt.Name = "contadorNegadoTxt";
+            contadorNegadoTxt.Size = new Size(0, 28);
+            contadorNegadoTxt.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(128, 20);
+            label2.TabIndex = 27;
+            label2.Text = "Total de rechazos:";
+            // 
             // FormInspPrimaria
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1765, 908);
+            Controls.Add(panel2);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(button5);
@@ -1039,6 +1061,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1057,7 +1081,6 @@
         private Label label7;
         private Label label9;
         private Label label10;
-        private ComboBox cbNacionalidad;
         private Label label11;
         private ComboBox cbSexo;
         private GroupBox groupBox1;
@@ -1123,5 +1146,8 @@
         private DataGridViewTextBoxColumn Edad;
         private DataGridViewTextBoxColumn Imagen;
         private Label contadortxtx;
+        private Panel panel2;
+        private Label label2;
+        private Label contadorNegadoTxt;
     }
 }

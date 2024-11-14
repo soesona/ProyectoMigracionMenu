@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Globalization;
+using System.IO;
 
 namespace Inspeccionsecundaria
 {

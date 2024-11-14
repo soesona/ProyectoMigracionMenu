@@ -257,28 +257,40 @@
             // 
             // xrTableCell4
             // 
+            this.xrTableCell4.BackColor = System.Drawing.Color.SteelBlue;
             this.xrTableCell4.Font = new DevExpress.Drawing.DXFont("Arial", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell4.ForeColor = System.Drawing.Color.White;
             this.xrTableCell4.Multiline = true;
             this.xrTableCell4.Name = "xrTableCell4";
+            this.xrTableCell4.StylePriority.UseBackColor = false;
             this.xrTableCell4.StylePriority.UseFont = false;
+            this.xrTableCell4.StylePriority.UseForeColor = false;
             this.xrTableCell4.Text = "Femeninas";
             this.xrTableCell4.Weight = 1.3500001525878906D;
             // 
             // xrTableCell5
             // 
+            this.xrTableCell5.BackColor = System.Drawing.Color.SteelBlue;
             this.xrTableCell5.Font = new DevExpress.Drawing.DXFont("Arial", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell5.ForeColor = System.Drawing.Color.White;
             this.xrTableCell5.Multiline = true;
             this.xrTableCell5.Name = "xrTableCell5";
+            this.xrTableCell5.StylePriority.UseBackColor = false;
             this.xrTableCell5.StylePriority.UseFont = false;
+            this.xrTableCell5.StylePriority.UseForeColor = false;
             this.xrTableCell5.Text = "Masculinas";
             this.xrTableCell5.Weight = 1.1D;
             // 
             // xrTableCell6
             // 
+            this.xrTableCell6.BackColor = System.Drawing.Color.SteelBlue;
             this.xrTableCell6.Font = new DevExpress.Drawing.DXFont("Arial", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell6.ForeColor = System.Drawing.Color.White;
             this.xrTableCell6.Multiline = true;
             this.xrTableCell6.Name = "xrTableCell6";
+            this.xrTableCell6.StylePriority.UseBackColor = false;
             this.xrTableCell6.StylePriority.UseFont = false;
+            this.xrTableCell6.StylePriority.UseForeColor = false;
             this.xrTableCell6.Text = "Menores de edad";
             this.xrTableCell6.Weight = 1.3000003051757814D;
             // 

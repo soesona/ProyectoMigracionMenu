@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProyectoMigracionMenu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f470f5c374a3043eff0ce22c4f6a6bdf5c83d7f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f39cef9c1ab6c53959b33bb6ca9fa224f9fcbe6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProyectoMigracionMenu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProyectoMigracionMenu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
