@@ -104,7 +104,6 @@
             // 
             // panel1
             // 
-            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lblDelegacion);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
@@ -265,20 +264,20 @@
             // lblRol
             // 
             lblRol.AutoSize = true;
-            lblRol.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRol.Location = new Point(310, 70);
+            lblRol.Font = new Font("Century Gothic", 12F);
+            lblRol.Location = new Point(368, 72);
             lblRol.Name = "lblRol";
-            lblRol.Size = new Size(25, 21);
+            lblRol.Size = new Size(25, 23);
             lblRol.TabIndex = 24;
             lblRol.Text = "...";
             // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsuario.Font = new Font("Century Gothic", 12F);
             lblUsuario.Location = new Point(100, 72);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(25, 21);
+            lblUsuario.Size = new Size(25, 23);
             lblUsuario.TabIndex = 23;
             lblUsuario.Text = "...";
             // 
@@ -286,7 +285,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(258, 70);
+            label4.Location = new Point(316, 72);
             label4.Name = "label4";
             label4.Size = new Size(46, 23);
             label4.TabIndex = 22;
@@ -295,8 +294,8 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(7, 70);
+            label3.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            label3.Location = new Point(7, 72);
             label3.Name = "label3";
             label3.Size = new Size(87, 23);
             label3.TabIndex = 21;

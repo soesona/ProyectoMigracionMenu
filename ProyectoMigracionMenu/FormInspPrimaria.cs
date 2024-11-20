@@ -267,136 +267,178 @@ namespace interfaz_grafica_de_inspeccion_primaria
         {
             btnGuardar.Enabled = false;
 
-            using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
+      
+            if (!gl.validaCombox(cbDoc, errorProvider1) ||
+                !gl.validaCombox(cbPaisEmision, errorProvider1) ||
+                !gl.validaCombox(cbTrabajo, errorProvider1) ||
+                !gl.validaCombox(cbPaisRes, errorProvider1) ||
+                !gl.validaCombox(cbPaisNa, errorProvider1) ||
+                !gl.validaCombox(cbPaisDestino, errorProvider1) ||
+                !gl.validaCombox(cbMotivos, errorProvider1) ||
+                !gl.validaCombox(cbSexo, errorProvider1))
+            {
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtApellido.Text))
+            {
+                MessageBox.Show("El campo 'Apellido' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtApellido.Focus();
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (dtpFechaNa.Value.Date >= DateTime.Now.Date)
+            {
+                errorProvider1.SetError(dtpFechaNa, "La fecha de nacimiento no puede ser hoy ni una fecha futura.");
+                btnGuardar.Enabled = true;
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(dtpFechaNa, "");
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                MessageBox.Show("El campo 'Nombre' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtNombre.Focus();
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtIdentidad.Text))
+            {
+                MessageBox.Show("El campo 'Identidad' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtIdentidad.Focus();
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtResidencia.Text))
+            {
+                MessageBox.Show("El campo 'Residencia' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtResidencia.Focus();
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (!imagenCargada || ImagesAreEqual(pic.Image, ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_))
+            {
+                errorProvider1.SetError(pic, "Debe seleccionar una imagen válida.");
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtObservaciones.Text))
+            {
+                MessageBox.Show("El campo 'Observaciones' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtObservaciones.Focus();
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (txtNombre.Text.Length < 3 || txtApellido.Text.Length < 3)
+            {
+                MessageBox.Show("Los campos de nombre y apellido deben contener al menos 3 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            if (txtResidencia.Text.Length < 20 || txtObservaciones.Text.Length < 20)
+            {
+                MessageBox.Show("Los campos de residencia y observaciones deben contener al menos 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            Image imagenOriginal = ObtenerImagenDesdeBaseDeDatos(txtIdentidad.Text);
+            if (imagenOriginal != null && ImagesAreEqual(pic.Image, imagenOriginal))
+            {
+                MessageBox.Show("La imagen cargada ya existe. Debe proporcionar una imagen reciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnGuardar.Enabled = true;
+                return;
+            }
+
+            byte[] fotografia = ImageToByteArray(pic.Image);
+
+            try
             {
                
-                if (!gl.validaCombox(cbDoc, errorProvider1) ||
-                    !gl.validaCombox(cbPaisEmision, errorProvider1) ||
-                    !gl.validaCombox(cbTrabajo, errorProvider1) ||
-                    !gl.validaCombox(cbPaisRes, errorProvider1) ||
-                    !gl.validaCombox(cbPaisNa, errorProvider1) ||
-                    !gl.validaCombox(cbPaisDestino, errorProvider1) ||
-                    !gl.validaCombox(cbMotivos, errorProvider1) ||
-                    !gl.validaCombox(cbSexo, errorProvider1))
+                bool resultado = ClaseInspPrimaria.InsertarPersona(
+                    cbDoc.SelectedValue.ToString(),
+                    txtIdentidad.Text,
+                    txtNombre.Text,
+                    txtApellido.Text,
+                    (int)cbSexo.SelectedValue,
+                    (int)cbPaisEmision.SelectedValue,
+                    Login.UsuarioActual.Nombre,
+                    DateTime.Now,
+                    dtpfechaVenci.Value,
+                    1, 
+                    (int)cbPaisNa.SelectedValue,
+                    (int)cbPaisRes.SelectedValue,
+                    txtObservaciones.Text,
+                    txtResidencia.Text,
+                    dtpFechaNa.Value,
+                    (int)cbMotivos.SelectedValue,
+                    (int)cbPaisDestino.SelectedValue,
+                    (int)cbTrabajo.SelectedValue,
+                    fotografia,
+                    int.Parse(txtEstadia.Text),
+                    chk1.Checked,
+                    chk2.Checked,
+                    chk4.Checked,
+                    chk3.Checked,
+                    chk5.Checked
+                );
+
+                if (resultado)
                 {
-                    btnGuardar.Enabled = true;
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                    string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtIdentidad.Text) ||
-                    string.IsNullOrWhiteSpace(txtResidencia.Text) ||
-                    string.IsNullOrWhiteSpace(txtObservaciones.Text))
-                {
-                    MessageBox.Show("Campos obligatorios vacíos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    btnGuardar.Enabled = true;
-                    return;
-                }
-
-                if (txtNombre.Text.Length < 3 || txtApellido.Text.Length < 3)
-                {
-                    MessageBox.Show("Los campos de nombre y apellido deben contener al menos 3 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    btnGuardar.Enabled = true;
-                    return;
-                }
-
-              
-
-                if (txtResidencia.Text.Length < 20 || txtObservaciones.Text.Length < 20)
-                {
-                    MessageBox.Show("Los campos de residencia y observaciones deben contener al menos 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    btnGuardar.Enabled = true;
-                    return;
-                }
-
-              
-                Image imagenOriginal = ObtenerImagenDesdeBaseDeDatos(txtIdentidad.Text);
-                if (imagenOriginal != null && ImagesAreEqual(pic.Image, imagenOriginal))
-                {
-                    MessageBox.Show("La imagen cargada ya existe. Debe proporcionar una imagen reciente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    btnGuardar.Enabled = true;
-                    return;
-                }
-
-                byte[] fotografia = ImageToByteArray(pic.Image);
-
-                try
-                {
-                    if (sqlcon.State != ConnectionState.Open)
-                        sqlcon.Open();
-
-                    SqlCommand msc = new SqlCommand("InsertarPersona", sqlcon);
-                    msc.CommandType = CommandType.StoredProcedure;
-                    msc.Parameters.AddWithValue("@TipoDocumento", cbDoc.SelectedValue);
-                    msc.Parameters.AddWithValue("@Identidad", txtIdentidad.Text);
-                    msc.Parameters.AddWithValue("@Nombres", txtNombre.Text);
-                    msc.Parameters.AddWithValue("@Apellidos", txtApellido.Text);
-                    msc.Parameters.AddWithValue("@IdSexo", cbSexo.SelectedValue);
-                    msc.Parameters.AddWithValue("@IdPaisEmision", cbPaisEmision.SelectedValue);
-                    msc.Parameters.AddWithValue("@UsuarioCreado", Login.UsuarioActual.Nombre);
-                    msc.Parameters.AddWithValue("@f_regCreado", DateTime.Now);
-                    msc.Parameters.AddWithValue("@f_regFinal", dtpfechaVenci.Value);
-                    msc.Parameters.AddWithValue("@Estado", 1);
-                    msc.Parameters.AddWithValue("@IdPaisNacimiento", cbPaisNa.SelectedValue);
-                    msc.Parameters.AddWithValue("@IdPaisResidencia", cbPaisRes.SelectedValue);
-                    msc.Parameters.AddWithValue("@Observacion", txtObservaciones.Text);
-                    msc.Parameters.AddWithValue("@LugarResidencia", txtResidencia.Text);
-                    msc.Parameters.AddWithValue("@f_Nacimiento", dtpFechaNa.Value);
-                    msc.Parameters.AddWithValue("@IdMotivoViaje", cbMotivos.SelectedValue);
-                    msc.Parameters.AddWithValue("@IdPaisDestino", cbPaisDestino.SelectedValue);
-                    msc.Parameters.AddWithValue("@IdTrabajo", cbTrabajo.SelectedValue);
-                    msc.Parameters.AddWithValue("@Fotografia", fotografia);
-                    msc.Parameters.AddWithValue("@diasOtogados", txtEstadia.Text);
-                    msc.Parameters.AddWithValue("@DocumentoRobado", chk1.Checked);
-                    msc.Parameters.AddWithValue("@DocumentoVencido", chk2.Checked);
-                    msc.Parameters.AddWithValue("@Interpol", chk4.Checked);
-                    msc.Parameters.AddWithValue("@AlertaMigratoria", chk3.Checked);
-                    msc.Parameters.AddWithValue("@Prechequeo", chk5.Checked);
-
-                    msc.ExecuteNonQuery();
-
                     MessageBox.Show("Registro agregado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnCancelar.PerformClick();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ocurrió un error al guardar los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    btnGuardar.Enabled = true;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al guardar los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btnGuardar.Enabled = true;
             }
         }
 
+        private bool imagenCargada = false;
         private void btnfotografia_Click(object sender, EventArgs e)
         {
             try
             {
                 OpenFileDialog f = new OpenFileDialog();
-                f.Filter = "Imagenes JPG,PNG|*.jpg;*.png";
-                f.ShowDialog();
-                if (f.FileName.Equals("") == false)
+                f.Filter = "Imágenes JPG,PNG|*.jpg;*.png";
+                if (f.ShowDialog() == DialogResult.OK)
                 {
                     System.IO.FileInfo f2 = new System.IO.FileInfo(f.FileName);
                     if ((f2.Length / 1024) > 120)
                     {
-                        throw new Exception("¡El tamaño del archivo no puede superar los 120 kilobyte!");
+                        throw new Exception("¡El tamaño del archivo no puede superar los 120 kilobytes!");
                     }
                     else
                     {
                         pic.Load(f.FileName);
+                        imagenCargada = true; 
                     }
                 }
                 else
                 {
                     pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
+                    imagenCargada = false; 
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("ERROR: " + ex.Message, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -564,10 +606,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
         }
 
 
-        private void cbPaisEmision_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void txtIdentidad_TextChanged(object sender, EventArgs e)
         {
@@ -596,74 +635,103 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
 
 
-        private void dtpfechaVenci_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbTrabajo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbPaisRes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbPaisNa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEstadia_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbPaisDestino_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbMotivos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void txtResidencia_TextChanged(object sender, EventArgs e)
-        {
+{
+    string texto = txtResidencia.Text;
 
-            string texto = txtResidencia.Text;
+    // Verificar caracteres permitidos
+    if (!ValidarCaracteresPermitidos(texto))
+    {
+        MostrarAdvertencia("Solo se permiten letras, números, espacios, comas, puntos, el signo # y vocales con tilde. Máximo 80 caracteres.");
+        CorregirTexto(txtResidencia);
+        return;
+    }
+
+    // Verificar caracteres repetidos
+    if (ContieneTresCaracteresIgualesConsecutivos(texto))
+    {
+        MostrarAdvertencia("No se permiten tres caracteres iguales consecutivos.");
+        CorregirTexto(txtResidencia);
+        return;
+    }
+
+    // Validar longitud mínima (sin contar espacios)
+    if (!ValidarLongitudMinima(texto, 20))
+    {
+        errorProvider1.SetError(txtResidencia, "Debe contener al menos 20 caracteres (sin contar espacios).");
+    }
+    else
+    {
+        errorProvider1.Clear();
+    }
+}
+
+private bool ValidarCaracteresPermitidos(string texto)
+{
+    return System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s.,#áéíóúÁÉÍÓÚ]{0,80}$");
+}
+
+private bool ContieneTresCaracteresIgualesConsecutivos(string texto)
+{
+    return System.Text.RegularExpressions.Regex.IsMatch(texto, @"(.)\1\1");
+}
+
+private bool ValidarLongitudMinima(string texto, int longitudMinima)
+{
+    string textoSinEspacios = texto.Replace(" ", ""); 
+    return textoSinEspacios.Length >= longitudMinima;
+}
+
+private void MostrarAdvertencia(string mensaje)
+{
+    MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+}
+
+private void CorregirTexto(TextBox textBox)
+{
+    if (textBox.Text.Length > 0)
+    {
+        textBox.Text = textBox.Text.Substring(0, textBox.Text.Length - 1);
+        textBox.SelectionStart = textBox.Text.Length;
+    }
+}
 
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s.,#áéíóúÁÉÍÓÚ]{0,80}$"))
-            {
-                MessageBox.Show("Solo se permiten letras, números, espacios, comas, puntos, el signo # y vocales con tilde. Máximo 80 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtResidencia.Text = texto.Substring(0, texto.Length - 1);
-                txtResidencia.SelectionStart = txtResidencia.Text.Length;
-                return;
-            }
 
-            if (texto.Length > 0 && texto.Length < 20)
-            {
-                errorProvider1.SetError(txtResidencia, "Debe contener al menos 20 caracteres.");
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
 
 
 
         private void txtObservaciones_TextChanged(object sender, EventArgs e)
         {
             string texto = txtObservaciones.Text;
+
+           
+            if (string.IsNullOrWhiteSpace(texto))
+            {
+                errorProvider1.SetError(txtObservaciones, "El campo 'Observaciones' no puede estar vacío.");
+                return;
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+
+           
             if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]{0,150}$"))
             {
                 MessageBox.Show("Solo se permiten letras, números, espacios, puntos, comas y vocales con tilde. Máximo 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtObservaciones.Text = texto.Substring(0, texto.Length - 1); 
+                txtObservaciones.Text = texto.Substring(0, texto.Length - 1);
+                txtObservaciones.SelectionStart = txtObservaciones.Text.Length;
+                return;
+            }
+
+            
+            if (System.Text.RegularExpressions.Regex.IsMatch(texto, @"(.)\1\1"))
+            {
+                MessageBox.Show("No se permiten tres caracteres iguales consecutivos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtObservaciones.Text = texto.Substring(0, texto.Length - 1);
                 txtObservaciones.SelectionStart = txtObservaciones.Text.Length;
                 return;
             }
@@ -680,19 +748,28 @@ namespace interfaz_grafica_de_inspeccion_primaria
         }
 
 
+
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
             string texto = txtNombre.Text;
 
-
+            
             if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{0,20}$"))
             {
                 MessageBox.Show("Solo se permiten letras y espacios. Entre 3 y 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtNombre.Text = texto.Substring(0, texto.Length - 1); 
+                txtNombre.Text = texto.Substring(0, texto.Length - 1);
                 txtNombre.SelectionStart = txtNombre.Text.Length;
                 return;
             }
 
+           
+            if (System.Text.RegularExpressions.Regex.IsMatch(texto, @"(.)\1\1"))
+            {
+                MessageBox.Show("No se permiten tres caracteres iguales consecutivos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombre.Text = texto.Substring(0, texto.Length - 1);
+                txtNombre.SelectionStart = txtNombre.Text.Length;
+                return;
+            }
 
             if (texto.Length > 0 && texto.Length < 3)
             {
@@ -707,25 +784,31 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
 
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void txtApellido_TextChanged(object sender, EventArgs e)
         {
             string texto = txtApellido.Text;
 
-
+          
             if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{0,20}$"))
             {
                 MessageBox.Show("Solo se permiten letras y espacios. Entre 3 y 20 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtApellido.Text = texto.Substring(0, texto.Length - 1); 
+                txtApellido.Text = texto.Substring(0, texto.Length - 1);
                 txtApellido.SelectionStart = txtApellido.Text.Length;
                 return;
             }
 
+           
+            if (System.Text.RegularExpressions.Regex.IsMatch(texto, @"(.)\1\1"))
+            {
+                MessageBox.Show("No se permiten tres caracteres iguales consecutivos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtApellido.Text = texto.Substring(0, texto.Length - 1);
+                txtApellido.SelectionStart = txtApellido.Text.Length;
+                return;
+            }
 
+            
             if (texto.Length > 0 && texto.Length < 3)
             {
                 errorProvider1.SetError(txtApellido, "Debe contener al menos 3 caracteres.");
@@ -739,59 +822,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
 
 
-        private void datosdeviaje_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpFechaNa_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbSexo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbNacionalidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Documentoviaje_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

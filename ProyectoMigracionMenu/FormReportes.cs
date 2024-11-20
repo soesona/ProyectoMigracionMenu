@@ -130,6 +130,12 @@ namespace ProyectoMigracionMenu
 
             bool hayError = false;
 
+            if (dtpFechaInicio.Value.Date > dtpFechaFin.Value.Date)
+            {
+                errorProvider1.SetError(dtpFechaInicio, "La fecha de inicio no puede ser mayor que la fecha de fin.");
+                hayError = true;
+            }
+
             if (CboDelegaciones.SelectedIndex == -1)
             {
                 errorProvider1.SetError(CboDelegaciones, "Selecciona una delegación.");

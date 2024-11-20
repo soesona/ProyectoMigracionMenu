@@ -16,6 +16,7 @@ namespace ProyectoMigracionMenu
     {
 
         private Form activeForm;
+        private Button botonResaltadoActual; 
         public Menu()
         {
             InitializeComponent();
@@ -26,6 +27,9 @@ namespace ProyectoMigracionMenu
             this.WindowState = FormWindowState.Maximized;
             DoubleBufferedPanel(panelContenedor);
             OpenChildForm(new FormDashboard(), null);
+            ResaltarBoton(BtnDashboard); 
+
+
         }
         private void DoubleBufferedPanel(Control control)
         {
@@ -33,7 +37,25 @@ namespace ProyectoMigracionMenu
                 System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
                 null, control, new object[] { true });
         }
+        private void ResaltarBoton(object btnSender)
+        {
+            foreach (Control control in MenuVertical.Controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)control;
+                    btn.BackColor = Color.FromArgb(169, 209, 212);
 
+                }
+            }
+
+            if (btnSender != null)
+            {
+                Button currentButton = (Button)btnSender;
+                currentButton.BackColor = Color.FromArgb(52, 161, 166);
+
+            }
+        }
         private void CargarDatosUsuario()
         {
             if (Login.UsuarioActual != null)
@@ -59,7 +81,11 @@ namespace ProyectoMigracionMenu
             childForm.Show();
 
             lblTitulo.Text = childForm.Text;
+
+
+            ResaltarBoton(btnSender);
         }
+
         private void BtnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();

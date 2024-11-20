@@ -149,7 +149,7 @@
             Documentoviaje.TabIndex = 9;
             Documentoviaje.TabStop = false;
             Documentoviaje.Text = "Documento de Viaje";
-            Documentoviaje.Enter += Documentoviaje_Enter;
+           
             // 
             // btnCancelarInfo
             // 
@@ -170,7 +170,7 @@
             dtpfechaVenci.Name = "dtpfechaVenci";
             dtpfechaVenci.Size = new Size(218, 27);
             dtpfechaVenci.TabIndex = 16;
-            dtpfechaVenci.ValueChanged += dtpfechaVenci_ValueChanged;
+           
             // 
             // btnbuscar
             // 
@@ -205,7 +205,7 @@
             cbPaisEmision.Size = new Size(218, 28);
             cbPaisEmision.TabIndex = 13;
             cbPaisEmision.Tag = "obligatorio";
-            cbPaisEmision.SelectedIndexChanged += cbPaisEmision_SelectedIndexChanged;
+          
             // 
             // cbDoc
             // 
@@ -254,7 +254,7 @@
             Label3.Size = new Size(143, 20);
             Label3.TabIndex = 0;
             Label3.Text = "Tipo de documento:";
-            Label3.Click += Label3_Click;
+            
             // 
             // datosdeviaje
             // 
@@ -276,7 +276,7 @@
             datosdeviaje.TabIndex = 10;
             datosdeviaje.TabStop = false;
             datosdeviaje.Text = "Datos Personales";
-            datosdeviaje.Enter += datosdeviaje_Enter;
+           
             // 
             // txtApellido
             // 
@@ -309,7 +309,7 @@
             cbSexo.Name = "cbSexo";
             cbSexo.Size = new Size(110, 28);
             cbSexo.TabIndex = 19;
-            cbSexo.SelectedIndexChanged += cbSexo_SelectedIndexChanged;
+            
             // 
             // cbPaisNa
             // 
@@ -320,7 +320,7 @@
             cbPaisNa.Name = "cbPaisNa";
             cbPaisNa.Size = new Size(313, 28);
             cbPaisNa.TabIndex = 22;
-            cbPaisNa.SelectedIndexChanged += cbPaisNa_SelectedIndexChanged;
+      
             // 
             // label11
             // 
@@ -339,7 +339,7 @@
             dtpFechaNa.Name = "dtpFechaNa";
             dtpFechaNa.Size = new Size(138, 27);
             dtpFechaNa.TabIndex = 16;
-            dtpFechaNa.ValueChanged += dtpFechaNa_ValueChanged;
+           
             // 
             // label21
             // 
@@ -349,7 +349,7 @@
             label21.Size = new Size(136, 20);
             label21.TabIndex = 2;
             label21.Text = "País de nacimiento:";
-            label21.Click += label21_Click;
+          
             // 
             // label7
             // 
@@ -359,7 +359,7 @@
             label7.Size = new Size(69, 20);
             label7.TabIndex = 10;
             label7.Text = "Apellido:";
-            label7.Click += label7_Click;
+           
             // 
             // label9
             // 
@@ -378,7 +378,7 @@
             label10.Size = new Size(67, 20);
             label10.TabIndex = 0;
             label10.Text = "Nombre:";
-            label10.Click += label10_Click;
+           
             // 
             // groupBox1
             // 
@@ -568,7 +568,7 @@
             txtEstadia.TabIndex = 17;
             txtEstadia.Text = "5";
             txtEstadia.TextAlign = HorizontalAlignment.Center;
-            txtEstadia.TextChanged += txtEstadia_TextChanged;
+            
             // 
             // cbPaisRes
             // 
@@ -579,7 +579,7 @@
             cbPaisRes.Name = "cbPaisRes";
             cbPaisRes.Size = new Size(228, 28);
             cbPaisRes.TabIndex = 23;
-            cbPaisRes.SelectedIndexChanged += cbPaisRes_SelectedIndexChanged;
+           
             // 
             // cbTrabajo
             // 
@@ -590,7 +590,7 @@
             cbTrabajo.Name = "cbTrabajo";
             cbTrabajo.Size = new Size(228, 28);
             cbTrabajo.TabIndex = 24;
-            cbTrabajo.SelectedIndexChanged += cbTrabajo_SelectedIndexChanged;
+            
             // 
             // label27
             // 
@@ -600,7 +600,7 @@
             label27.Size = new Size(126, 20);
             label27.TabIndex = 8;
             label27.Text = "Estadía otorgada:";
-            label27.Click += label27_Click;
+            
             // 
             // label20
             // 
@@ -678,7 +678,7 @@
             cbPaisDestino.Name = "cbPaisDestino";
             cbPaisDestino.Size = new Size(206, 28);
             cbPaisDestino.TabIndex = 22;
-            cbPaisDestino.SelectedIndexChanged += cbPaisDestino_SelectedIndexChanged;
+ 
             // 
             // cbMotivos
             // 
@@ -689,7 +689,7 @@
             cbMotivos.Name = "cbMotivos";
             cbMotivos.Size = new Size(209, 28);
             cbMotivos.TabIndex = 20;
-            cbMotivos.SelectedIndexChanged += cbMotivos_SelectedIndexChanged;
+         
             // 
             // label26
             // 
@@ -699,7 +699,7 @@
             label26.Size = new Size(111, 20);
             label26.TabIndex = 7;
             label26.Text = "País de destino:";
-            label26.Click += label26_Click;
+            
             // 
             // label25
             // 
@@ -709,7 +709,7 @@
             label25.Size = new Size(115, 20);
             label25.TabIndex = 6;
             label25.Text = "Motivo de viaje:";
-            label25.Click += label25_Click;
+            
             // 
             // groupBox5
             // 

@@ -13,6 +13,10 @@ namespace ProyectoMigracionMenu.Clases
         {
             DSReporteEntradas dataSet = new DSReporteEntradas();
 
+         
+            DateTime fechaInicioAjustada = fechaInicio.Date; 
+            DateTime fechaFinAjustada = fechaFin.Date.AddDays(1).AddMilliseconds(-1); 
+
             using (SqlConnection connection = new SqlServerConnection().EstablecerConexion())
             {
                 string query = @"
@@ -36,8 +40,8 @@ namespace ProyectoMigracionMenu.Clases
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@NombreDelegacion", nombreDelegacion);
-                    command.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                    command.Parameters.AddWithValue("@FechaFin", fechaFin);
+                    command.Parameters.AddWithValue("@FechaInicio", fechaInicioAjustada);  
+                    command.Parameters.AddWithValue("@FechaFin", fechaFinAjustada);     
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
@@ -52,6 +56,10 @@ namespace ProyectoMigracionMenu.Clases
         public DSReporteRechazados LlenarReporteRechazados(DateTime fechaInicio, DateTime fechaFin, string nombreDelegacion)
         {
             DSReporteRechazados dataSet = new DSReporteRechazados();
+
+            
+            DateTime fechaInicioAjustada = fechaInicio.Date; 
+            DateTime fechaFinAjustada = fechaFin.Date.AddDays(1).AddMilliseconds(-1); 
 
             using (SqlConnection connection = new SqlServerConnection().EstablecerConexion())
             {
@@ -83,8 +91,8 @@ namespace ProyectoMigracionMenu.Clases
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@NombreDelegacion", nombreDelegacion);
-                    command.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                    command.Parameters.AddWithValue("@FechaFin", fechaFin);
+                    command.Parameters.AddWithValue("@FechaInicio", fechaInicioAjustada);  
+                    command.Parameters.AddWithValue("@FechaFin", fechaFinAjustada);      
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
@@ -95,9 +103,14 @@ namespace ProyectoMigracionMenu.Clases
 
             return dataSet;
         }
+
         public dsEntra LlenarReporteEntradas(DateTime fechaInicio, DateTime fechaFin, string nombreDelegacion)
         {
             dsEntra dataSet = new dsEntra();
+
+            
+            DateTime fechaInicioAjustada = fechaInicio.Date; 
+            DateTime fechaFinAjustada = fechaFin.Date.AddDays(1).AddMilliseconds(-1); 
 
             using (SqlConnection connection = new SqlServerConnection().EstablecerConexion())
             {
@@ -129,8 +142,8 @@ namespace ProyectoMigracionMenu.Clases
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@NombreDelegacion", nombreDelegacion);
-                    command.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                    command.Parameters.AddWithValue("@FechaFin", fechaFin);
+                    command.Parameters.AddWithValue("@FechaInicio", fechaInicioAjustada);  
+                    command.Parameters.AddWithValue("@FechaFin", fechaFinAjustada);      
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
