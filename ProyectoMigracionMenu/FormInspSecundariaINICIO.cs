@@ -67,7 +67,7 @@ namespace ProyectoMigracionMenu
             if (formMenu != null)
             {
                 
-                formMenu.OpenChildForm(new FormInspSecundaria(), null);
+                formMenu.OpenChildForm(new FormInspSecundaria(), sender);
             }
             else
             {

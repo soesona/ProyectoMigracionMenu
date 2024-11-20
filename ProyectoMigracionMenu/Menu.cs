@@ -69,21 +69,31 @@ namespace ProyectoMigracionMenu
         {
             if (activeForm != null)
                 activeForm.Close();
+
             activeForm = childForm;
+
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
 
+            
             this.panelContenedor.Controls.Add(childForm);
             this.panelContenedor.Tag = childForm;
 
+      
             childForm.BringToFront();
             childForm.Show();
 
+            
             lblTitulo.Text = childForm.Text;
 
-
-            ResaltarBoton(btnSender);
+            
+            if (btnSender != null)
+            {
+                
+                botonResaltadoActual = (Button)btnSender;
+                ResaltarBoton(botonResaltadoActual);
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
