@@ -24,35 +24,47 @@ namespace Inspeccionsecundaria
             llenadoGrid();
         }
 
+
+
         private void llenadoGrid()
         {
+
             try
             {
                 dgvTransacciones.Rows.Clear();
 
+                ClaseInspSecundaria claseInsp = new ClaseInspSecundaria();
+                query = claseInsp.ConsultaPersonasActivas();
+
                 using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
                 {
-                    query = "SELECT A.IdPersonas Id, CASE WHEN TipoDocumento = 1 THEN 'Identidad' WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END Doc, E.Descripcion paisEmisor, A.Identidad identidad, FORMAT(A.f_regFinal, 'dd-MM-yyyy') FechaV, A.Nombres Nombre, A.Apellidos, I.Descripcion Sexo, A.Fotografia Imagen,  " +
-                            " CASE WHEN A.Estado = 1 THEN 'INSPECCIÓN PRIMARIA' End Estado, " +
-                            " FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha " +
-                            " FROM Personas A " +
-                            " INNER JOIN Pais E ON A.IdPaisEmision = E.IdPais " +
-                            " INNER JOIN Sexo I ON A.IdSexo = I.IdSexo WHERE A.Estado = 1";
                     DataTable personas = gl.retornaTabla(query, sqlcon);
                     if (personas.Rows.Count > 0)
                     {
                         foreach (DataRow row in personas.Rows)
                         {
-                            dgvTransacciones.Rows.Add(row["Id"].ToString(), row["Doc"].ToString(), row["paisEmisor"].ToString(),
-                                row["identidad"].ToString(), row["FechaV"].ToString(), row["Nombre"].ToString(), row["Sexo"].ToString(), row["Estado"].ToString());
+                            
+
+                            dgvTransacciones.Rows.Add(
+                                row["Id"].ToString(),
+                                row["Doc"].ToString(),
+                                row["paisEmisor"].ToString(),
+                                row["identidad"].ToString(),
+                                row["FechaV"].ToString(),
+                                row["NombreCompleto"].ToString(),
+                                row["Sexo"].ToString(),
+                                row["Observacion"].ToString()
+                   
+                            );
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.ToString());
+                MessageBox.Show("Error: " + ex.Message);
             }
+
         }
 
         private void dgvTransacciones_SelectionChanged(object sender, EventArgs e)
@@ -65,44 +77,56 @@ namespace Inspeccionsecundaria
                     {
                         return;
                     }
-                    query = "SELECT A.IdPersonas Id, CASE WHEN TipoDocumento = 1 THEN 'Identidad' WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END Doc, E.Descripcion paisEmisor, A.Identidad identidad, FORMAT(A.f_regFinal, 'dd-MM-yyyy') FechaV, A.Nombres Nombre, A.Apellidos, I.Descripcion Sexo, A.Fotografia Imagen,  " +
-                            " CASE WHEN A.Estado = 1 THEN 'INSPECCIÓN PRIMARIA' End Estado, " +
-                            " FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha " +
-                            " FROM Personas A " +
-                            " INNER JOIN Pais E ON A.IdPaisEmision = E.IdPais " +
-                            " INNER JOIN Sexo I ON A.IdSexo = I.IdSexo WHERE A.Estado = 1 AND a.IdPersonas = '" + dgvTransacciones.CurrentRow.Cells[0].Value.ToString() + "' ";
-                    DataTable personas = gl.retornaTabla(query, sqlcon);
-                    if (personas.Rows.Count > 0)
+
+                    ClaseInspSecundaria claseInsp = new ClaseInspSecundaria();
+                    query = claseInsp.ConsultaPersonasActivas() + " AND A.IdPersonas = @IdPersona";
+
+                    using (SqlCommand cmd = new SqlCommand(query, sqlcon))
                     {
-                        txtNombre.Text = personas.Rows[0]["Nombre"].ToString();
-                        txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
-                        txtTipoDoc.Text = personas.Rows[0]["Doc"].ToString();
-                        txtPaisEmision.Text = personas.Rows[0]["paisEmisor"].ToString();
-                        txtIdentidad.Text = personas.Rows[0]["identidad"].ToString();
-                        txtRegistro.Text = personas.Rows[0]["Id"].ToString();
-
-                        string fechaTexto = personas.Rows[0]["Fecha"].ToString();
-                        if (!string.IsNullOrEmpty(fechaTexto))
+                        cmd.Parameters.AddWithValue("@IdPersona", dgvTransacciones.CurrentRow.Cells[0].Value.ToString());
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                         {
-                            dtpFecha.Value = DateTime.ParseExact(fechaTexto, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                            DataTable personas = new DataTable();
+                            adapter.Fill(personas);
 
-                            if (personas.Rows[0]["Imagen"] != DBNull.Value)
+                            if (personas.Rows.Count > 0)
                             {
-                                byte[] imagenBytes = (byte[])personas.Rows[0]["Imagen"];
-                                using (MemoryStream ms = new MemoryStream(imagenBytes))
+                                txtNombre.Text = personas.Rows[0]["Nombres"].ToString();
+                                txtApellido.Text = personas.Rows[0]["Apellidos"].ToString();
+                                txtTipoDoc.Text = personas.Rows[0]["Doc"].ToString();
+                                txtPaisEmision.Text = personas.Rows[0]["paisEmisor"].ToString();
+                                txtIdentidad.Text = personas.Rows[0]["identidad"].ToString();
+                                txtRegistro.Text = personas.Rows[0]["Id"].ToString();
+                                txtObservacion.Text = personas.Rows[0]["Observacion"].ToString();
+
+                                txtAlertas.Text = personas.Rows[0]["AlertasMigratorias"].ToString();
+
+                                string fechaTexto = personas.Rows[0]["Fecha"].ToString();
+                                if (!string.IsNullOrEmpty(fechaTexto))
                                 {
-                                    pic.Image = Image.FromStream(ms);
+                                    dtpFecha.Value = DateTime.ParseExact(fechaTexto, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+                                    if (personas.Rows[0]["Imagen"] != DBNull.Value)
+                                    {
+                                        byte[] imagenBytes = (byte[])personas.Rows[0]["Imagen"];
+                                        using (MemoryStream ms = new MemoryStream(imagenBytes))
+                                        {
+                                            pic.Image = Image.FromStream(ms);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
                             }
                         }
                     }
                 }
             }
         }
+               
+        
 
         private void limpiar()
         {
@@ -112,6 +136,8 @@ namespace Inspeccionsecundaria
             txtPaisEmision.Clear();
             txtIdentidad.Clear();
             txtRegistro.Clear();
+            txtAlertas.Clear(); 
+            txtObservacion.Clear(); 
             pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
         }
 

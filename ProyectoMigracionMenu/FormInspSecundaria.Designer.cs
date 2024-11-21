@@ -46,7 +46,7 @@
             FechaV = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Sexo = new DataGridViewTextBoxColumn();
-            Estado = new DataGridViewTextBoxColumn();
+            Observacion = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
             Imagen = new DataGridViewTextBoxColumn();
             txtTipoDoc = new TextBox();
@@ -57,6 +57,10 @@
             pic = new PictureBox();
             btnCancelar = new Button();
             btnGuardar = new Button();
+            label1 = new Label();
+            txtObservacion = new TextBox();
+            label6 = new Label();
+            txtAlertas = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvTransacciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic).BeginInit();
             SuspendLayout();
@@ -82,11 +86,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(963, 36);
+            label4.Location = new Point(915, 36);
             label4.Name = "label4";
-            label4.Size = new Size(112, 20);
+            label4.Size = new Size(110, 20);
             label4.TabIndex = 3;
-            label4.Text = "Fecha Solicitud:";
+            label4.Text = "Fecha solicitud:";
             // 
             // label5
             // 
@@ -137,7 +141,7 @@
             // 
             dtpFecha.Enabled = false;
             dtpFecha.Format = DateTimePickerFormat.Short;
-            dtpFecha.Location = new Point(1087, 32);
+            dtpFecha.Location = new Point(1042, 32);
             dtpFecha.Margin = new Padding(3, 4, 3, 4);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(133, 27);
@@ -146,14 +150,16 @@
             // dgvTransacciones
             // 
             dgvTransacciones.AllowUserToAddRows = false;
+            dgvTransacciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTransacciones.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dgvTransacciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTransacciones.Columns.AddRange(new DataGridViewColumn[] { Id, Doc, paisEmisor, identidad, FechaV, Nombre, Sexo, Estado, Apellido, Imagen });
-            dgvTransacciones.Location = new Point(14, 236);
+            dgvTransacciones.Columns.AddRange(new DataGridViewColumn[] { Id, Doc, paisEmisor, identidad, FechaV, Nombre, Sexo, Observacion, Apellido, Imagen });
+            dgvTransacciones.Location = new Point(14, 308);
             dgvTransacciones.Margin = new Padding(3, 4, 3, 4);
             dgvTransacciones.Name = "dgvTransacciones";
             dgvTransacciones.ReadOnly = true;
             dgvTransacciones.RowHeadersWidth = 51;
-            dgvTransacciones.Size = new Size(1670, 601);
+            dgvTransacciones.Size = new Size(1578, 529);
             dgvTransacciones.TabIndex = 28;
             dgvTransacciones.SelectionChanged += dgvTransacciones_SelectionChanged;
             // 
@@ -163,7 +169,6 @@
             Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.ReadOnly = true;
-            Id.Width = 125;
             // 
             // Doc
             // 
@@ -171,7 +176,6 @@
             Doc.MinimumWidth = 6;
             Doc.Name = "Doc";
             Doc.ReadOnly = true;
-            Doc.Width = 200;
             // 
             // paisEmisor
             // 
@@ -179,7 +183,6 @@
             paisEmisor.MinimumWidth = 6;
             paisEmisor.Name = "paisEmisor";
             paisEmisor.ReadOnly = true;
-            paisEmisor.Width = 200;
             // 
             // identidad
             // 
@@ -187,7 +190,6 @@
             identidad.MinimumWidth = 6;
             identidad.Name = "identidad";
             identidad.ReadOnly = true;
-            identidad.Width = 250;
             // 
             // FechaV
             // 
@@ -195,7 +197,6 @@
             FechaV.MinimumWidth = 6;
             FechaV.Name = "FechaV";
             FechaV.ReadOnly = true;
-            FechaV.Width = 150;
             // 
             // Nombre
             // 
@@ -203,7 +204,6 @@
             Nombre.MinimumWidth = 6;
             Nombre.Name = "Nombre";
             Nombre.ReadOnly = true;
-            Nombre.Width = 200;
             // 
             // Sexo
             // 
@@ -211,15 +211,13 @@
             Sexo.MinimumWidth = 6;
             Sexo.Name = "Sexo";
             Sexo.ReadOnly = true;
-            Sexo.Width = 150;
             // 
-            // Estado
+            // Observacion
             // 
-            Estado.HeaderText = "Estado";
-            Estado.MinimumWidth = 6;
-            Estado.Name = "Estado";
-            Estado.ReadOnly = true;
-            Estado.Width = 200;
+            Observacion.HeaderText = "Observación";
+            Observacion.MinimumWidth = 6;
+            Observacion.Name = "Observacion";
+            Observacion.ReadOnly = true;
             // 
             // Apellido
             // 
@@ -228,7 +226,6 @@
             Apellido.Name = "Apellido";
             Apellido.ReadOnly = true;
             Apellido.Visible = false;
-            Apellido.Width = 125;
             // 
             // Imagen
             // 
@@ -237,7 +234,6 @@
             Imagen.Name = "Imagen";
             Imagen.ReadOnly = true;
             Imagen.Visible = false;
-            Imagen.Width = 125;
             // 
             // txtTipoDoc
             // 
@@ -287,11 +283,11 @@
             // pic
             // 
             pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
-            pic.Location = new Point(1303, 13);
+            pic.Location = new Point(1350, 32);
             pic.Margin = new Padding(3, 4, 3, 4);
             pic.Name = "pic";
-            pic.Size = new Size(181, 212);
-            pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            pic.Size = new Size(213, 250);
+            pic.SizeMode = PictureBoxSizeMode.Zoom;
             pic.TabIndex = 34;
             pic.TabStop = false;
             // 
@@ -299,9 +295,9 @@
             // 
             btnCancelar.BackColor = Color.LightCoral;
             btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
-            btnCancelar.Location = new Point(1108, 141);
+            btnCancelar.Location = new Point(1147, 222);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(174, 53);
+            btnCancelar.Size = new Size(162, 42);
             btnCancelar.TabIndex = 36;
             btnCancelar.Text = "Rechazar";
             btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -312,14 +308,54 @@
             // 
             btnGuardar.BackColor = Color.LightGreen;
             btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
-            btnGuardar.Location = new Point(915, 144);
+            btnGuardar.Location = new Point(967, 222);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(174, 53);
+            btnGuardar.Size = new Size(162, 42);
             btnGuardar.TabIndex = 35;
-            btnGuardar.Text = "Guardar";
+            btnGuardar.Text = "Aceptar";
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(81, 235);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 20);
+            label1.TabIndex = 37;
+            label1.Text = "Observación:";
+            // 
+            // txtObservacion
+            // 
+            txtObservacion.Enabled = false;
+            txtObservacion.Location = new Point(183, 222);
+            txtObservacion.Margin = new Padding(3, 4, 3, 4);
+            txtObservacion.MaxLength = 200;
+            txtObservacion.Multiline = true;
+            txtObservacion.Name = "txtObservacion";
+            txtObservacion.Size = new Size(699, 64);
+            txtObservacion.TabIndex = 38;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(967, 104);
+            label6.Name = "label6";
+            label6.Size = new Size(58, 20);
+            label6.TabIndex = 39;
+            label6.Text = "Alertas:";
+            // 
+            // txtAlertas
+            // 
+            txtAlertas.Enabled = false;
+            txtAlertas.Location = new Point(1042, 97);
+            txtAlertas.Margin = new Padding(3, 4, 3, 4);
+            txtAlertas.MaxLength = 200;
+            txtAlertas.Multiline = true;
+            txtAlertas.Name = "txtAlertas";
+            txtAlertas.Size = new Size(267, 64);
+            txtAlertas.TabIndex = 40;
             // 
             // FormInspSecundaria
             // 
@@ -327,6 +363,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(1697, 853);
+            Controls.Add(txtAlertas);
+            Controls.Add(label6);
+            Controls.Add(txtObservacion);
+            Controls.Add(label1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(pic);
@@ -373,6 +413,10 @@
         private PictureBox pic;
         private Button btnCancelar;
         private Button btnGuardar;
+        private Label label1;
+        private TextBox txtObservacion;
+        private Label label6;
+        private TextBox txtAlertas;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Doc;
         private DataGridViewTextBoxColumn paisEmisor;
@@ -380,7 +424,7 @@
         private DataGridViewTextBoxColumn FechaV;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Sexo;
-        private DataGridViewTextBoxColumn Estado;
+        private DataGridViewTextBoxColumn Observacion;
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn Imagen;
     }

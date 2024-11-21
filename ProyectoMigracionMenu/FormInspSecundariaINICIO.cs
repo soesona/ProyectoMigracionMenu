@@ -1,4 +1,5 @@
 ﻿using Inspeccionsecundaria;
+using interfaz_grafica_de_inspeccion_primaria;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,12 +63,9 @@ namespace ProyectoMigracionMenu
 
         private void BtnEntradas_Click(object sender, EventArgs e)
         {
-            Menu formMenu = this.Owner as Menu;
-
-            if (formMenu != null)
+            if (Owner is Menu formMenu)
             {
-                
-                formMenu.OpenChildForm(new FormInspSecundaria(), sender);
+                formMenu.OpenChildForm(new FormInspSecundaria(), sender, false);
             }
             else
             {

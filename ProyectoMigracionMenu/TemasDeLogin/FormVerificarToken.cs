@@ -39,14 +39,22 @@ namespace ProyectoMigracionMenu.TemasDeLogin
                 MessageBox.Show("Las contraseñas no coinciden.");
                 return;
             }
-
             if (tokenGenerador.VerificarToken(idUsuario, token))
             {
                 bool actualizado = recuperacionContrasena.ActualizarContrasena(idUsuario, nuevaContrasena);
                 if (actualizado)
                 {
                     MessageBox.Show("Contraseña actualizada. Inicie sesión con su nueva contraseña.");
-                    this.Close();
+
+                    
+                    Form loginForm = Application.OpenForms["Login"];
+
+                    if (loginForm != null)
+                    {
+                        loginForm.Show(); 
+                    }
+
+                    this.Close(); 
                 }
                 else
                 {

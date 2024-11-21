@@ -65,12 +65,9 @@ namespace ProyectoMigracionMenu
 
         private void BtnEntradas_Click(object sender, EventArgs e)
         {
-            Menu formMenu = this.Owner as Menu;
-
-            if (formMenu != null)
+            if (Owner is Menu formMenu)
             {
-               
-                formMenu.OpenChildForm(new FormInspPrimaria(), sender);
+                formMenu.OpenChildForm(new FormInspPrimaria(), sender, false);
             }
             else
             {

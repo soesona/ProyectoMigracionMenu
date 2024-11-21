@@ -111,6 +111,8 @@ namespace ProyectoMigracionMenu
 
         private void LinkContra_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
+
             FormRecuperarContrasena formRecuperarContrasena = new FormRecuperarContrasena();
 
             

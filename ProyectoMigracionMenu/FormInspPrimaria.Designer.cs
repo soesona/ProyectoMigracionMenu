@@ -110,8 +110,8 @@
             btnCancelar = new Button();
             errorProvider1 = new ErrorProvider(components);
             panel2 = new Panel();
-            contadorNegadoTxt = new Label();
             label2 = new Label();
+            contadorNegadoTxt = new Label();
             Documentoviaje.SuspendLayout();
             datosdeviaje.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -145,11 +145,10 @@
             Documentoviaje.Margin = new Padding(3, 4, 3, 4);
             Documentoviaje.Name = "Documentoviaje";
             Documentoviaje.Padding = new Padding(3, 4, 3, 4);
-            Documentoviaje.Size = new Size(409, 304);
+            Documentoviaje.Size = new Size(433, 304);
             Documentoviaje.TabIndex = 9;
             Documentoviaje.TabStop = false;
             Documentoviaje.Text = "Documento de Viaje";
-           
             // 
             // btnCancelarInfo
             // 
@@ -170,7 +169,6 @@
             dtpfechaVenci.Name = "dtpfechaVenci";
             dtpfechaVenci.Size = new Size(218, 27);
             dtpfechaVenci.TabIndex = 16;
-           
             // 
             // btnbuscar
             // 
@@ -205,7 +203,6 @@
             cbPaisEmision.Size = new Size(218, 28);
             cbPaisEmision.TabIndex = 13;
             cbPaisEmision.Tag = "obligatorio";
-          
             // 
             // cbDoc
             // 
@@ -254,7 +251,6 @@
             Label3.Size = new Size(143, 20);
             Label3.TabIndex = 0;
             Label3.Text = "Tipo de documento:";
-            
             // 
             // datosdeviaje
             // 
@@ -268,7 +264,7 @@
             datosdeviaje.Controls.Add(label7);
             datosdeviaje.Controls.Add(label9);
             datosdeviaje.Controls.Add(label10);
-            datosdeviaje.Location = new Point(437, 37);
+            datosdeviaje.Location = new Point(460, 35);
             datosdeviaje.Margin = new Padding(3, 4, 3, 4);
             datosdeviaje.Name = "datosdeviaje";
             datosdeviaje.Padding = new Padding(3, 4, 3, 4);
@@ -276,7 +272,6 @@
             datosdeviaje.TabIndex = 10;
             datosdeviaje.TabStop = false;
             datosdeviaje.Text = "Datos Personales";
-           
             // 
             // txtApellido
             // 
@@ -309,7 +304,6 @@
             cbSexo.Name = "cbSexo";
             cbSexo.Size = new Size(110, 28);
             cbSexo.TabIndex = 19;
-            
             // 
             // cbPaisNa
             // 
@@ -320,7 +314,6 @@
             cbPaisNa.Name = "cbPaisNa";
             cbPaisNa.Size = new Size(313, 28);
             cbPaisNa.TabIndex = 22;
-      
             // 
             // label11
             // 
@@ -339,7 +332,6 @@
             dtpFechaNa.Name = "dtpFechaNa";
             dtpFechaNa.Size = new Size(138, 27);
             dtpFechaNa.TabIndex = 16;
-           
             // 
             // label21
             // 
@@ -349,7 +341,6 @@
             label21.Size = new Size(136, 20);
             label21.TabIndex = 2;
             label21.Text = "País de nacimiento:";
-          
             // 
             // label7
             // 
@@ -359,7 +350,6 @@
             label7.Size = new Size(69, 20);
             label7.TabIndex = 10;
             label7.Text = "Apellido:";
-           
             // 
             // label9
             // 
@@ -378,13 +368,12 @@
             label10.Size = new Size(67, 20);
             label10.TabIndex = 0;
             label10.Text = "Nombre:";
-           
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(pic);
             groupBox1.Controls.Add(btnfotografia);
-            groupBox1.Location = new Point(955, 37);
+            groupBox1.Location = new Point(978, 35);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
@@ -396,11 +385,11 @@
             // pic
             // 
             pic.Image = ProyectoMigracionMenu.Properties.Resources.imagenes_de_usuario__3_;
-            pic.Location = new Point(18, 29);
+            pic.Location = new Point(23, 29);
             pic.Margin = new Padding(3, 4, 3, 4);
             pic.Name = "pic";
-            pic.Size = new Size(186, 211);
-            pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            pic.Size = new Size(179, 214);
+            pic.SizeMode = PictureBoxSizeMode.Zoom;
             pic.TabIndex = 1;
             pic.TabStop = false;
             // 
@@ -425,11 +414,11 @@
             groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(label12);
-            groupBox2.Location = new Point(1185, 37);
+            groupBox2.Location = new Point(1208, 37);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(422, 301);
+            groupBox2.Size = new Size(405, 301);
             groupBox2.TabIndex = 12;
             groupBox2.TabStop = false;
             groupBox2.Text = "Validaciones";
@@ -437,7 +426,7 @@
             // chk5
             // 
             chk5.AutoSize = true;
-            chk5.Location = new Point(222, 72);
+            chk5.Location = new Point(212, 72);
             chk5.Margin = new Padding(3, 4, 3, 4);
             chk5.Name = "chk5";
             chk5.Size = new Size(149, 24);
@@ -448,7 +437,7 @@
             // chk4
             // 
             chk4.AutoSize = true;
-            chk4.Location = new Point(14, 240);
+            chk4.Location = new Point(14, 225);
             chk4.Margin = new Padding(3, 4, 3, 4);
             chk4.Name = "chk4";
             chk4.Size = new Size(83, 24);
@@ -470,7 +459,7 @@
             // chk2
             // 
             chk2.AutoSize = true;
-            chk2.Location = new Point(14, 105);
+            chk2.Location = new Point(14, 104);
             chk2.Margin = new Padding(3, 4, 3, 4);
             chk2.Name = "chk2";
             chk2.Size = new Size(166, 24);
@@ -492,7 +481,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(25, 156);
+            label14.Location = new Point(31, 169);
             label14.Name = "label14";
             label14.Size = new Size(98, 20);
             label14.TabIndex = 2;
@@ -501,7 +490,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(248, 36);
+            label13.Location = new Point(234, 48);
             label13.Name = "label13";
             label13.Size = new Size(87, 20);
             label13.TabIndex = 1;
@@ -510,7 +499,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(22, 36);
+            label12.Location = new Point(31, 48);
             label12.Name = "label12";
             label12.Size = new Size(87, 20);
             label12.TabIndex = 0;
@@ -530,7 +519,7 @@
             groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(579, 196);
+            groupBox3.Size = new Size(602, 196);
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
             groupBox3.Text = "Información adicional";
@@ -568,7 +557,6 @@
             txtEstadia.TabIndex = 17;
             txtEstadia.Text = "5";
             txtEstadia.TextAlign = HorizontalAlignment.Center;
-            
             // 
             // cbPaisRes
             // 
@@ -579,7 +567,6 @@
             cbPaisRes.Name = "cbPaisRes";
             cbPaisRes.Size = new Size(228, 28);
             cbPaisRes.TabIndex = 23;
-           
             // 
             // cbTrabajo
             // 
@@ -590,7 +577,6 @@
             cbTrabajo.Name = "cbTrabajo";
             cbTrabajo.Size = new Size(228, 28);
             cbTrabajo.TabIndex = 24;
-            
             // 
             // label27
             // 
@@ -600,7 +586,6 @@
             label27.Size = new Size(126, 20);
             label27.TabIndex = 8;
             label27.Text = "Estadía otorgada:";
-            
             // 
             // label20
             // 
@@ -633,7 +618,7 @@
             groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 4, 3, 4);
-            groupBox4.Size = new Size(579, 211);
+            groupBox4.Size = new Size(602, 211);
             groupBox4.TabIndex = 14;
             groupBox4.TabStop = false;
             groupBox4.Text = "Información del viaje";
@@ -678,7 +663,6 @@
             cbPaisDestino.Name = "cbPaisDestino";
             cbPaisDestino.Size = new Size(206, 28);
             cbPaisDestino.TabIndex = 22;
- 
             // 
             // cbMotivos
             // 
@@ -689,7 +673,6 @@
             cbMotivos.Name = "cbMotivos";
             cbMotivos.Size = new Size(209, 28);
             cbMotivos.TabIndex = 20;
-         
             // 
             // label26
             // 
@@ -699,7 +682,6 @@
             label26.Size = new Size(111, 20);
             label26.TabIndex = 7;
             label26.Text = "País de destino:";
-            
             // 
             // label25
             // 
@@ -709,7 +691,6 @@
             label25.Size = new Size(115, 20);
             label25.TabIndex = 6;
             label25.Text = "Motivo de viaje:";
-            
             // 
             // groupBox5
             // 
@@ -719,7 +700,7 @@
             groupBox5.Margin = new Padding(3, 4, 3, 4);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(3, 4, 3, 4);
-            groupBox5.Size = new Size(581, 120);
+            groupBox5.Size = new Size(605, 120);
             groupBox5.TabIndex = 14;
             groupBox5.TabStop = false;
             groupBox5.Text = "Decisión";
@@ -747,11 +728,11 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(dgvTransacciones);
-            groupBox6.Location = new Point(607, 349);
+            groupBox6.Location = new Point(630, 349);
             groupBox6.Margin = new Padding(3, 4, 3, 4);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 4, 3, 4);
-            groupBox6.Size = new Size(1000, 213);
+            groupBox6.Size = new Size(983, 213);
             groupBox6.TabIndex = 14;
             groupBox6.TabStop = false;
             groupBox6.Text = "Historial de viajes";
@@ -765,7 +746,7 @@
             dgvTransacciones.Name = "dgvTransacciones";
             dgvTransacciones.ReadOnly = true;
             dgvTransacciones.RowHeadersWidth = 51;
-            dgvTransacciones.Size = new Size(986, 171);
+            dgvTransacciones.Size = new Size(969, 171);
             dgvTransacciones.TabIndex = 26;
             // 
             // Fecha
@@ -847,11 +828,11 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(dgvObservaciones);
-            groupBox7.Location = new Point(611, 669);
+            groupBox7.Location = new Point(630, 668);
             groupBox7.Margin = new Padding(3, 4, 3, 4);
             groupBox7.Name = "groupBox7";
             groupBox7.Padding = new Padding(3, 4, 3, 4);
-            groupBox7.Size = new Size(804, 227);
+            groupBox7.Size = new Size(796, 227);
             groupBox7.TabIndex = 15;
             groupBox7.TabStop = false;
             groupBox7.Text = "Historial de observaciones";
@@ -865,7 +846,7 @@
             dgvObservaciones.Name = "dgvObservaciones";
             dgvObservaciones.ReadOnly = true;
             dgvObservaciones.RowHeadersWidth = 51;
-            dgvObservaciones.Size = new Size(789, 184);
+            dgvObservaciones.Size = new Size(778, 184);
             dgvObservaciones.TabIndex = 27;
             // 
             // Observaciones
@@ -890,7 +871,7 @@
             panel1.Controls.Add(contadortxtx);
             panel1.Controls.Add(label15);
             panel1.ForeColor = SystemColors.ControlDarkDark;
-            panel1.Location = new Point(611, 571);
+            panel1.Location = new Point(630, 579);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
             panel1.Size = new Size(226, 83);
@@ -958,7 +939,7 @@
             // 
             btnGuardar.BackColor = Color.LightGreen;
             btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
-            btnGuardar.Location = new Point(1433, 690);
+            btnGuardar.Location = new Point(1432, 690);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(174, 53);
             btnGuardar.TabIndex = 23;
@@ -971,7 +952,7 @@
             // 
             btnCancelar.BackColor = Color.LightCoral;
             btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
-            btnCancelar.Location = new Point(1433, 764);
+            btnCancelar.Location = new Point(1432, 764);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(174, 53);
             btnCancelar.TabIndex = 25;
@@ -990,20 +971,11 @@
             panel2.Controls.Add(label2);
             panel2.Controls.Add(contadorNegadoTxt);
             panel2.ForeColor = SystemColors.ControlDarkDark;
-            panel2.Location = new Point(860, 571);
+            panel2.Location = new Point(879, 579);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
             panel2.Size = new Size(226, 83);
             panel2.TabIndex = 26;
-            // 
-            // contadorNegadoTxt
-            // 
-            contadorNegadoTxt.AutoSize = true;
-            contadorNegadoTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            contadorNegadoTxt.Location = new Point(165, 40);
-            contadorNegadoTxt.Name = "contadorNegadoTxt";
-            contadorNegadoTxt.Size = new Size(0, 28);
-            contadorNegadoTxt.TabIndex = 1;
             // 
             // label2
             // 
@@ -1013,6 +985,15 @@
             label2.Size = new Size(128, 20);
             label2.TabIndex = 27;
             label2.Text = "Total de rechazos:";
+            // 
+            // contadorNegadoTxt
+            // 
+            contadorNegadoTxt.AutoSize = true;
+            contadorNegadoTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contadorNegadoTxt.Location = new Point(165, 40);
+            contadorNegadoTxt.Name = "contadorNegadoTxt";
+            contadorNegadoTxt.Size = new Size(0, 28);
+            contadorNegadoTxt.TabIndex = 1;
             // 
             // FormInspPrimaria
             // 

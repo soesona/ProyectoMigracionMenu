@@ -16,7 +16,7 @@ namespace ProyectoMigracionMenu
     {
 
         private Form activeForm;
-        private Button botonResaltadoActual; 
+        private Button currentMainButton;
         public Menu()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace ProyectoMigracionMenu
             this.WindowState = FormWindowState.Maximized;
             DoubleBufferedPanel(panelContenedor);
             OpenChildForm(new FormDashboard(), null);
-            ResaltarBoton(BtnDashboard); 
+            currentMainButton = BtnDashboard;
 
 
         }
@@ -39,21 +39,19 @@ namespace ProyectoMigracionMenu
         }
         private void ResaltarBoton(object btnSender)
         {
+            if (btnSender == null) return;
+
             foreach (Control control in MenuVertical.Controls)
             {
-                if (control.GetType() == typeof(Button))
+                if (control is Button btn)
                 {
-                    Button btn = (Button)control;
                     btn.BackColor = Color.FromArgb(169, 209, 212);
-
                 }
             }
 
-            if (btnSender != null)
+            if (btnSender is Button currentButton)
             {
-                Button currentButton = (Button)btnSender;
                 currentButton.BackColor = Color.FromArgb(52, 161, 166);
-
             }
         }
         private void CargarDatosUsuario()
@@ -65,34 +63,37 @@ namespace ProyectoMigracionMenu
                 lblRol.Text = Login.UsuarioActual.Rol;
             }
         }
-        public void OpenChildForm(Form childForm, object btnSender)
+        public void OpenChildForm(Form childForm, object btnSender, bool isMainMenuButton = true)
         {
             if (activeForm != null)
+            {
                 activeForm.Close();
+            }
 
             activeForm = childForm;
-
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
 
-            
-            this.panelContenedor.Controls.Add(childForm);
-            this.panelContenedor.Tag = childForm;
+            panelContenedor.Controls.Add(childForm);
+            panelContenedor.Tag = childForm;
 
-      
             childForm.BringToFront();
             childForm.Show();
 
-            
             lblTitulo.Text = childForm.Text;
 
-            
             if (btnSender != null)
             {
-                
-                botonResaltadoActual = (Button)btnSender;
-                ResaltarBoton(botonResaltadoActual);
+                if (isMainMenuButton)
+                {
+                    currentMainButton = btnSender as Button;
+                    ResaltarBoton(currentMainButton);
+                }
+                else
+                {
+                    ResaltarBoton(currentMainButton);
+                }
             }
         }
 
@@ -160,16 +161,17 @@ namespace ProyectoMigracionMenu
 
         private void BtnInspeccionPrimaria_Click(object sender, EventArgs e)
         {
+
             FormInspPrimariaINICIO formInspPrimariaInicio = new FormInspPrimariaINICIO();
             formInspPrimariaInicio.Owner = this;
-            OpenChildForm(formInspPrimariaInicio, sender);
+            OpenChildForm(formInspPrimariaInicio, sender, true);
         }
 
         private void BtnInspeccionSecundaria_Click(object sender, EventArgs e)
         {
             FormInspSecundariaINICIO formInspSecundariaInicio = new FormInspSecundariaINICIO();
             formInspSecundariaInicio.Owner = this;
-            OpenChildForm(formInspSecundariaInicio, sender);
+            OpenChildForm(formInspSecundariaInicio, sender, true); 
         }
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)

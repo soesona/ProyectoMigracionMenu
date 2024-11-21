@@ -267,7 +267,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
         {
             btnGuardar.Enabled = false;
 
-      
+
             if (!gl.validaCombox(cbDoc, errorProvider1) ||
                 !gl.validaCombox(cbPaisEmision, errorProvider1) ||
                 !gl.validaCombox(cbTrabajo, errorProvider1) ||
@@ -285,6 +285,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
             {
                 MessageBox.Show("El campo 'Apellido' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtApellido.Focus();
+                errorProvider1.SetError(txtApellido, "No puede estar vacío.");
                 btnGuardar.Enabled = true;
                 return;
             }
@@ -304,14 +305,16 @@ namespace interfaz_grafica_de_inspeccion_primaria
             {
                 MessageBox.Show("El campo 'Nombre' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtNombre.Focus();
+                errorProvider1.SetError(txtNombre, "No puede estar vacío.");
                 btnGuardar.Enabled = true;
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtIdentidad.Text))
             {
-                MessageBox.Show("El campo 'Identidad' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El campo 'Numero de documento' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtIdentidad.Focus();
+                errorProvider1.SetError(txtIdentidad, "No puede estar vacío.");
                 btnGuardar.Enabled = true;
                 return;
             }
@@ -320,6 +323,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
             {
                 MessageBox.Show("El campo 'Residencia' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtResidencia.Focus();
+                errorProvider1.SetError(txtResidencia, "No puede estar vacío.");
                 btnGuardar.Enabled = true;
                 return;
             }
@@ -335,6 +339,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
             {
                 MessageBox.Show("El campo 'Observaciones' no puede estar vacío.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtObservaciones.Focus();
+                errorProvider1.SetError(txtObservaciones, "No puede estar vacío.");
                 btnGuardar.Enabled = true;
                 return;
             }
@@ -611,7 +616,6 @@ namespace interfaz_grafica_de_inspeccion_primaria
         private void txtIdentidad_TextChanged(object sender, EventArgs e)
         {
             string texto = txtIdentidad.Text;
-
             if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^\d{0,13}$"))
             {
                 MessageBox.Show("Solo se permiten hasta 13 dígitos numéricos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -624,10 +628,9 @@ namespace interfaz_grafica_de_inspeccion_primaria
         private void txtIdentidad_TextChangedPasaporte(object sender, EventArgs e)
         {
             string texto = txtIdentidad.Text;
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s]{0,13}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9]{0,13}$"))  
             {
-                MessageBox.Show("Solo se permiten letras, números y espacios. Máximo 13 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Solo se permiten letras y números. Máximo 13 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtIdentidad.Text = texto.Substring(0, texto.Length - 1);
                 txtIdentidad.SelectionStart = txtIdentidad.Text.Length;
             }
@@ -641,15 +644,18 @@ namespace interfaz_grafica_de_inspeccion_primaria
 {
     string texto = txtResidencia.Text;
 
-    // Verificar caracteres permitidos
-    if (!ValidarCaracteresPermitidos(texto))
+
+            texto = System.Text.RegularExpressions.Regex.Replace(texto, @"\s{2,}", " ");
+           txtResidencia.Text = texto;
+            txtResidencia.SelectionStart = texto.Length;
+
+            if (!ValidarCaracteresPermitidos(texto))
     {
         MostrarAdvertencia("Solo se permiten letras, números, espacios, comas, puntos, el signo # y vocales con tilde. Máximo 80 caracteres.");
         CorregirTexto(txtResidencia);
         return;
     }
 
-    // Verificar caracteres repetidos
     if (ContieneTresCaracteresIgualesConsecutivos(texto))
     {
         MostrarAdvertencia("No se permiten tres caracteres iguales consecutivos.");
@@ -657,7 +663,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
         return;
     }
 
-    // Validar longitud mínima (sin contar espacios)
+   
     if (!ValidarLongitudMinima(texto, 20))
     {
         errorProvider1.SetError(txtResidencia, "Debe contener al menos 20 caracteres (sin contar espacios).");
@@ -670,8 +676,8 @@ namespace interfaz_grafica_de_inspeccion_primaria
 
 private bool ValidarCaracteresPermitidos(string texto)
 {
-    return System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s.,#áéíóúÁÉÍÓÚ]{0,80}$");
-}
+            return System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9.,#áéíóúÁÉÍÓÚ]*(\s{0,1}[a-zA-Z0-9.,#áéíóúÁÉÍÓÚ]*){0,150}$");
+        }
 
 private bool ContieneTresCaracteresIgualesConsecutivos(string texto)
 {
@@ -705,41 +711,38 @@ private void CorregirTexto(TextBox textBox)
 
         private void txtObservaciones_TextChanged(object sender, EventArgs e)
         {
+
             string texto = txtObservaciones.Text;
 
-           
+            texto = System.Text.RegularExpressions.Regex.Replace(texto, @"\s{2,}", " ");
+            txtObservaciones.Text = texto;
+            txtObservaciones.SelectionStart = texto.Length;
+
+
+
             if (string.IsNullOrWhiteSpace(texto))
             {
                 errorProvider1.SetError(txtObservaciones, "El campo 'Observaciones' no puede estar vacío.");
                 return;
             }
-            else
-            {
-                errorProvider1.Clear();
-            }
 
-           
-            if (!System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]{0,150}$"))
+            if (!ValidarCaracteresPermitidos(texto))
             {
-                MessageBox.Show("Solo se permiten letras, números, espacios, puntos, comas y vocales con tilde. Máximo 150 caracteres.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtObservaciones.Text = texto.Substring(0, texto.Length - 1);
-                txtObservaciones.SelectionStart = txtObservaciones.Text.Length;
+                MostrarAdvertencia("Solo se permiten letras, números, espacios, puntos, comas y vocales con tilde. Máximo 150 caracteres.");
+                CorregirTexto(txtObservaciones);
                 return;
             }
 
-            
-            if (System.Text.RegularExpressions.Regex.IsMatch(texto, @"(.)\1\1"))
+            if (ContieneTresCaracteresIgualesConsecutivos(texto))
             {
-                MessageBox.Show("No se permiten tres caracteres iguales consecutivos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtObservaciones.Text = texto.Substring(0, texto.Length - 1);
-                txtObservaciones.SelectionStart = txtObservaciones.Text.Length;
+                MostrarAdvertencia("No se permiten tres caracteres iguales consecutivos.");
+                CorregirTexto(txtObservaciones);
                 return;
             }
 
-            
-            if (texto.Length > 0 && texto.Length < 20)
+            if (!ValidarLongitudMinima(texto, 20))
             {
-                errorProvider1.SetError(txtObservaciones, "Debe contener al menos 20 caracteres.");
+                errorProvider1.SetError(txtObservaciones, "Debe contener al menos 20 caracteres (sin contar espacios).");
             }
             else
             {
