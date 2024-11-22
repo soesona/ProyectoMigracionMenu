@@ -196,10 +196,7 @@ namespace ProyectoMigracionMenu
             this.Close();
         }
 
-        private void Documentoviaje_Enter(object sender, EventArgs e)
-        {
-
-        }
+      
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -216,9 +213,6 @@ namespace ProyectoMigracionMenu
             
         }
 
-        private void Documentoviaje_Enter_1(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
