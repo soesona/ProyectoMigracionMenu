@@ -26,7 +26,15 @@ namespace ProyectoMigracionMenu
         }
 
         private void txtAgregar_KeyPress(object sender, KeyPressEventArgs e)
+
+
         {
+            string texto = txtAgregar.Text;
+            texto = System.Text.RegularExpressions.Regex.Replace(texto, @"\s{2,}", " ");
+           txtAgregar.Text = texto;
+           txtAgregar.SelectionStart = texto.Length;
+
+
             if (e.KeyChar == (char)Keys.Back)
             {
                 return;
@@ -68,21 +76,21 @@ namespace ProyectoMigracionMenu
             if (e.KeyChar == ' ' && txtAgregar.Text.EndsWith(" "))
             {
                 e.Handled = true;
-                MostrarAdvertencia("No se permiten dos espacios consecutivos.");
+               
                 return;
             }
         }
 
         private void txtAgregar_TextChanged(object sender, EventArgs e)
         {
-            string texto = txtAgregar.Text;
 
-            
-            texto = System.Text.RegularExpressions.Regex.Replace(texto, @"\s{2,}", " ");
-            txtAgregar.Text = texto;
-            txtAgregar.SelectionStart = texto.Length;
 
-         
+            string texto =txtAgregar .Text;
+
+            if (string.IsNullOrEmpty(texto))
+                return;
+
+
             if (!ValidarCaracteresPermitidos(texto))
             {
                 MostrarAdvertencia("Solo se permiten letras y espacios. Máximo 20 caracteres.");
@@ -150,7 +158,7 @@ namespace ProyectoMigracionMenu
                         !ContieneTresCaracteresIgualesConsecutivos(txtAgregar.Text) &&
                         !ContieneEspaciosConsecutivos(txtAgregar.Text))
                     {
-                        query = "insert into " + _tabla + " (Descripcion, fregCreado, Activo) values ('" + txtAgregar.Text + "',GETDATE(), 1)";
+                        query = "insert into " + _tabla + " (Descripcion, f_regCreado, Activo) values ('" + txtAgregar.Text + "',GETDATE(), 1)";
                         gl.registra(query, sqlcon);
                         MessageBox.Show("Registro Agregado con Éxito.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtAgregar.Clear();
