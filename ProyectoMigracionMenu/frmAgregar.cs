@@ -7,9 +7,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace ProyectoMigracionMenu
 {
@@ -23,6 +25,7 @@ namespace ProyectoMigracionMenu
         {
             InitializeComponent();
             _tabla = tabla;
+           
         }
 
         private void txtAgregar_KeyPress(object sender, KeyPressEventArgs e)
@@ -31,8 +34,8 @@ namespace ProyectoMigracionMenu
         {
             string texto = txtAgregar.Text;
             texto = System.Text.RegularExpressions.Regex.Replace(texto, @"\s{2,}", " ");
-           txtAgregar.Text = texto;
-           txtAgregar.SelectionStart = texto.Length;
+            txtAgregar.Text = texto;
+            txtAgregar.SelectionStart = texto.Length;
 
 
             if (e.KeyChar == (char)Keys.Back)
@@ -40,7 +43,7 @@ namespace ProyectoMigracionMenu
                 return;
             }
 
-           
+
             if (txtAgregar.Text.Length >= 20)
             {
                 e.Handled = true;
@@ -48,7 +51,7 @@ namespace ProyectoMigracionMenu
                 return;
             }
 
-           
+
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
@@ -56,7 +59,7 @@ namespace ProyectoMigracionMenu
                 return;
             }
 
-        
+
             if (txtAgregar.Text.Length >= 2)
             {
                 string ultimosTresCaracteres = txtAgregar.Text.Length >= 2
@@ -72,11 +75,11 @@ namespace ProyectoMigracionMenu
                 }
             }
 
-         
+
             if (e.KeyChar == ' ' && txtAgregar.Text.EndsWith(" "))
             {
                 e.Handled = true;
-               
+
                 return;
             }
         }
@@ -85,7 +88,7 @@ namespace ProyectoMigracionMenu
         {
 
 
-            string texto =txtAgregar .Text;
+            string texto = txtAgregar.Text;
 
             if (string.IsNullOrEmpty(texto))
                 return;
@@ -98,7 +101,7 @@ namespace ProyectoMigracionMenu
                 return;
             }
 
-          
+
             if (ContieneTresCaracteresIgualesConsecutivos(texto))
             {
                 MostrarAdvertencia("No se permiten tres caracteres iguales consecutivos.");
@@ -106,7 +109,7 @@ namespace ProyectoMigracionMenu
                 return;
             }
 
-           
+
             if (ContieneEspaciosConsecutivos(texto))
             {
                 MostrarAdvertencia("No se permiten dos espacios consecutivos.");
@@ -118,7 +121,7 @@ namespace ProyectoMigracionMenu
 
         private bool ValidarCaracteresPermitidos(string texto)
         {
-          
+
             return System.Text.RegularExpressions.Regex.IsMatch(texto, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,20}$");
         }
 
@@ -158,6 +161,14 @@ namespace ProyectoMigracionMenu
                         !ContieneTresCaracteresIgualesConsecutivos(txtAgregar.Text) &&
                         !ContieneEspaciosConsecutivos(txtAgregar.Text))
                     {
+
+                        query = "select count (*) from " + _tabla + " where Descripcion = '" + txtAgregar.Text + "'";
+                        if (gl.retornaEntero(query, sqlcon) == 1)
+                        {
+                            MessageBox.Show("El registro ya ha sido registrado con anterioridad.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
                         query = "insert into " + _tabla + " (Descripcion, f_regCreado, Activo) values ('" + txtAgregar.Text + "',GETDATE(), 1)";
                         gl.registra(query, sqlcon);
                         MessageBox.Show("Registro Agregado con Éxito.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -186,6 +197,26 @@ namespace ProyectoMigracionMenu
         }
 
         private void Documentoviaje_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void frmAgregar_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            
+                ReleaseCapture();
+                SendMessage(this.Handle, 0x112, 0xf012, 0);
+            
+        }
+
+        private void Documentoviaje_Enter_1(object sender, EventArgs e)
         {
 
         }

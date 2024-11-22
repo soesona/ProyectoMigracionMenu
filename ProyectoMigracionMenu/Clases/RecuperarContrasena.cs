@@ -15,7 +15,12 @@ namespace ProyectoMigracionMenu.Clases
             using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
 
-                string query = "SELECT IdUsuario FROM Usuarios WHERE Usuario = @Usuario";
+                string query = @"
+                    SELECT IdUsuario 
+                    FROM Usuarios 
+                    WHERE Usuario COLLATE Latin1_General_CS_AS = @Usuario
+                      AND Usuario NOT LIKE '%  %' 
+                      AND Activo = 1";
                 SqlCommand command = new SqlCommand(query, conexion);
                 command.Parameters.AddWithValue("@Usuario", nombreUsuario);
 

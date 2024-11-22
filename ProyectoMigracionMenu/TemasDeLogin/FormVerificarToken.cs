@@ -30,9 +30,22 @@ namespace ProyectoMigracionMenu.TemasDeLogin
 
         private void btnActualizarContrasena_Click(object sender, EventArgs e)
         {
-            string token = txtToken.Text;
-            string nuevaContrasena = txtNuevaContrasena.Text;
-            string confirmarContrasena = txtConfirmarContrasena.Text;
+            string token = txtToken.Text.Trim(); 
+            string nuevaContrasena = txtNuevaContrasena.Text.Trim();
+            string confirmarContrasena = txtConfirmarContrasena.Text.Trim();
+
+
+            if (string.IsNullOrWhiteSpace(token) || System.Text.RegularExpressions.Regex.IsMatch(token, @"\s{2,}"))
+            {
+                MessageBox.Show("El token no puede contener dos o más espacios consecutivos ni estar vacío.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(nuevaContrasena) || System.Text.RegularExpressions.Regex.IsMatch(nuevaContrasena, @"\s{2,}"))
+            {
+                MessageBox.Show("La nueva contraseña no puede contener dos o más espacios consecutivos ni estar vacía.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (nuevaContrasena != confirmarContrasena)
             {

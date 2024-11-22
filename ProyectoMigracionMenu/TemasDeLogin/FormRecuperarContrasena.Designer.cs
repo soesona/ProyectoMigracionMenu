@@ -42,7 +42,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(22, 127);
+            label1.Location = new Point(22, 155);
             label1.Name = "label1";
             label1.Size = new Size(756, 38);
             label1.TabIndex = 0;
@@ -50,14 +50,14 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(253, 208);
+            txtUsuario.Location = new Point(240, 243);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(269, 27);
             txtUsuario.TabIndex = 1;
             // 
             // btnEnviar
             // 
-            btnEnviar.Location = new Point(322, 291);
+            btnEnviar.Location = new Point(314, 328);
             btnEnviar.Name = "btnEnviar";
             btnEnviar.Size = new Size(127, 37);
             btnEnviar.TabIndex = 2;

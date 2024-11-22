@@ -27,7 +27,14 @@ namespace ProyectoMigracionMenu
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            string nombreUsuario = txtUsuario.Text;
+            string nombreUsuario = txtUsuario.Text.Trim(); 
+
+           
+            if (string.IsNullOrWhiteSpace(nombreUsuario))
+            {
+                MessageBox.Show("El nombre de usuario no puede estar vacío.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
 
             RecuperacionContrasena recuperacion = new RecuperacionContrasena();

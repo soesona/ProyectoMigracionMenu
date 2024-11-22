@@ -54,6 +54,34 @@ namespace ProyectoMigracionMenu.Clases
                 return dta;
             }
         }
+
+        public int retornaEntero(string ssql, SqlConnection cox)
+        {
+            int retorno = 0;
+            try
+            {
+                DataTable dta = new DataTable();
+                SqlDataAdapter dad;
+                dad = new SqlDataAdapter(ssql, cox);
+                dad.Fill(dta);
+                if (dta.Rows.Count > 0)
+                {
+                    retorno = Convert.ToInt32(dta.Rows[0][0].ToString());
+                }
+                else
+                {
+                    retorno = 0;
+                }
+                cox.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return retorno;
+        }
+
         public void registra(string ssql, SqlConnection cox)
         {
             if (cox.State == System.Data.ConnectionState.Open)

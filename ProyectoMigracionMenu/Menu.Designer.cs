@@ -73,7 +73,7 @@
             BtnInspeccionPrimaria.ForeColor = Color.Black;
             BtnInspeccionPrimaria.Image = (Image)resources.GetObject("BtnInspeccionPrimaria.Image");
             BtnInspeccionPrimaria.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnInspeccionPrimaria.Location = new Point(0, 316);
+            BtnInspeccionPrimaria.Location = new Point(0, 312);
             BtnInspeccionPrimaria.Margin = new Padding(4, 5, 4, 5);
             BtnInspeccionPrimaria.Name = "BtnInspeccionPrimaria";
             BtnInspeccionPrimaria.Padding = new Padding(5);
@@ -153,7 +153,7 @@
             BtnReportes.ForeColor = Color.Black;
             BtnReportes.Image = (Image)resources.GetObject("BtnReportes.Image");
             BtnReportes.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnReportes.Location = new Point(0, 452);
+            BtnReportes.Location = new Point(0, 440);
             BtnReportes.Margin = new Padding(4, 5, 4, 5);
             BtnReportes.Name = "BtnReportes";
             BtnReportes.Padding = new Padding(5);
@@ -219,7 +219,7 @@
             BtnInspeccionSecundaria.ForeColor = Color.Black;
             BtnInspeccionSecundaria.Image = (Image)resources.GetObject("BtnInspeccionSecundaria.Image");
             BtnInspeccionSecundaria.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnInspeccionSecundaria.Location = new Point(0, 384);
+            BtnInspeccionSecundaria.Location = new Point(0, 376);
             BtnInspeccionSecundaria.Margin = new Padding(4, 5, 4, 5);
             BtnInspeccionSecundaria.Name = "BtnInspeccionSecundaria";
             BtnInspeccionSecundaria.Padding = new Padding(5);
