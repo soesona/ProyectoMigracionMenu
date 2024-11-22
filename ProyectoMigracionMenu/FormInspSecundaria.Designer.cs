@@ -340,7 +340,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(967, 104);
+            label6.Location = new Point(967, 97);
             label6.Name = "label6";
             label6.Size = new Size(58, 20);
             label6.TabIndex = 39;
@@ -349,7 +349,7 @@
             // txtAlertas
             // 
             txtAlertas.Enabled = false;
-            txtAlertas.Location = new Point(1042, 97);
+            txtAlertas.Location = new Point(1042, 94);
             txtAlertas.Margin = new Padding(3, 4, 3, 4);
             txtAlertas.MaxLength = 200;
             txtAlertas.Multiline = true;
