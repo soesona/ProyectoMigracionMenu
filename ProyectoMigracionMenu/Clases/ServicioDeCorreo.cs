@@ -11,26 +11,33 @@ using System.Net;
 
 namespace ProyectoMigracionMenu.Clases
 {
+
+    // Envío de correos electrónicos a través de un servidor SMTP
     public class ServicioDeCorreo
     {
+        // Variables privadas que contienen las credenciales para el correo remitente.
         private readonly string _correoRemitente = "htambien088@gmail.com";
-        private readonly string _contrasena = "rwsy stqx ljcp yoan";
+        private readonly string _contrasena = "rwsy stqx ljcp yoan"; // Contraseña de aplicacion del correo del remitente
 
         public void EnviarCorreo(string destinatario, string asunto, string mensaje)
         {
             try
             {
+                // Se crea un objeto MailMessage para configurar el mensaje de correo.
+           
                 MailMessage mailMessage = new MailMessage(_correoRemitente, destinatario);
                 mailMessage.Subject = asunto;
                 mailMessage.Body = mensaje;
                 mailMessage.IsBodyHtml = true;
 
+                // Se crea un cliente SMTP para enviar el correo a través de Gmail
+                // Usamos el puerto 587
                 using (System.Net.Mail.SmtpClient smtpClient = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))
                 {
                     smtpClient.UseDefaultCredentials = false;
+                    // Se establece el correo y la contraseña para autenticar el remitente
                     smtpClient.Credentials = new NetworkCredential(_correoRemitente, _contrasena);
                     smtpClient.EnableSsl = true;
-
                     smtpClient.Send(mailMessage);
                 }
             }

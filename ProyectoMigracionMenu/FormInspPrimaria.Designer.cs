@@ -395,10 +395,10 @@
             // 
             // btnfotografia
             // 
-            btnfotografia.Location = new Point(70, 251);
+            btnfotografia.Location = new Point(66, 253);
             btnfotografia.Margin = new Padding(3, 4, 3, 4);
             btnfotografia.Name = "btnfotografia";
-            btnfotografia.Size = new Size(86, 31);
+            btnfotografia.Size = new Size(100, 31);
             btnfotografia.TabIndex = 0;
             btnfotografia.Text = "Seleccionar";
             btnfotografia.UseVisualStyleBackColor = true;
@@ -636,6 +636,7 @@
             // 
             // txtResidencia
             // 
+            txtResidencia.CharacterCasing = CharacterCasing.Upper;
             txtResidencia.Location = new Point(127, 134);
             txtResidencia.Margin = new Padding(3, 4, 3, 4);
             txtResidencia.MaxLength = 200;
@@ -707,6 +708,7 @@
             // 
             // txtObservaciones
             // 
+            txtObservaciones.CharacterCasing = CharacterCasing.Upper;
             txtObservaciones.Location = new Point(130, 25);
             txtObservaciones.Margin = new Padding(3, 4, 3, 4);
             txtObservaciones.MaxLength = 200;
@@ -739,6 +741,8 @@
             // 
             // dgvTransacciones
             // 
+            dgvTransacciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTransacciones.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dgvTransacciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTransacciones.Columns.AddRange(new DataGridViewColumn[] { Fecha, tipoDocu, no, Origen, Destino, Nombres, Apellidos, Edad, Imagen });
             dgvTransacciones.Location = new Point(14, 25);
@@ -755,7 +759,6 @@
             Fecha.MinimumWidth = 6;
             Fecha.Name = "Fecha";
             Fecha.ReadOnly = true;
-            Fecha.Width = 130;
             // 
             // tipoDocu
             // 
@@ -763,7 +766,6 @@
             tipoDocu.MinimumWidth = 6;
             tipoDocu.Name = "tipoDocu";
             tipoDocu.ReadOnly = true;
-            tipoDocu.Width = 200;
             // 
             // no
             // 
@@ -771,7 +773,6 @@
             no.MinimumWidth = 6;
             no.Name = "no";
             no.ReadOnly = true;
-            no.Width = 200;
             // 
             // Origen
             // 
@@ -779,7 +780,6 @@
             Origen.MinimumWidth = 6;
             Origen.Name = "Origen";
             Origen.ReadOnly = true;
-            Origen.Width = 140;
             // 
             // Destino
             // 
@@ -787,7 +787,6 @@
             Destino.MinimumWidth = 6;
             Destino.Name = "Destino";
             Destino.ReadOnly = true;
-            Destino.Width = 140;
             // 
             // Nombres
             // 
@@ -796,7 +795,6 @@
             Nombres.Name = "Nombres";
             Nombres.ReadOnly = true;
             Nombres.Visible = false;
-            Nombres.Width = 125;
             // 
             // Apellidos
             // 
@@ -805,7 +803,6 @@
             Apellidos.Name = "Apellidos";
             Apellidos.ReadOnly = true;
             Apellidos.Visible = false;
-            Apellidos.Width = 125;
             // 
             // Edad
             // 
@@ -814,7 +811,6 @@
             Edad.Name = "Edad";
             Edad.ReadOnly = true;
             Edad.Visible = false;
-            Edad.Width = 125;
             // 
             // Imagen
             // 
@@ -823,7 +819,6 @@
             Imagen.Name = "Imagen";
             Imagen.ReadOnly = true;
             Imagen.Visible = false;
-            Imagen.Width = 125;
             // 
             // groupBox7
             // 
@@ -839,6 +834,8 @@
             // 
             // dgvObservaciones
             // 
+            dgvObservaciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvObservaciones.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dgvObservaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvObservaciones.Columns.AddRange(new DataGridViewColumn[] { Observaciones, usuario });
             dgvObservaciones.Location = new Point(9, 29);
@@ -855,7 +852,6 @@
             Observaciones.MinimumWidth = 6;
             Observaciones.Name = "Observaciones";
             Observaciones.ReadOnly = true;
-            Observaciones.Width = 500;
             // 
             // usuario
             // 
@@ -863,7 +859,6 @@
             usuario.MinimumWidth = 6;
             usuario.Name = "usuario";
             usuario.ReadOnly = true;
-            usuario.Width = 200;
             // 
             // panel1
             // 

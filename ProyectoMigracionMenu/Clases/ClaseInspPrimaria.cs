@@ -30,7 +30,7 @@ namespace ProyectoMigracionMenu.Clases
                         CommandType = CommandType.StoredProcedure
                     };
 
-               
+
                     cmd.Parameters.AddWithValue("@TipoDocumento", tipoDocumento);
                     cmd.Parameters.AddWithValue("@Identidad", identidad);
                     cmd.Parameters.AddWithValue("@Nombres", nombres);
@@ -59,13 +59,29 @@ namespace ProyectoMigracionMenu.Clases
 
                     cmd.ExecuteNonQuery();
 
-                    return true; 
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception($"Ocurrió un error al guardar los datos: {ex.Message}");
             }
+        }
+
+
+        public static string ObtenerConsultaBuscarPersona()
+        {
+            return "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, " +
+                   "CASE WHEN TipoDocumento = 1 THEN 'Identidad' " +
+                   "WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END tipoDocu, " +
+                   "A.Identidad no, E.Descripcion Origen, I.Descripcion Destino, " +
+                   "A.Observacion Observaciones, A.UsuarioCreado usuario, A.Nombres, A.Apellidos, " +
+                   "A.Fotografia Imagen, A.f_Nacimiento, A.IdSexo, A.IdPaisNacimiento, " +
+                   "A.IdPaisEmision, A.f_regFinal, A.TipoDocumento, A.Estado " +
+                   "FROM Personas A " +
+                   "INNER JOIN Pais E ON A.IdPaisResidencia = E.IdPais " +
+                   "INNER JOIN Pais I ON A.IdPaisDestino = I.IdPais " +
+                   "WHERE A.Identidad = @Identidad";
         }
     }
 }

@@ -15,6 +15,7 @@ namespace ProyectoMigracionMenu
     public partial class Menu : Form
     {
 
+        // Variables para almacenar el formulario activo y el botón principal actualmente seleccionado
         private Form activeForm;
         private Button currentMainButton;
         public Menu()
@@ -25,18 +26,23 @@ namespace ProyectoMigracionMenu
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.WindowState = FormWindowState.Maximized;
-            DoubleBufferedPanel(panelContenedor);
-            OpenChildForm(new FormDashboard(), null);
-            currentMainButton = BtnDashboard;
+            DoubleBufferedPanel(panelContenedor); // Habilita el doble búfer en el panel para mejorar el rendimiento visual
+            OpenChildForm(new FormDashboard(), BtnDashboard); // Abre el formulario principal en el área de contenido
+            currentMainButton = BtnDashboard;// Establece el botón principal actual como el de Dashboard
+
 
 
         }
+
+        // Método para habilitar el doble búfer en el control para evitar parpadeos al actualizar la interfaz
         private void DoubleBufferedPanel(Control control)
         {
             typeof(Panel).InvokeMember("DoubleBuffered",
                 System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
                 null, control, new object[] { true });
         }
+
+        // Resalta el botón que ha sido presionado y restablece el color de los demás botones
         private void ResaltarBoton(object btnSender)
         {
             if (btnSender == null) return;
@@ -54,6 +60,8 @@ namespace ProyectoMigracionMenu
                 currentButton.BackColor = Color.FromArgb(52, 161, 166);
             }
         }
+
+        // Carga los datos del usuario actual desde el objeto Login
         private void CargarDatosUsuario()
         {
             if (Login.UsuarioActual != null)
@@ -63,36 +71,44 @@ namespace ProyectoMigracionMenu
                 lblRol.Text = Login.UsuarioActual.Rol;
             }
         }
+
+        //  Abrir un formulario hijo dentro del formulario principal
         public void OpenChildForm(Form childForm, object btnSender, bool isMainMenuButton = true)
         {
+            // Cierra el formulario hijo actual si existe
             if (activeForm != null)
             {
                 activeForm.Close();
             }
 
+            // Establece el nuevo formulario hijo y configura sus propiedades
             activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
+            childForm.TopLevel = false; // Hace que el formulario hijo no tenga una barra de título
+            childForm.FormBorderStyle = FormBorderStyle.None; // Elimina el borde del formulario
+            childForm.Dock = DockStyle.Fill; // Ajusta el formulario hijo para llenar el panel contenedor
 
+            // Añade el formulario hijo al contenedor y lo trae al frente
             panelContenedor.Controls.Add(childForm);
             panelContenedor.Tag = childForm;
 
+            // Muestra el formulario hijo
             childForm.BringToFront();
             childForm.Show();
 
+            // Actualiza el título del formulario con el nombre del formulario hijo
             lblTitulo.Text = childForm.Text;
 
+            // Resalta el botón asociado con el formulario abierto
             if (btnSender != null)
             {
                 if (isMainMenuButton)
                 {
                     currentMainButton = btnSender as Button;
-                    ResaltarBoton(currentMainButton);
+                    ResaltarBoton(currentMainButton); // Resalta el botón de menú principal
                 }
                 else
                 {
-                    ResaltarBoton(currentMainButton);
+                    ResaltarBoton(currentMainButton); // Resalta el último botón presionado
                 }
             }
         }
@@ -121,6 +137,8 @@ namespace ProyectoMigracionMenu
             this.WindowState = FormWindowState.Minimized;
         }
 
+        // Funciones necesarias para mover la ventana arrastrando la barra de título
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -133,14 +151,10 @@ namespace ProyectoMigracionMenu
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void panelContenedor_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        // Evento para abrir el formulario de reportes si el usuario tiene permisos
         private void BtnReportes_Click(object sender, EventArgs e)
         {
-            if (Login.UsuarioActual.Rol == "Delegado")
+            if (Login.UsuarioActual.Rol == "Delegado") // Verifica si el usuario tiene rol de delegado
             {
             
                 FormReportes reportesForm = new FormReportes();
@@ -163,7 +177,7 @@ namespace ProyectoMigracionMenu
         {
 
             FormInspPrimariaINICIO formInspPrimariaInicio = new FormInspPrimariaINICIO();
-            formInspPrimariaInicio.Owner = this;
+            formInspPrimariaInicio.Owner = this; // Establece este formulario como propietario del formulario hijo
             OpenChildForm(formInspPrimariaInicio, sender, true);
         }
 
@@ -174,6 +188,7 @@ namespace ProyectoMigracionMenu
             OpenChildForm(formInspSecundariaInicio, sender, true); 
         }
 
+      
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Hide(); 

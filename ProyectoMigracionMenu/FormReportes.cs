@@ -22,10 +22,12 @@ namespace ProyectoMigracionMenu
         public FormReportes()
         {
             InitializeComponent();
-            this.DoubleBuffered = true;
-            CargarReportes();
+            this.DoubleBuffered = true; // Activa el doble búfer para mejorar el rendimiento visual
+            CargarReportes(); // Carga los tipos de reportes disponibles
         }
 
+
+        // Clase interna que define los tipos de reportes disponibles
         public class TiposReportes
         {
             public int Id { get; set; }         
@@ -34,10 +36,13 @@ namespace ProyectoMigracionMenu
 
         private void FormReportes_Load(object sender, EventArgs e)
         {
+
+            // Parámetros de estilo para los paneles
             int shadowSize = 5;
             int cornerRadius = 20;
             Color shadowColor = Color.Gray;
 
+            // Aplica estilos visuales
             EstiloPanel.AplicarSombra(PanelTipoReporte, shadowSize, shadowColor, cornerRadius);
             EstiloPanel.AplicarEsquinasRedondeadas(PanelTipoReporte, cornerRadius);
             EstiloPanel.AplicarSombra(panelReporte, shadowSize, shadowColor, cornerRadius);
@@ -52,38 +57,42 @@ namespace ProyectoMigracionMenu
             CboDelegaciones.SelectedIndex = -1;
         }
 
-
+        // Método para mostrar el reporte seleccionado
         private void MostrarReporte()
         {
+            // Obtiene los valores seleccionados de las fechas, delegación y reporte seleccionado
             DateTime fechaInicio = dtpFechaInicio.Value;
             DateTime fechaFin = dtpFechaFin.Value;
             string nombreDelegacion = CboDelegaciones.Text;
-
             int tipoReporteId = (int)CboTipoReporte.SelectedValue;
 
             DataAccess dataAccess = new DataAccess();
 
+            // Genera el reporte basado en el tipo seleccionado
             switch (tipoReporteId)
             {
                 case 1:
+
+                    // Reporte general de entradas
                     DSReporteEntradas dataSetGeneral = dataAccess.LlenarReporteGeneral(fechaInicio, fechaFin, nombreDelegacion);
                     ReporteEntradas reporteGeneral = new ReporteEntradas();
                     reporteGeneral.DataSource = dataSetGeneral.DSReporteEntradasDelegaciones;
                     reporteGeneral.DataMember = dataSetGeneral.DSReporteEntradasDelegaciones.TableName;
 
-
+                    // Oculta los parámetros del reporte
                     foreach (DevExpress.XtraReports.Parameters.Parameter p in reporteGeneral.Parameters)
                         p.Visible = false;
 
-
+                    // Configura los parámetros del reporte
                     reporteGeneral.parametros(fechaInicio, fechaFin, nombreDelegacion);
 
-
+                    // Muestra el reporte
                     ReportPrintTool printToolGeneral = new ReportPrintTool(reporteGeneral);
                     printToolGeneral.ShowRibbonPreview();
                     break;
 
                 case 2:
+                    // Reporte de migrantes rechazados
                     DSReporteRechazados dataSetRechazados = dataAccess.LlenarReporteRechazados(fechaInicio, fechaFin, nombreDelegacion);
                     ReporteRechazados reporteRechazados = new ReporteRechazados();
                     reporteRechazados.DataSource = dataSetRechazados.DSReporteRechazosDelegaciones;
@@ -102,6 +111,7 @@ namespace ProyectoMigracionMenu
                     break;
 
                 case 3:
+                    // Reporte de migrantes aceptados
                     dsEntra dsEntras = dataAccess.LlenarReporteEntradas(fechaInicio, fechaFin, nombreDelegacion);
                     rptEntra reporteEntra = new rptEntra();
                     reporteEntra.DataSource = dsEntras.DataTable1;
@@ -124,12 +134,15 @@ namespace ProyectoMigracionMenu
                     break;
             }
         }
+
+        // Evento del botón para generar el reporte
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
 
             bool hayError = false;
 
+            // Validaciones para asegurarse de que los datos son correctos
             if (dtpFechaInicio.Value.Date > dtpFechaFin.Value.Date)
             {
                 errorProvider1.SetError(dtpFechaInicio, "La fecha de inicio no puede ser mayor que la fecha de fin.");
@@ -158,8 +171,12 @@ namespace ProyectoMigracionMenu
 
         }
 
+        // Evento del botón para limpiar los filtros
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
+
+            // Restablece los valores de los controles a sus valores predeterminados
+            dtpFechaInicio.Value = DateTime.Now;
             dtpFechaInicio.Value = DateTime.Now;
             dtpFechaFin.Value = DateTime.Now; 
             CboDelegaciones.SelectedIndex = -1;
@@ -167,6 +184,7 @@ namespace ProyectoMigracionMenu
             errorProvider1.Clear();
         }
 
+        // Carga los tipos de reportes disponibles en el combo box
         private void CargarReportes()
         {
             try

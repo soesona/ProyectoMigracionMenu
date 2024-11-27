@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace ProyectoMigracionMenu.Clases
 {
+
+    // Clase que proporciona métodos para aplicar estilos visuales a paneles en Windows Forms
     public static class EstiloPanel
     {
+
+        // Aplica un efecto de sombra a un panel especificado.
+        // Crea un panel adicional detrás del original con un desplazamiento y color de sombra.
         public static void AplicarSombra(Panel panel, int shadowSize, Color shadowColor, int cornerRadius)
         {
             Panel shadowPanel = new Panel
@@ -24,6 +29,8 @@ namespace ProyectoMigracionMenu.Clases
             shadowPanel.SendToBack();
         }
 
+        // Aplica esquinas redondeadas a un panel utilizando un radio especificado.
+        // Modifica la región del panel para lograr el efecto.
         public static void AplicarEsquinasRedondeadas(Panel panel, int cornerRadius)
         {
             GraphicsPath path = new GraphicsPath();

@@ -12,7 +12,7 @@ namespace ProyectoMigracionMenu.Clases
         public string ConsultaPersonasActivas()
         {
             return @"SELECT A.IdPersonas Id, 
-        CASE WHEN TipoDocumento = 1 THEN 'Identidad' WHEN TipoDocumento = 2 THEN 'Pasaporte' ELSE 'Otro' END Doc, 
+        CASE WHEN TipoDocumento = 1 THEN 'IDENTIDAD' WHEN TipoDocumento = 2 THEN 'PASAPORTE' ELSE 'Otro' END Doc, 
         E.Descripcion paisEmisor, 
         A.Identidad identidad, 
         FORMAT(A.f_regFinal, 'dd-MM-yyyy') FechaV, 

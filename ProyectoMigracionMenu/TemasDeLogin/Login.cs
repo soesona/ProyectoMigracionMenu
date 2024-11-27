@@ -19,18 +19,21 @@ namespace ProyectoMigracionMenu
     {
 
         SqlServerConnection conexion = new SqlServerConnection();
+
+        // Propiedad para mantener la información del usuario actual logeado
         public static ClaseDeLogin UsuarioActual { get; private set; }
         public Login()
         {
             InitializeComponent();
         }
-
+        // Importación de funciones de la biblioteca user32.dll para manejo de eventos de la ventana
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+        
         private void txtuser_Enter(object sender, EventArgs e)
         {
             if (txtuser.Text == "Usuario")
@@ -78,7 +81,7 @@ namespace ProyectoMigracionMenu
                 txtpass.UseSystemPasswordChar = false;
             }
         }
-
+        // Permite arrastrar la ventana al hacer clic y arrastrar en cualquier parte del formulario
         private void Login_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -109,6 +112,7 @@ namespace ProyectoMigracionMenu
             }
         }
 
+        // Evento que ocurre al hacer clic en el enlace para recuperar contraseña
         private void LinkContra_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
