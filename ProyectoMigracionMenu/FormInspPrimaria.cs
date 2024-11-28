@@ -244,7 +244,7 @@ namespace interfaz_grafica_de_inspeccion_primaria
                 return false;
             }
 
-            // compara pixel a pixel 
+            // compara pixel a pixel las imagenes 
             using (Bitmap bmp1 = new Bitmap(img1))
             using (Bitmap bmp2 = new Bitmap(img2))
             {
