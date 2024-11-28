@@ -10,6 +10,7 @@ namespace ProyectoMigracionMenu.Clases
 {
     public class ClaseInspPrimaria
     {
+        // Método para insertar una persona en la base de datos
         public static bool InsertarPersona(string tipoDocumento, string identidad, string nombres, string apellidos,
                                            int idSexo, int idPaisEmision, string usuarioCreado, DateTime f_regCreado,
                                            DateTime f_regFinal, int estado, int idPaisNacimiento, int idPaisResidencia,
@@ -20,17 +21,20 @@ namespace ProyectoMigracionMenu.Clases
         {
             try
             {
+                // Establece una conexión con la base de datos
                 using (SqlConnection sqlcon = new SqlServerConnection().EstablecerConexion())
                 {
+                    // Asegura que la conexión esté abierta
                     if (sqlcon.State != ConnectionState.Open)
                         sqlcon.Open();
 
+                    // Crea un comando para ejecutar el procedimiento almacenado InsertarPersona
                     SqlCommand cmd = new SqlCommand("InsertarPersona", sqlcon)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-
+                    // Agrega los parámetros al comando (valores proporcionados por el método)
                     cmd.Parameters.AddWithValue("@TipoDocumento", tipoDocumento);
                     cmd.Parameters.AddWithValue("@Identidad", identidad);
                     cmd.Parameters.AddWithValue("@Nombres", nombres);
@@ -57,18 +61,21 @@ namespace ProyectoMigracionMenu.Clases
                     cmd.Parameters.AddWithValue("@AlertaMigratoria", alertaMigratoria);
                     cmd.Parameters.AddWithValue("@Prechequeo", prechequeo);
 
+                    // Ejecuta el comando (procedimiento almacenado)
                     cmd.ExecuteNonQuery();
 
+                    // Si no hubo excepciones, retorna true indicando éxito
                     return true;
                 }
             }
             catch (Exception ex)
             {
+                // En caso de error, lanza una nueva excepción con el mensaje de error
                 throw new Exception($"Ocurrió un error al guardar los datos: {ex.Message}");
             }
         }
 
-
+        // Método para obtener la consulta SQL que buscará a una persona por su identidad
         public static string ObtenerConsultaBuscarPersona()
         {
             return "SELECT FORMAT(A.f_regCreado, 'dd-MM-yyyy') Fecha, " +
@@ -81,7 +88,7 @@ namespace ProyectoMigracionMenu.Clases
                    "FROM Personas A " +
                    "INNER JOIN Pais E ON A.IdPaisResidencia = E.IdPais " +
                    "INNER JOIN Pais I ON A.IdPaisDestino = I.IdPais " +
-                   "WHERE A.Identidad = @Identidad";
+                   "WHERE A.Identidad = @Identidad";  // Usará un parámetro de identidad
         }
     }
 }

@@ -14,7 +14,10 @@ namespace ProyectoMigracionMenu.Clases
             int idUsuario = 0;
             using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
-
+                // Consulta SQL para obtener el IdUsuario, asegurándose de aplicar validaciones adicionales:
+                // Comparación sensible a mayúsculas/minúsculas (COLLATE Latin1_General_CS_AS).
+                //  Excluye nombres de usuario con espacios múltiples.
+                // Solo considera usuarios activos.
                 string query = @"
                     SELECT IdUsuario 
                     FROM Usuarios 
@@ -33,6 +36,9 @@ namespace ProyectoMigracionMenu.Clases
             return idUsuario;
         }
 
+
+
+        // Obtiene el correo electrónico de un usuario según su ID.
         public string ObtenerCorreoDelUsuario(int idUsuario)
         {
             string correo = string.Empty;
@@ -52,17 +58,22 @@ namespace ProyectoMigracionMenu.Clases
             return correo;
         }
 
+
+        // Actualiza la contraseña de un usuario en la base de datos.
         public bool ActualizarContrasena(int usuarioId, string nuevaContrasena)
         {
             using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
             {
-
+                // Consulta para actualizar la contraseña del usuario y registrar la fecha de última modificación
                 string query = "UPDATE Usuarios SET Clave = @Clave, f_ultimaActualizacion = GETDATE() WHERE IdUsuario = @IdUsuario";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
                     cmd.Parameters.AddWithValue("@Clave", nuevaContrasena);
                     cmd.Parameters.AddWithValue("@IdUsuario", usuarioId);
+
+                    // Ejecuta el comando y verifica cuántas filas fueron afectadas.
                     int rowsAffected = cmd.ExecuteNonQuery();
+                    // Devuelve True si se actualizó al menos una fila, False en caso contrario
                     return rowsAffected > 0;
                 }
             }
