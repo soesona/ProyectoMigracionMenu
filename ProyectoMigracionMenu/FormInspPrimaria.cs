@@ -47,12 +47,30 @@ namespace interfaz_grafica_de_inspeccion_primaria
                     if (ta.Rows.Count > 0)
                     {
                         DataTable taEmision = ta.Copy(); // Copias separadas para cada uso de país.
+                        DataTable taDestino = ta.Copy();
+                        DataTable taRes = ta.Copy();
+                        DataTable taNac = ta.Copy();
+
                         cbPaisEmision.DataSource = taEmision; // Población del combo de país de emisión.
                         cbPaisEmision.DisplayMember = "Descripcion";
                         cbPaisEmision.ValueMember = "IdPais";
                         cbPaisEmision.SelectedIndex = -1;
 
                         // Similar configuración para los otros controles de país.
+                        cbPaisDestino.DataSource = taDestino;
+                        cbPaisDestino.DisplayMember = "Descripcion";
+                        cbPaisDestino.ValueMember = "IdPais";
+                        cbPaisDestino.SelectedIndex = -1;
+
+                        cbPaisRes.DataSource = taRes;
+                        cbPaisRes.DisplayMember = "Descripcion";
+                        cbPaisRes.ValueMember = "IdPais";
+                        cbPaisRes.SelectedIndex = -1;
+
+                        cbPaisNa.DataSource = taNac;
+                        cbPaisNa.DisplayMember = "Descripcion";
+                        cbPaisNa.ValueMember = "IdPais";
+                        cbPaisNa.SelectedIndex = -1;
                     }
                 }
             }
