@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 
 namespace ProyectoMigracionMenu.Clases
 {
-
-    // Clase que proporciona métodos para aplicar estilos visuales a paneles en Windows Forms
+    /// <summary>
+    /// Clase que proporciona métodos para aplicar estilos visuales a paneles en Windows Forms.
+    /// </summary>
     public static class EstiloPanel
     {
-
-        // Aplica un efecto de sombra a un panel especificado.
-        // Crea un panel adicional detrás del original con un desplazamiento y color de sombra.
+        /// <summary>
+        /// Aplica un efecto de sombra a un panel especificado.
+        /// Crea un panel adicional detrás del original con un desplazamiento y color de sombra.
+        /// </summary>
+        /// <param name="panel">El panel al que se le aplicará el efecto de sombra.</param>
+        /// <param name="shadowSize">El tamaño del desplazamiento de la sombra.</param>
+        /// <param name="shadowColor">El color de la sombra.</param>
+        /// <param name="cornerRadius">El radio de las esquinas redondeadas del panel de sombra.</param>
         public static void AplicarSombra(Panel panel, int shadowSize, Color shadowColor, int cornerRadius)
         {
             Panel shadowPanel = new Panel
@@ -29,8 +35,12 @@ namespace ProyectoMigracionMenu.Clases
             shadowPanel.SendToBack();
         }
 
-        // Aplica esquinas redondeadas a un panel utilizando un radio especificado.
-        // Modifica la región del panel para lograr el efecto.
+        /// <summary>
+        /// Aplica esquinas redondeadas a un panel utilizando un radio especificado.
+        /// Modifica la región del panel para lograr el efecto.
+        /// </summary>
+        /// <param name="panel">El panel al que se le aplicarán las esquinas redondeadas.</param>
+        /// <param name="cornerRadius">El radio de las esquinas redondeadas.</param>
         public static void AplicarEsquinasRedondeadas(Panel panel, int cornerRadius)
         {
             GraphicsPath path = new GraphicsPath();

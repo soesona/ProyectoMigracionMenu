@@ -8,7 +8,14 @@ using System.Threading.Tasks;
 namespace ProyectoMigracionMenu.Clases
 {
     public class DataAccess
-    {   // Método para llenar el reporte general con totales de hombres, mujeres y menores por delegación
+    {
+        /// <summary>
+        /// Método para llenar el reporte general con totales de hombres, mujeres y menores por delegación.
+        /// </summary>
+        /// <param name="fechaInicio">Fecha de inicio para filtrar los registros.</param>
+        /// <param name="fechaFin">Fecha de fin para filtrar los registros.</param>
+        /// <param name="nombreDelegacion">Nombre de la delegación para filtrar los registros.</param>
+        /// <returns>Devuelve un conjunto de datos con la información del reporte general.</returns>
         public DSReporteEntradas LlenarReporteGeneral(DateTime fechaInicio, DateTime fechaFin, string nombreDelegacion)
         {
             DSReporteEntradas dataSet = new DSReporteEntradas();
@@ -52,12 +59,16 @@ namespace ProyectoMigracionMenu.Clases
                 }
             }
 
-           
             return dataSet;
         }
 
-
-        // Método para llenar el reporte de migrantes rechazados con el estado en 0
+        /// <summary>
+        /// Método para llenar el reporte de migrantes rechazados con el estado en 0.
+        /// </summary>
+        /// <param name="fechaInicio">Fecha de inicio para filtrar los registros.</param>
+        /// <param name="fechaFin">Fecha de fin para filtrar los registros.</param>
+        /// <param name="nombreDelegacion">Nombre de la delegación para filtrar los registros.</param>
+        /// <returns>Devuelve un conjunto de datos con la información de migrantes rechazados.</returns>
         public DSReporteRechazados LlenarReporteRechazados(DateTime fechaInicio, DateTime fechaFin, string nombreDelegacion)
         {
             DSReporteRechazados dataSet = new DSReporteRechazados();
@@ -94,29 +105,31 @@ namespace ProyectoMigracionMenu.Clases
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                  
                     command.Parameters.AddWithValue("@NombreDelegacion", nombreDelegacion);
                     command.Parameters.AddWithValue("@FechaInicio", fechaInicio);
                     command.Parameters.AddWithValue("@FechaFin", fechaFin);
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                   
                         adapter.Fill(dataSet.DSReporteRechazosDelegaciones);
                     }
                 }
             }
 
-            
             return dataSet;
         }
 
-        // Método para llenar el reporte de migrantes aceptados con el estado en 2 
+        /// <summary>
+        /// Método para llenar el reporte de migrantes aceptados con el estado en 2.
+        /// </summary>
+        /// <param name="fechaInicio">Fecha de inicio para filtrar los registros.</param>
+        /// <param name="fechaFin">Fecha de fin para filtrar los registros.</param>
+        /// <param name="nombreDelegacion">Nombre de la delegación para filtrar los registros.</param>
+        /// <returns>Devuelve un conjunto de datos con la información de migrantes aceptados.</returns>
         public dsEntra LlenarReporteEntradas(DateTime fechaInicio, DateTime fechaFin, string nombreDelegacion)
         {
             dsEntra dataSet = new dsEntra();
 
-           
             fechaInicio = fechaInicio.Date;
             fechaFin = fechaFin.Date.AddDays(1).AddMilliseconds(-1);
 
@@ -149,21 +162,18 @@ namespace ProyectoMigracionMenu.Clases
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                   
                     command.Parameters.AddWithValue("@NombreDelegacion", nombreDelegacion);
                     command.Parameters.AddWithValue("@FechaInicio", fechaInicio);
                     command.Parameters.AddWithValue("@FechaFin", fechaFin);
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                      
                         adapter.Fill(dataSet.DataTable1);
                     }
                 }
             }
 
-            
             return dataSet;
         }
-        }
-        }
+    }
+}

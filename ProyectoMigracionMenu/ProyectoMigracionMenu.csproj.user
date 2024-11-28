@@ -16,6 +16,9 @@
     <Compile Update="FormInspSecundariaINICIO.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -26,9 +29,6 @@
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="TemasDeLogin\FormRecuperarContrasena.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormReportes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="TemasDeLogin\FormVerificarToken.cs">

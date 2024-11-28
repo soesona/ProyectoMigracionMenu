@@ -10,14 +10,21 @@ namespace ProyectoMigracionMenu.Clases
 {
     public class ClaseDeLogin
     {
-        // Propiedades que almacenan el nombre, delegación, rol e IdDelegacion del usuario.
+        /// <summary>
+        /// Propiedades que almacenan el nombre, delegación, rol e IdDelegacion del usuario.
+        /// </summary>
         public string Nombre { get; private set; }
         public string Delegacion { get; private set; }
         public string Rol { get; private set; }
 
         public int IdDelegacion { get; private set; }
 
-        // Método que valida las credenciales de inicio de sesión (usuario y clave).
+        /// <summary>
+        /// Método que valida las credenciales de inicio de sesión (usuario y clave).
+        /// </summary>
+        /// <param name="usuario">El nombre de usuario que se quiere validar.</param>
+        /// <param name="clave">La clave asociada al usuario para su autenticación.</param>
+        /// <returns>Devuelve verdadero si las credenciales son correctas, de lo contrario, falso.</returns>
         public bool IniciarSesion(string usuario, string clave)
         {
             using (SqlConnection conexion = new SqlServerConnection().EstablecerConexion())
